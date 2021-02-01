@@ -1,6 +1,8 @@
 ## code to prepare `comexstat_dados` dataset goes here
 # baixa csvs de do comexstat
 
+library(magrittr)
+
 anos <- c(2026:2010)
 url_exp <- paste0("https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_")
 url_exp_lista <- purrr::map_chr(anos, ~ paste0(url_exp, .x, ".csv"))
@@ -151,14 +153,20 @@ sh1_df <- purrr::map_dfr(sh1_files, ~ vroom::vroom(.x, id = "path")) %>%
 
 sh4_files <- fs::dir_ls(here::here("data-raw"), regexp = "sh4.csv$")
 
-sh4_df <- purrr::map_dfr(sh4_files, ~ vroom::vroom(.x, id = "path")) %>%
+sh4_df <- purrr::map_dfr(sh4_files, ~ vroom::vroom(.x, id = "path",
+                                                        col_types = c(path = "c", CO_ANO = "i",
+                                                                      CO_MES = "c", CO_PAIS = "c",
+                                                                      CO_SH4 = "c", value = "d"))) %>%
   dplyr::mutate(path = stringr::str_extract(path, "[:upper:]{3}")) %>%
   dplyr::left_join(comexstat_paises) %>%
   dplyr::left_join(ncm_sh4)
 
 sh6_files <- fs::dir_ls(here::here("data-raw"), regexp = "sh6.csv$")
 
-sh6_df <- purrr::map_dfr(sh6_files, ~ vroom::vroom(.x, id = "path")) %>%
+sh6_df <- purrr::map_dfr(sh6_files, ~ vroom::vroom(.x, id = "path",
+                                                        col_types = c(path = "c", CO_ANO = "i",
+                                                                      CO_MES = "c", CO_PAIS = "c",
+                                                                      CO_SH6 = "c", value = "d"))) %>%
   dplyr::mutate(path = stringr::str_extract(path, "[:upper:]{3}"))
 
 usethis::use_data(sh1_df, sh4_df, sh6_df, overwrite = TRUE)
