@@ -20,15 +20,15 @@ comerciobr_dados_corrente <- function(pais, periodo) {
       dplyr::mutate(CO_MES = as.numeric(CO_MES)) %>%
       dplyr::filter(CO_MES <= ultimo_mes) %>%
       dplyr::group_by(CO_ANO, CO_MES, path) %>%
-      dplyr::summarise(value = sum(value)) %>%
-      tidyr::pivot_wider(names_from = path, values_from = value) %>%
-      dplyr::mutate(Corrente = EXP + IMP,
-                    Saldo = EXP - IMP) %>%
-      dplyr::rename(Exportações = "EXP", Importações = "IMP") %>%
-      tidyr::pivot_longer(Exportações:Saldo, names_to = "trade_flow", values_to = "value")
+      dplyr::summarise(value = sum(value))
 
   }
 
-  df
+  df <- df %>%
+    tidyr::pivot_wider(names_from = path, values_from = value) %>%
+    dplyr::mutate(Corrente = EXP + IMP,
+                  Saldo = EXP - IMP) %>%
+    dplyr::rename(Exportações = "EXP", Importações = "IMP") %>%
+    tidyr::pivot_longer(Exportações:Saldo, names_to = "trade_flow", values_to = "value")
 
 }
