@@ -82,16 +82,17 @@ get_sh6 <- function(file) {
     dplyr::left_join(ncm_sh6) %>%
     dplyr::group_by(CO_ANO, CO_MES, CO_PAIS, CO_SH6) %>%
     dplyr::summarise(value = sum(VL_FOB)) %>%
-    vroom::vroom_write(paste0(here::here("data-raw/", nome)))
+    vroom::vroom_write(paste0(here::here("inst", "extdata", "comex_stat/", nome)))
 }
 
 purrr::walk(files_exp, get_sh6)
 purrr::walk(files_imp, get_sh6)
 
 # pegar produto em sh4
+vroom::vroom_write(paste0(here::here("inst", "extdata", "comex_stat/", nome)))
 
-exp_sh6 <- fs::dir_ls(here::here("data-raw"), regexp = "EXP_\\d{4}_sh6.csv$")
-imp_sh6 <- fs::dir_ls(here::here("data-raw"), regexp = "IMP_\\d{4}_sh6.csv$")
+exp_sh6 <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "EXP_\\d{4}_sh6.csv$")
+imp_sh6 <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "IMP_\\d{4}_sh6.csv$")
 
 get_sh4 <- function(file) {
 
@@ -109,7 +110,7 @@ get_sh4 <- function(file) {
     dplyr::left_join(ncm_sh4) %>%
     dplyr::group_by(CO_ANO, CO_MES, CO_PAIS, CO_SH4) %>%
     dplyr::summarise(value = sum(value)) %>%
-    vroom::vroom_write(paste0(here::here("data-raw/", nome)))
+    vroom::vroom_write(paste0(here::here("inst", "extdata", "comex_stat/", nome)))
 }
 
 purrr::walk(exp_sh6, get_sh4)
@@ -133,7 +134,7 @@ get_sh1 <- function(file) {
     dplyr::left_join(ncm_sh1) %>%
     dplyr::group_by(CO_ANO, CO_MES, CO_PAIS, CO_NCM_SECROM) %>%
     dplyr::summarise(value = sum(value)) %>%
-    vroom::vroom_write(paste0(here::here("data-raw/", nome)))
+    vroom::vroom_write(paste0(here::here("inst", "extdata", "comex_stat/", nome)))
 }
 
 purrr::walk(exp_sh6, get_sh1)
@@ -145,13 +146,13 @@ ncm_sh4 <- ncm_sh4 %>%
 
 # pegar nome do país
 
-sh1_files <- fs::dir_ls(here::here("data-raw"), regexp = "sh1.csv$")
+sh1_files <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "sh1.csv$")
 
 sh1_df <- purrr::map_dfr(sh1_files, ~ vroom::vroom(.x, id = "path")) %>%
   dplyr::mutate(path = stringr::str_extract(path, "[:upper:]{3}")) %>%
   dplyr::left_join(comexstat_paises)
 
-sh4_files <- fs::dir_ls(here::here("data-raw"), regexp = "sh4.csv$")
+sh4_files <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "sh4.csv$")
 
 sh4_df <- purrr::map_dfr(sh4_files, ~ vroom::vroom(.x, id = "path",
                                                         col_types = c(path = "c", CO_ANO = "i",
@@ -161,7 +162,7 @@ sh4_df <- purrr::map_dfr(sh4_files, ~ vroom::vroom(.x, id = "path",
   dplyr::left_join(comexstat_paises) %>%
   dplyr::left_join(ncm_sh4)
 
-sh6_files <- fs::dir_ls(here::here("data-raw"), regexp = "sh6.csv$")
+sh6_files <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "sh6.csv$")
 
 sh6_df <- purrr::map_dfr(sh6_files, ~ vroom::vroom(.x, id = "path",
                                                         col_types = c(path = "c", CO_ANO = "i",
