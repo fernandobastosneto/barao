@@ -3,13 +3,13 @@
 
 anos <- c(2026:2010)
 url_exp <- paste0("https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_")
-url_exp_lista <- purrr::map_chr(anos, ~ paste0(url, .x, ".csv"))
+url_exp_lista <- purrr::map_chr(anos, ~ paste0(url_exp, .x, ".csv"))
 purrr::walk2(url_exp_lista, anos, ~ httr::GET(.x, config = httr::config(ssl_verifypeer = F),
                                               httr::write_disk(paste0(here::here("inst", "extdata", "comex_stat/"), "EXP_", .y, ".csv"),
                                                                overwrite = T)))
 
 url_imp <- paste0("https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/IMP_")
-url_imp_lista <- purrr::map_chr(anos, ~ paste0(url, .x, ".csv"))
+url_imp_lista <- purrr::map_chr(anos, ~ paste0(url_imp, .x, ".csv"))
 purrr::walk2(url_imp_lista, anos, ~ httr::GET(.x, config = httr::config(ssl_verifypeer = F),
                                               httr::write_disk(paste0(here::here("inst", "extdata", "comex_stat/"), "IMP_", .y, ".csv"),
                                                                overwrite = T)))
