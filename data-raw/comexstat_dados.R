@@ -89,7 +89,6 @@ purrr::walk(files_exp, get_sh6)
 purrr::walk(files_imp, get_sh6)
 
 # pegar produto em sh4
-vroom::vroom_write(paste0(here::here("inst", "extdata", "comex_stat/", nome)))
 
 exp_sh6 <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "EXP_\\d{4}_sh6.csv$")
 imp_sh6 <- fs::dir_ls(here::here("inst", "extdata", "comex_stat"), regexp = "IMP_\\d{4}_sh6.csv$")

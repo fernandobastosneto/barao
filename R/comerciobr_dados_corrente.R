@@ -4,11 +4,14 @@ comerciobr_dados_corrente <- function(pais, periodo) {
     dplyr::filter(NO_PAIS == pais)
 
   if (periodo == "anual") {
+
     df <- df %>%
       dplyr::group_by(CO_ANO, path) %>%
       dplyr::summarise(value = sum(value))
   }
+
   else {
+
     ultimo_mes <- df %>%
       dplyr::filter(CO_ANO == max(CO_ANO)) %>%
       dplyr::mutate(CO_MES = as.numeric(CO_MES)) %>%
@@ -31,4 +34,5 @@ comerciobr_dados_corrente <- function(pais, periodo) {
     dplyr::rename(Exportações = "EXP", Importações = "IMP") %>%
     tidyr::pivot_longer(Exportações:Saldo, names_to = "trade_flow", values_to = "value")
 
+  df
 }
