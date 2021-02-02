@@ -30,6 +30,7 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
     ggplot2::coord_flip() +
     ggplot2::theme_minimal() +
     ggthemes::scale_fill_tableau() +
+    ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
     tidytext::scale_x_reordered() +
     ggplot2::labs(title = glue::glue("Brasil-{pais}, pauta comercial em {ano}"),
                   x = NULL, y = NULL, caption = "Fonte: Ministério da Economia")
