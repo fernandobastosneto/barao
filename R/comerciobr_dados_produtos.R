@@ -1,3 +1,4 @@
+#' @export
 comerciobr_dados_produtos <- function(pais, periodo) {
 
   df <- comerciobr::sh4_df %>%

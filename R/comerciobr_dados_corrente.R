@@ -1,3 +1,5 @@
+#' @export
+
 comerciobr_dados_corrente <- function(pais, periodo) {
 
   df <- comerciobr::sh1_df %>%

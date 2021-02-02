@@ -1,3 +1,4 @@
+#' @export
 comerciobr_get_ultimomes <- function() {
 
   ultimomes <- comerciobr_dados_corrente("China", "mensal") %>%
