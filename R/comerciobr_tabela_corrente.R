@@ -8,19 +8,19 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     dplyr::mutate(var_imp = Importações/dplyr::lag(Importações)-1) %>%
     dplyr::mutate(var_saldo = Saldo/abs(dplyr::lag(Saldo))-1) %>%
     dplyr::mutate(var_corrente = Corrente/dplyr::lag(Corrente)-1) %>%
-    dplyr::filter(CO_ANO != min(CO_ANO)) %>%
+    dplyr::filter(co_ano != min(co_ano)) %>%
     dplyr::mutate(dplyr::across(starts_with("var"), scales::label_percent())) %>%
     dplyr::mutate(dplyr::across(starts_with("var"), ~ paste0("(", .x, ")"))) %>%
-    dplyr::mutate(CO_ANO = as.character(CO_ANO)) %>%
+    dplyr::mutate(co_ano = as.character(co_ano)) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si())) %>%
     tidyr::unite("Exportações", c("Exportações","var_exp"), sep = " ") %>%
     tidyr::unite("Importações", c("Importações", "var_imp"), sep = " ") %>%
     tidyr::unite("Saldo", c("Saldo", "var_saldo"), sep = " ") %>%
     tidyr::unite("Corrente", c("Corrente", "var_corrente"), sep = " ") %>%
-    dplyr::relocate(CO_ANO, Exportações, Importações, Saldo, Corrente) %>%
-    dplyr::arrange(desc(CO_ANO)) %>%
+    dplyr::relocate(co_ano, Exportações, Importações, Saldo, Corrente) %>%
+    dplyr::arrange(desc(co_ano)) %>%
     tidyr::pivot_longer(Exportações:Corrente, names_to = "trade_flow", values_to = "value") %>%
-    tidyr::pivot_wider(names_from = CO_ANO, values_from = value) %>%
+    tidyr::pivot_wider(names_from = co_ano, values_from = value) %>%
     dplyr::rename(" " = trade_flow) %>%
     tibble::column_to_rownames(var = " ")
 
