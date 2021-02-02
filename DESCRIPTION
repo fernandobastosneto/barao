@@ -27,7 +27,9 @@ Imports:
     ggthemes,
     glue,
     kableExtra,
-    comerciobr
+    comerciobr,
+    tidytext,
+    ggbump
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)

@@ -1,28 +1,28 @@
 comerciobr_dados_corrente <- function(pais, periodo) {
 
-  df <- barao::sh1_df %>%
-    dplyr::filter(NO_PAIS == pais)
+  df <- comerciobr::sh1_df %>%
+    dplyr::filter(no_pais == pais)
 
   if (periodo == "anual") {
 
     df <- df %>%
-      dplyr::group_by(CO_ANO, path) %>%
+      dplyr::group_by(co_ano, path) %>%
       dplyr::summarise(value = sum(value))
   }
 
   else {
 
     ultimo_mes <- df %>%
-      dplyr::filter(CO_ANO == max(CO_ANO)) %>%
-      dplyr::mutate(CO_MES = as.numeric(CO_MES)) %>%
-      dplyr::filter(CO_MES == max(CO_MES)) %>%
-      dplyr::distinct(CO_MES) %>%
-      dplyr::pull(CO_MES)
+      dplyr::filter(co_ano == max(co_ano)) %>%
+      dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
+      dplyr::filter(co_mes == max(co_mes)) %>%
+      dplyr::distinct(co_mes) %>%
+      dplyr::pull(co_mes)
 
     df <- df %>%
-      dplyr::mutate(CO_MES = as.numeric(CO_MES)) %>%
-      dplyr::filter(CO_MES <= ultimo_mes) %>%
-      dplyr::group_by(CO_ANO, CO_MES, path) %>%
+      dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
+      dplyr::filter(co_mes <= ultimo_mes) %>%
+      dplyr::group_by(co_ano, co_mes, path) %>%
       dplyr::summarise(value = sum(value))
 
   }
