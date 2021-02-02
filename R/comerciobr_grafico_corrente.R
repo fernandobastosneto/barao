@@ -1,3 +1,4 @@
+#' @export
 comerciobr_grafico_corrente <- function(pais, periodo) {
 
   comerciobr_dados_corrente(pais, periodo) %>%

@@ -1,3 +1,4 @@
+#' @export
 comerciobr_tabela_corrente <- function(pais, periodo) {
 
   tabela_prep <- barao::comerciobr_dados_corrente(pais, periodo)  %>%

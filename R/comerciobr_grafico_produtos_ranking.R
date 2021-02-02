@@ -1,3 +1,4 @@
+#' @export
 comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
 
   comerciobr_dados_produtos(pais, periodo) %>%

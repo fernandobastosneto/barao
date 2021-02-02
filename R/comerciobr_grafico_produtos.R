@@ -1,3 +1,4 @@
+#' @export
 comerciobr_grafico_produtos <- function(pais, periodo) {
   df <- comerciobr_dados_produtos(pais, periodo) %>%
     dplyr::ungroup() %>%
