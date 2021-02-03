@@ -19,6 +19,6 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
     kableExtra::kbl(booktabs = T, col.names = c("Ano", "Direção", "Produto (SH4)", "Código (SH4)", "Valor", "Variação", "Proporção")) %>%
     kableExtra::kable_styling(latex_options = "scale_down") %>%
-    kableExtra::collapse_rows(columns = 1:2, latex_hline = "major", valign = "middle")
+    kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "middle")
 
 }

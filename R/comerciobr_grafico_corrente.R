@@ -11,6 +11,7 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
                                            "Corrente", "Saldo")),
                         scales = "free_x") +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
+    ggplot2::scale_x_discrete(breaks = scales::breaks_pretty()) +
     ggplot2::labs(title = glue::glue("Brasil-{pais}, Fluxo de Comércio"),
                   x = NULL, y = NULL, caption = "Fonte: Ministério da Economia") +
     ggthemes::scale_fill_tableau() +
