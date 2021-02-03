@@ -1,6 +1,18 @@
 #' @export
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
+  ano_min <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano == min(co_ano)) %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(min(co_ano))
+
+  ano_max <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano == max(co_ano)) %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(max(co_ano))
+
   df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
@@ -23,13 +35,13 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
     dplyr::pull(total_prop)
 
     df %>%
-      tibble::add_row(co_ano = 2020,
+      tibble::add_row(co_ano = ano_max,
                       co_sh4 = "0000",
                       path = "EXP",
                       no_sh4_por = "Outros",
                       prop = exp,
                       total_prop = NA) %>%
-      tibble::add_row(co_ano = 2020,
+      tibble::add_row(co_ano = ano_max,
                       co_sh4 = "0000",
                       path = "IMP",
                       no_sh4_por = "Outros",
