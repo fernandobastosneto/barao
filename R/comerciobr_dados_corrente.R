@@ -14,17 +14,10 @@ comerciobr_dados_corrente <- function(pais, periodo) {
 
   else {
 
-    ultimo_mes <- df %>%
-      dplyr::filter(co_ano == max(co_ano)) %>%
-      dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      dplyr::filter(co_mes == max(co_mes)) %>%
-      dplyr::distinct(co_mes) %>%
-      dplyr::pull(co_mes)
-
     df <- df %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      dplyr::filter(co_mes <= ultimo_mes) %>%
-      dplyr::group_by(co_ano, co_mes, path) %>%
+      dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
+      dplyr::group_by(co_ano, path) %>%
       dplyr::summarise(value = sum(value))
 
   }
