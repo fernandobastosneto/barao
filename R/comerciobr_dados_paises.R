@@ -17,6 +17,7 @@ comerciobr_dados_paises <- function(pais, periodo) {
   else {
 
     df <- comerciobr::sh1_df %>%
+      dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
       dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
       dplyr::group_by(co_ano, no_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
@@ -26,7 +27,6 @@ comerciobr_dados_paises <- function(pais, periodo) {
       dplyr::group_by(co_ano) %>%
       dplyr::mutate(total = sum(value)) %>%
       dplyr::group_by(co_ano, path)
-
 
   }
 

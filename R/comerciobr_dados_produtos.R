@@ -13,6 +13,7 @@ comerciobr_dados_produtos <- function(pais, periodo) {
     ultimomes <- comerciobr_get_ultimomes()
 
     df <- df %>%
+      dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
       dplyr::filter(co_mes <= ultimomes) %>%
       dplyr::group_by(co_ano, co_sh4, path) %>%
       dplyr::summarise(value = sum(value))
