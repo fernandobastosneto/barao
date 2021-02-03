@@ -8,7 +8,10 @@ comerciobr_dados_paises <- function(pais, periodo) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::group_by(co_ano, path) %>%
       dplyr::arrange(dplyr::desc(value)) %>%
-      dplyr::mutate(rank = dplyr::row_number())
+      dplyr::mutate(rank = dplyr::row_number()) %>%
+      dplyr::group_by(co_ano) %>%
+      dplyr::mutate(total = sum(value)) %>%
+      dplyr::group_by(co_ano, path)
   }
 
   else {
@@ -19,7 +22,11 @@ comerciobr_dados_paises <- function(pais, periodo) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::group_by(co_ano, path) %>%
       dplyr::arrange(dplyr::desc(value)) %>%
-      dplyr::mutate(rank = dplyr::row_number())
+      dplyr::mutate(rank = dplyr::row_number()) %>%
+      dplyr::group_by(co_ano) %>%
+      dplyr::mutate(total = sum(value)) %>%
+      dplyr::group_by(co_ano, path)
+
 
   }
 
