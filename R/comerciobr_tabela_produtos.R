@@ -15,6 +15,7 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     dplyr::arrange(desc(value), .by_group = T) %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano >= max(co_ano)-4) %>%
+    dplyr::arrange(desc(co_ano)) %>%
     dplyr::relocate(co_ano, path, no_sh4_por, co_sh4, value, pct_var, pct_prop) %>%
     dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
     dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
