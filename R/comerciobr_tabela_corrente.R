@@ -26,7 +26,7 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
 
   tabela <- split(1:(ncol(tabela_prep)), sort(rep_len(1:2, ncol(tabela_prep)))) %>%
     purrr::map(~ dplyr::select(tabela_prep, .)) %>%
-    purrr::map(~ kableExtra::kbl(.x, format = "latex", booktabs = TRUE, align = "r", escape = FALSE)) %>%
+    purrr::map(~ kableExtra::kbl(.x, format = "latex", booktabs = TRUE, align = "r", escape = T)) %>%
     purrr::map(~ kableExtra::kable_styling(.x, position = "center", full_width = FALSE)) %>%
     purrr::walk(print)
 
