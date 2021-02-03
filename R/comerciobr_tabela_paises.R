@@ -18,7 +18,7 @@ comerciobr_tabela_paises <- function(pais, periodo) {
     dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
     dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .01))) %>%
     kableExtra::kbl(booktabs = T, col.names = c("Ano", "Direção", "País", "Valor", "Variação", "Proporção")) %>%
-    kableExtra::kable_styling() %>%
+    kableExtra::kable_styling(latex_options = "scale_down") %>%
     kableExtra::collapse_rows(columns = 1:2, latex_hline = "major", valign = "middle")
 
 }
