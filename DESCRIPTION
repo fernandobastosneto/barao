@@ -29,7 +29,9 @@ Imports:
     kableExtra,
     comerciobr,
     tidytext,
-    ggbump
+    ggbump,
+    treemap,
+    ggrepel
 RoxygenNote: 7.1.1
 Depends: 
     R (>= 2.10)

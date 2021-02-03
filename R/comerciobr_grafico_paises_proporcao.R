@@ -1,3 +1,4 @@
+#' @export
 comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
 
   df <- barao::comerciobr_dados_paises(pais, periodo) %>%
