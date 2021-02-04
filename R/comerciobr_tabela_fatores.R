@@ -12,9 +12,8 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::ungroup() %>%
       dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
-      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CUCI", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
 
   }
 
@@ -29,9 +28,8 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::ungroup() %>%
       dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
-      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação ISIC", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
 
   }
 
@@ -46,9 +44,8 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::ungroup() %>%
       dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
-      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CGCE", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
 
   }
 
@@ -63,9 +60,8 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::ungroup() %>%
       dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
-      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação Fator Agregado", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
 
   }
 }

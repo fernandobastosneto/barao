@@ -19,8 +19,8 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     dplyr::relocate(co_ano, path, no_sh4_por, co_sh4, value, pct_var, pct_prop) %>%
     dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
     dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
-    dplyr::mutate(no_sh4_por = case_when(stringr::str_length(no_sh4_por) > 40 ~
-                                           paste0(stringr::str_sub(no_sh4_por, 1, 40), ".."),
+    dplyr::mutate(no_sh4_por = case_when(stringr::str_length(no_sh4_por) > 50 ~
+                                           paste0(stringr::str_sub(no_sh4_por, 1, 50), ".."),
                                          TRUE ~ no_sh4_por)) %>%
     kableExtra::kbl(booktabs = T, col.names = c("Ano", "Direção", "Produto (SH4)", "Código (SH4)", "Valor", "Variação", "Proporção")) %>%
     kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
