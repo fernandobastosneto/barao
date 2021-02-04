@@ -1,3 +1,4 @@
+#' @export
 comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
   if (fator == "isic") {
@@ -7,11 +8,11 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
     df <- comerciobr::isic_df %>%
       dplyr::filter(co_ano == max(co_ano)) %>%
-      dplyr::group_by(co_isic_secao, co_pais) %>%
+      dplyr::group_by(co_isic_secao, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
-      dplyr::rename(CO_PAIS = co_pais) %>%
-      dplyr::left_join(comerciobr::dic_paises, by = "CO_PAIS") %>%
-      dplyr::filter(NO_PAIS == pais) %>%
+      dplyr::rename(co_pais = co_pais) %>%
+      dplyr::left_join(comerciobr::dic_paises, by = "co_pais") %>%
+      dplyr::filter(no_pais == pais) %>%
       dplyr::left_join(isic)
 
   }
@@ -22,13 +23,13 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
       dplyr::distinct()
 
     df <- comerciobr::cuci_df %>%
-      dplyr::group_by(co_ano, co_cuci_sec, co_pais) %>%
+      dplyr::filter(co_ano == max(co_ano)) %>%
+      dplyr::group_by(co_cuci_sec, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
-      dplyr::rename(CO_PAIS = co_pais) %>%
-      dplyr::left_join(comerciobr::dic_paises, by = "CO_PAIS") %>%
-      dplyr::filter(NO_PAIS == pais) %>%
-      dplyr::left_join(cuci) %>%
-      dplyr::filter(co_ano == max(co_ano))
+      dplyr::rename(co_pais = co_pais) %>%
+      dplyr::left_join(comerciobr::dic_paises, by = "co_pais") %>%
+      dplyr::filter(no_pais == pais) %>%
+      dplyr::left_join(cuci)
 
   }
 
@@ -40,11 +41,11 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
     df <- comerciobr::fator_df %>%
       dplyr::filter(co_ano == max(co_ano)) %>%
-      dplyr::group_by(co_fat_agreg, co_pais) %>%
+      dplyr::group_by(co_fat_agreg, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
-      dplyr::rename(CO_PAIS = co_pais) %>%
-      dplyr::left_join(comerciobr::dic_paises, by = "CO_PAIS") %>%
-      dplyr::filter(NO_PAIS == pais) %>%
+      dplyr::rename(co_pais = co_pais) %>%
+      dplyr::left_join(comerciobr::dic_paises, by = "co_pais") %>%
+      dplyr::filter(no_pais == pais) %>%
       dplyr::left_join(fator)
 
   }
@@ -58,11 +59,11 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
     df <- comerciobr::cgce_df %>%
       dplyr::filter(co_ano == max(co_ano)) %>%
-      dplyr::group_by(co_cgce_n1, co_pais) %>%
+      dplyr::group_by(co_cgce_n1, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
-      dplyr::rename(CO_PAIS = co_pais) %>%
-      dplyr::left_join(comerciobr::dic_paises, by = "CO_PAIS") %>%
-      dplyr::filter(NO_PAIS == pais) %>%
+      dplyr::rename(co_pais = co_pais) %>%
+      dplyr::left_join(comerciobr::dic_paises, by = "co_pais") %>%
+      dplyr::filter(no_pais == pais) %>%
       dplyr::left_join(cgce, by = "co_cgce_n1")
 
   }
