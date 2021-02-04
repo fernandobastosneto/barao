@@ -14,7 +14,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::select(-no_pais) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
-                                row_group_label_position = "stack", target = 1) %>%
+                                row_group_label_position = "stack") %>%
       kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
@@ -32,7 +32,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::select(-no_pais) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
-                                row_group_label_position = "stack", target = 1) %>%
+                                row_group_label_position = "stack") %>%
       kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
@@ -50,7 +50,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::select(-no_pais) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
-                                row_group_label_position = "stack", target = 1) %>%
+                                row_group_label_position = "stack") %>%
       kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
@@ -68,7 +68,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::select(-no_pais) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
-                                row_group_label_position = "stack", target = 1) %>%
+                                row_group_label_position = "stack") %>%
       kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
