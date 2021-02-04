@@ -10,10 +10,11 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("País", "Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+      dplyr::select(-no_pais) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
                                 row_group_label_position = "stack", target = 2) %>%
-      kableExtra::add_header_above(header = setNames(4, glue::glue("{pais}-{fator}")))
+      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
 
@@ -26,10 +27,11 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("País", "Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+      dplyr::select(-no_pais) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
                                 row_group_label_position = "stack", target = 2) %>%
-      kableExtra::add_header_above(header = setNames(4, glue::glue("{pais}-{fator}")))
+      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
 
@@ -42,10 +44,11 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("País", "Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+      dplyr::select(-no_pais) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
                                 row_group_label_position = "stack", target = 2) %>%
-      kableExtra::add_header_above(header = setNames(4, glue::glue("{pais}-{fator}")))
+      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
 
@@ -58,10 +61,11 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
       dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("País", "Direção", "Classificação", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+      dplyr::select(-no_pais) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação", "Valor")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top",
                                 row_group_label_position = "stack", target = 2) %>%
-      kableExtra::add_header_above(header = setNames(4, glue::glue("{pais}-{fator}")))
+      kableExtra::add_header_above(header = setNames(3, glue::glue("{pais}-{fator}")))
 
   }
 }
