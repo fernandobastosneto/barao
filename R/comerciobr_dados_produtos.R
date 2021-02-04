@@ -44,5 +44,3 @@ comerciobr_dados_produtos <- function(pais, periodo) {
     dplyr::left_join(sh4)
 
 }
-
-comerciobr_dados_produtos("China", "anual")
