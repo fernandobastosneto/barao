@@ -23,7 +23,7 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
                                            paste0(stringr::str_sub(no_sh4_por, 1, 40), ".."),
                                          TRUE ~ no_sh4_por)) %>%
     kableExtra::kbl(booktabs = T, col.names = c("Ano", "Direção", "Produto (SH4)", "Código (SH4)", "Valor", "Variação", "Proporção")) %>%
-    kableExtra::kable_styling(latex_options = c("scale_down", "hold_position")) %>%
+    kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
     kableExtra::column_spec(3, width = "20em") %>%
     kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
                               row_group_label_position = "stack", target = 2)
