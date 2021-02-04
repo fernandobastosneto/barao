@@ -7,6 +7,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_cuci_sec"),
                        vSize = "value",
                        type = "index",
+                       palette = ggthemes::tableau_color_pal('Tableau 10')(10),
                        title = glue::glue("Comercio Brasil-{pais} - Classificação CUCI"))
 
     }
@@ -17,6 +18,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_isic_secao"),
                        vSize = "value",
                        type = "index",
+                       palette = ggthemes::tableau_color_pal('Tableau 10')(10),
                        title = glue::glue("Comercio Brasil-{pais} - Classificação ISIC"))
 
     }
@@ -27,6 +29,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_cgce_n1"),
                        vSize = "value",
                        type = "index",
+                       palette = ggthemes::tableau_color_pal('Tableau 10')(10),
                        title = glue::glue("Comercio Brasil-{pais} - Classificação CGCE"))
 
     }
@@ -37,6 +40,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_fat_agreg"),
                        vSize = "value",
                        type = "index",
+                       palette = ggthemes::tableau_color_pal('Tableau 10')(10),
                        title = glue::glue("Comercio Brasil-{pais} - Classificação Fator Agregado"))
 
     }
