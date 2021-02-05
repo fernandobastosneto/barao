@@ -8,6 +8,7 @@ comerciobr_dados_corrente <- function(pais, periodo) {
   if (periodo == "anual") {
 
     df <- df %>%
+      dplyr::filter(co_ano <= max(co_ano)-1) %>%
       dplyr::group_by(co_ano, path) %>%
       dplyr::summarise(value = sum(value))
   }
@@ -16,9 +17,7 @@ comerciobr_dados_corrente <- function(pais, periodo) {
 
     df <- df %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      # dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
-      dplyr::filter(co_mes <= 8) %>%
-
+      dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
       dplyr::group_by(co_ano, path) %>%
       dplyr::summarise(value = sum(value))
 

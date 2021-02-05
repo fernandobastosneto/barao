@@ -6,8 +6,21 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
       dplyr::select(-co_ncm) %>%
       dplyr::distinct()
 
+    if (periodo == "mensal") {
+
     df <- comerciobr::isic_df %>%
-      dplyr::filter(co_ano == max(co_ano)) %>%
+      dplyr::filter(co_ano == max(co_ano))
+
+    }
+
+    else {
+
+      df <- comerciobr::isic_df %>%
+        dplyr::filter(co_ano == max(co_ano)-1)
+
+    }
+
+    df <- df %>%
       dplyr::group_by(co_isic_secao, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::rename(co_pais = co_pais) %>%
@@ -22,8 +35,21 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
       dplyr::select(-co_ncm) %>%
       dplyr::distinct()
 
-    df <- comerciobr::cuci_df %>%
-      dplyr::filter(co_ano == max(co_ano)) %>%
+    if (periodo == "mensal") {
+
+      df <- comerciobr::cuci_df %>%
+        dplyr::filter(co_ano == max(co_ano))
+
+    }
+
+    else {
+
+      df <- comerciobr::cuci_df %>%
+        dplyr::filter(co_ano == max(co_ano)-1)
+
+    }
+
+    df <- df %>%
       dplyr::group_by(co_cuci_sec, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::rename(co_pais = co_pais) %>%
@@ -39,8 +65,21 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
       dplyr::select(-co_ncm) %>%
       dplyr::distinct()
 
-    df <- comerciobr::fator_df %>%
-      dplyr::filter(co_ano == max(co_ano)) %>%
+    if (periodo == "mensal") {
+
+      df <- comerciobr::fator_df %>%
+        dplyr::filter(co_ano == max(co_ano))
+
+    }
+
+    else {
+
+      df <- comerciobr::fator_df %>%
+        dplyr::filter(co_ano == max(co_ano)-1)
+
+    }
+
+    df <- df %>%
       dplyr::group_by(co_fat_agreg, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::rename(co_pais = co_pais) %>%
@@ -57,8 +96,21 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
       dplyr::distinct() %>%
       dplyr::mutate(co_cgce_n1 = as.integer(co_cgce_n1))
 
-    df <- comerciobr::cgce_df %>%
-      dplyr::filter(co_ano == max(co_ano)) %>%
+    if (periodo == "mensal") {
+
+      df <- comerciobr::fator_df %>%
+        dplyr::filter(co_ano == max(co_ano))
+
+    }
+
+    else {
+
+      df <- comerciobr::fator_df %>%
+        dplyr::filter(co_ano == max(co_ano)-1)
+
+    }
+
+    df <- df %>%
       dplyr::group_by(co_cgce_n1, co_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::rename(co_pais = co_pais) %>%
@@ -70,8 +122,3 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
   df
 }
-
-#
-#   dplyr::group_by(co_ano, co_cuci_sec, co_pais) %>%
-#   dplyr::summarise(value = sum(value)) %>%
-#

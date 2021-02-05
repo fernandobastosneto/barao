@@ -13,7 +13,20 @@ comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
     dplyr::distinct(co_ano) %>%
     dplyr::pull(max(co_ano))
 
-  comerciobr_dados_paises(pais, periodo) %>%
+  if (periodo == "mensal") {
+
+    df <- barao::comerciobr_dados_paises(pais, periodo)
+    frase <- paste0("agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+
+  }
+
+  else {
+    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+      dplyr::filter(co_ano <= max(co_ano)-1)
+    frase <- paste0("até ", barao::comerciobr_get_ulimoano()-1)
+  }
+
+  df %>%
     dplyr::ungroup() %>%
     # dplyr::mutate(no_pais = stringr::str_sub(no_pais, 1, 15)) %>%
     # dplyr::mutate(co_ano = as.character(co_ano)) %>%
@@ -40,7 +53,7 @@ comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
                         nrow = 2) +
     ggthemes::scale_color_tableau() +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, evolução do comércio"),
+    ggplot2::labs(title = glue::glue("Brasil-{pais}, evolução do comércio {frase}"),
                   caption = "Fonte: Ministério da Economia",
                   x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
@@ -48,5 +61,3 @@ comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
                                 breaks = scales::breaks_pretty())
 
 }
-
-# comerciobr_grafico_paises_evolucao("Argentina", "anual")

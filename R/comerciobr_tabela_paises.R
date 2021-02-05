@@ -1,6 +1,18 @@
 #' @export
 comerciobr_tabela_paises <- function(pais, periodo) {
 
+  if (periodo == "mensal") {
+
+    frase <- paste0("Dados Agregados até ", barao::meses(barao::comerciobr_get_ultimomes()))
+
+  }
+
+  else {
+
+    frase <- paste0("Dados Anuais")
+
+  }
+
   barao::comerciobr_dados_paises(pais, periodo)  %>%
     dplyr::group_by(no_pais, path) %>%
     dplyr::arrange(desc(co_ano), .by_group = T) %>%
@@ -19,6 +31,7 @@ comerciobr_tabela_paises <- function(pais, periodo) {
     kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
     kableExtra::column_spec(3, width = "20em") %>%
     kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
-                              row_group_label_position = "stack", target = 2)
+                              row_group_label_position = "stack", target = 2) %>%
+    kableExtra::add_header_above(header = c(setNames(6,frase)))
 
 }

@@ -1,6 +1,15 @@
 #' @export
 comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
+  if (periodo == "mensal") {
+    frase <- paste0("agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+  }
+
+  else {
+
+    frase <- paste0("em ", barao::comerciobr_get_ulimoano())
+  }
+
   if (fator == "cuci") {
 
     barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
@@ -8,7 +17,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        vSize = "value",
                        type = "index",
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação CUCI"))
+                       title = glue::glue("Comercio Brasil-{pais} - Classificação CUCI {frase}"))
 
     }
 
@@ -19,7 +28,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        vSize = "value",
                        type = "index",
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação ISIC"))
+                       title = glue::glue("Comercio Brasil-{pais} - Classificação ISIC {frase}"))
 
     }
 
@@ -30,7 +39,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        vSize = "value",
                        type = "index",
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação CGCE"))
+                       title = glue::glue("Comercio Brasil-{pais} - Classificação CGCE {frase}"))
 
     }
 
@@ -41,7 +50,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        vSize = "value",
                        type = "index",
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação Fator Agregado"))
+                       title = glue::glue("Comercio Brasil-{pais} - Classificação Fator Agregado {frase}"))
 
     }
 }
