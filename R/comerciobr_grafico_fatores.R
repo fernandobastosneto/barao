@@ -7,7 +7,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   else {
 
-    frase <- paste0("em ", barao::comerciobr_get_ulimoano())
+    frase <- paste0("em ", barao::comerciobr_get_ulimoano()-1)
   }
 
   if (fator == "cuci") {

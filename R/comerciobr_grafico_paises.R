@@ -5,7 +5,7 @@ comerciobr_grafico_paises <- function(pais, periodo) {
 
   df <- barao::comerciobr_dados_paises(pais, periodo) %>%
     dplyr::filter(co_ano == max(co_ano))
-  frase <- paste0("agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+  frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
 
   }
 

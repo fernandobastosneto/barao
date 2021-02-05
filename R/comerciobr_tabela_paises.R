@@ -4,16 +4,20 @@ comerciobr_tabela_paises <- function(pais, periodo) {
   if (periodo == "mensal") {
 
     frase <- paste0("Dados Agregados até ", barao::meses(barao::comerciobr_get_ultimomes()))
-
+    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+      dplyr::ungroup()
   }
 
   else {
 
     frase <- paste0("Dados Anuais")
+    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano <= max(co_ano)-1)
 
   }
 
-  df <- barao::comerciobr_dados_paises(pais, periodo)  %>%
+  df <- df %>%
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(co_ano), .by_group = T) %>%
       dplyr::mutate(pct_var = value/dplyr::lead(value)-1) %>%

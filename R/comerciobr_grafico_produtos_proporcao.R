@@ -12,7 +12,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano == max(co_ano))
 
-    frase <- paste0(barao::comerciobr_get_ulimoano()-1, " até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao::comerciobr_get_ulimoano(), " até ", barao::meses(barao::comerciobr_get_ultimomes()))
   }
 
   else {
