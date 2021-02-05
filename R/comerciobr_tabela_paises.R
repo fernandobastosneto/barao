@@ -35,7 +35,7 @@ comerciobr_tabela_paises <- function(pais, periodo) {
     kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
                               row_group_label_position = "stack", target = 2) %>%
     kableExtra::add_header_above(header = c(setNames(6,frase)), bold = T) %>%
-    kableExtra::row_spec(which(df$no_pais == pais), bold = T, color = "white", background = "black") %>%
+    kableExtra::row_spec(which(df$no_pais == pais), bold = T) %>%
     kableExtra::column_spec(1:2, background = "white", color = "black")
 
 }
