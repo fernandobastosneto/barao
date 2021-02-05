@@ -98,14 +98,14 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
     if (periodo == "mensal") {
 
-      df <- comerciobr::fator_df %>%
+      df <- comerciobr::dic_ncm_cgce %>%
         dplyr::filter(co_ano == max(co_ano))
 
     }
 
     else {
 
-      df <- comerciobr::fator_df %>%
+      df <- comerciobr::dic_ncm_cgce %>%
         dplyr::filter(co_ano == max(co_ano)-1)
 
     }
