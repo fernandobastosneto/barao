@@ -16,8 +16,9 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_cuci_sec"),
                        vSize = "value",
                        type = "index",
+                       align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação CUCI {frase}"))
+                       title = glue::glue("Classificação CUCI {frase}"))
 
     }
 
@@ -27,8 +28,9 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_isic_secao"),
                        vSize = "value",
                        type = "index",
+                       align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação ISIC {frase}"))
+                       title = glue::glue("Classificação ISIC {frase}"))
 
     }
 
@@ -38,8 +40,9 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_cgce_n1"),
                        vSize = "value",
                        type = "index",
+                       align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação CGCE {frase}"))
+                       title = glue::glue("Classificação CGCE {frase}"))
 
     }
 
@@ -49,8 +52,9 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
       treemap::treemap(index = c("path", "no_fat_agreg"),
                        vSize = "value",
                        type = "index",
+                       align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Comercio Brasil-{pais} - Classificação Fator Agregado {frase}"))
+                       title = glue::glue("Classificação Fator Agregado {frase}"))
 
     }
 }
