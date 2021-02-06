@@ -1,7 +1,21 @@
 #' @export
 comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
 
-  df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+  if (periodo == "mensal") {
+
+    df <- barao::comerciobr_dados_paises(pais, periodo)
+    frase <- paste0(barao::comerciobr_get_ulimoano(), " até ", barao::meses(barao::comerciobr_get_ultimomes()))
+
+  }
+
+  else {
+
+    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+      dplyr::filter(co_ano <= max(co_ano)-1)
+    frase <- paste0("em ", barao::comerciobr_get_ulimoano()-1)
+  }
+
+  df <- df %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::mutate(prop = value/total) %>%
@@ -12,18 +26,15 @@ comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
   df %>%
     ggplot2::ggplot(ggplot2::aes(prop, rank, label = no_pais)) +
     ggplot2::geom_point() +
-    # ggrepel::geom_label_repel(data = . %>%
-    # dplyr::filter(co_ano == max(co_ano)),
-    # ggplot2::aes(co_ano, value, label = no_sh4_por),
-    # size = 2, show.legend = F) +
     ggplot2::geom_point(data = df %>% dplyr::filter(df$no_pais == pais),
                         ggplot2::aes(color = no_pais), show.legend = F) +
     ggrepel::geom_label_repel() +
     ggplot2::facet_wrap(~path, scales = "free") +
     ggplot2::scale_x_continuous(labels = scales::label_percent(accuracy = 0.01)) +
-    ggplot2::scale_y_reverse() +
+    ggplot2::scale_y_reverse(breaks = scales::breaks_pretty(),
+                             labels = scales::label_ordinal()) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, ranking e proporção de comercio"),
+    ggplot2::labs(title = glue::glue("Brasil-{pais}, ranking e proporção de comercio, {frase}"),
                   caption = "Fonte: Ministério da Economia",
                   x = NULL, y = NULL)
 

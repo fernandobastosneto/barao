@@ -22,6 +22,7 @@ comerciobr_dados_produtos <- function(pais, periodo) {
   else {
 
     df <- df %>%
+      dplyr::filter(co_ano <= max(co_ano)-1) %>%
       dplyr::group_by(co_ano, co_sh4, path) %>%
       dplyr::summarise(value = sum(value))
   }

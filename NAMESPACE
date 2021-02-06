@@ -5,6 +5,7 @@ export(comerciobr_dados_corrente)
 export(comerciobr_dados_fatores)
 export(comerciobr_dados_paises)
 export(comerciobr_dados_produtos)
+export(comerciobr_get_ulimoano)
 export(comerciobr_get_ultimomes)
 export(comerciobr_grafico_corrente)
 export(comerciobr_grafico_fatores)
@@ -18,6 +19,10 @@ export(comerciobr_tabela_corrente)
 export(comerciobr_tabela_fatores)
 export(comerciobr_tabela_paises)
 export(comerciobr_tabela_produtos)
+<<<<<<< HEAD
 export(fmi_dados)
 export(get_pais)
+=======
+export(meses)
+>>>>>>> 40efaeeca1572b08d3257590395d94caad8dc2c9
 importFrom(magrittr,"%>%")

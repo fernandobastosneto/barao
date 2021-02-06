@@ -1,6 +1,14 @@
 #' @export
 comerciobr_tabela_fatores <- function(pais, periodo, fator) {
 
+  if (periodo == "mensal") {
+    frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+  }
+
+  else {
+    frase <- paste0(barao::comerciobr_get_ulimoano()-1)
+  }
+
   if (fator == "cuci") {
 
     barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
@@ -9,11 +17,17 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::arrange(path) %>%
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
-      dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::group_by(path) %>%
+      dplyr::mutate(total = sum(value),
+                    prop = value/total) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CUCI", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
+      dplyr::select(-c(no_pais, total)) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CUCI", "Valor", "%")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
+      kableExtra::kable_styling(full_width = T, font_size = 6) %>%
+      kableExtra::column_spec(2, width = "55em")
 
   }
 
@@ -25,11 +39,19 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::arrange(path) %>%
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
-      dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::group_by(path) %>%
+      dplyr::mutate(total = sum(value),
+                    prop = value/total) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação ISIC", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
+      dplyr::select(-c(no_pais, total)) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação ISIC", "Valor", "%")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
+      kableExtra::add_header_above(header = c(setNames(4,frase))) %>%
+      kableExtra::kable_styling(full_width = T, font_size = 6) %>%
+      kableExtra::column_spec(2, width = "55em")
+
 
   }
 
@@ -41,11 +63,18 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::arrange(path) %>%
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
-      dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::group_by(path) %>%
+      dplyr::mutate(total = sum(value),
+                    prop = value/total) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CGCE", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
+      dplyr::select(-c(no_pais, total)) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CGCE", "Valor", "%")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
+      kableExtra::kable_styling(full_width = T, font_size = 6) %>%
+      kableExtra::column_spec(2, width = "55em")
+
 
   }
 
@@ -57,11 +86,17 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::arrange(path) %>%
       dplyr::group_by(no_pais, path) %>%
       dplyr::arrange(desc(value), .by_group = T) %>%
-      dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::group_by(path) %>%
+      dplyr::mutate(total = sum(value),
+                    prop = value/total) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-no_pais) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação Fator Agregado", "Valor")) %>%
-      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top")
+      dplyr::select(-c(no_pais, total)) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação Fator Agregado", "Valor", "%")) %>%
+      kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
+      kableExtra::kable_styling(full_width = T, font_size = 6) %>%
+      kableExtra::column_spec(2, width = "55em")
 
   }
 }

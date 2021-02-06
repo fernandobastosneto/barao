@@ -22,6 +22,7 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     tidyr::pivot_longer(Exportações:Corrente, names_to = "trade_flow", values_to = "value") %>%
     tidyr::pivot_wider(names_from = co_ano, values_from = value) %>%
     dplyr::rename(" " = trade_flow) %>%
+    dplyr::select(1:11) %>%
     tibble::column_to_rownames(var = " ")
 
   tabela <- split(1:(ncol(tabela_prep)), sort(rep_len(1:2, ncol(tabela_prep)))) %>%
@@ -34,3 +35,4 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
   tabela
 
 }
+

@@ -1,8 +1,21 @@
 #' @export
 comerciobr_grafico_paises <- function(pais, periodo) {
 
-  barao::comerciobr_dados_paises(pais, periodo) %>%
-    dplyr::filter(co_ano == max(co_ano)) %>%
+  if (periodo == "mensal") {
+
+  df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+    dplyr::filter(co_ano == max(co_ano))
+  frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+
+  }
+
+  else {
+    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+      dplyr::filter(co_ano == max(co_ano)-1)
+    frase <- paste0("em ", barao::comerciobr_get_ulimoano()-1)
+  }
+
+  df %>%
     ggplot2::ggplot() +
     ggplot2::geom_col(
     # dplyr::filter(no_pais != "Egito"),
@@ -15,7 +28,8 @@ comerciobr_grafico_paises <- function(pais, periodo) {
     ggplot2::geom_label(ggplot2::aes(tidytext::reorder_within(no_pais, value, path), value,
     label = rank)) +
     ggplot2::facet_wrap(~path, scales = "free_y") +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, parceiros comerciais próximos"),
+    ggplot2::labs(title = glue::glue("Brasil-{pais}, parceiros comerciais próximos",),
+                  subtitle = glue::glue("{frase}"),
     x = NULL, y = NULL, caption = "Fonte: Ministério da Economia") +
     ggplot2::coord_flip() +
     ggplot2::theme_minimal() +
