@@ -8,7 +8,7 @@ comerciobr_blocos_paises <- function(bloco) {
     dplyr::distinct(no_bloco) %>%
     dplyr::pull(no_bloco)
 
-  if (grupo %in% lista_blocos) {
+  if (bloco %in% lista_blocos) {
     paises <- comerciobr::dic_blocos %>%
       dplyr::filter(no_bloco == bloco) %>%
       dplyr::distinct(no_pais) %>%

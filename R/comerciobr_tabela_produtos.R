@@ -26,7 +26,8 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     dplyr::mutate(pct_prop = value/total) %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano >= max(co_ano)-3) %>%
-    dplyr::select(-c(rank, total)) %>%
+    dplyr::select(-c(total)) %>%
+    # dplyr::select(-c(rank, total)) %>%
     tidyr::drop_na() %>%
     dplyr::group_by(co_ano, path) %>%
     dplyr::arrange(desc(value), .by_group = T) %>%
