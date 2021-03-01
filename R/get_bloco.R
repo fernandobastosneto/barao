@@ -1,7 +1,5 @@
 #' @export
 #'
-#' Consolida o nome dos blocos.
-#'
 
 get_bloco <- function(paises) {
 
