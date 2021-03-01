@@ -1,6 +1,15 @@
 #' @export
 comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
 
+    if (length(pais) > 1) {
+      nome_pais <- get_bloco(pais)
+    }
+
+    else {
+      nome_pais <- pais
+    }
+
+
   if (periodo == "mensal") {
 
     df <- comerciobr_dados_produtos(pais, periodo) %>%
@@ -36,7 +45,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
                         nrow = 2) +
     ggthemes::scale_color_pander() +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, evolução do comércio, {frase}"),
+    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, evolução do comércio, {frase}"),
                   caption = "Fonte: Ministério da Economia",
                   x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +

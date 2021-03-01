@@ -2,7 +2,7 @@
 comerciobr_dados_produtos <- function(pais, periodo) {
 
   df <- comerciobr::sh4_df %>%
-    dplyr::filter(no_pais == pais)
+    dplyr::filter(no_pais %in% pais)
 
   sh4 <- comerciobr::dic_sh6_sh4 %>%
     dplyr::select(no_sh4_por, co_sh4) %>%

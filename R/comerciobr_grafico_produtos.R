@@ -1,5 +1,14 @@
 #' @export
 comerciobr_grafico_produtos <- function(pais, periodo) {
+
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }
+
+  else {
+    nome_pais <- pais
+  }
+
   df <- comerciobr_dados_produtos(pais, periodo) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 30 ~
@@ -34,7 +43,7 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
     ggthemes::scale_fill_tableau() +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
     tidytext::scale_x_reordered() +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, pauta comercial, {frase}"),
+    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, pauta comercial, {frase}"),
                   x = NULL, y = NULL, caption = "Fonte: Ministério da Economia")
 
 }

@@ -3,14 +3,14 @@
 
 # TODO - é necessário estabelecer critérios mais claros dos grupos de países.
 
-comerciobr_grupos_paises <- function(grupo) {
+comerciobr_blocos_paises <- function(bloco) {
   lista_blocos <- comerciobr::dic_blocos %>%
     dplyr::distinct(no_bloco) %>%
     dplyr::pull(no_bloco)
 
   if (grupo %in% lista_blocos) {
     paises <- comerciobr::dic_blocos %>%
-      dplyr::filter(no_bloco == grupo) %>%
+      dplyr::filter(no_bloco == bloco) %>%
       dplyr::distinct(no_pais) %>%
       dplyr::pull(no_pais)
     return(paises)

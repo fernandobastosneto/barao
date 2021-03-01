@@ -3,7 +3,7 @@
 comerciobr_dados_corrente <- function(pais, periodo) {
 
   df <- comerciobr::sh1_df %>%
-    dplyr::filter(no_pais == pais)
+    dplyr::filter(no_pais %in% pais)
 
   if (periodo == "anual") {
 

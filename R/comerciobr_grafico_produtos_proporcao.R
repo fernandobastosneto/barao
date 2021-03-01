@@ -1,6 +1,14 @@
 #' @export
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }
+
+  else {
+    nome_pais <- pais
+  }
+
   ano_max <- comerciobr_dados_produtos(pais, periodo) %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
@@ -57,7 +65,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                     co_sh4 = "0000",
                     path = "EXP",
                     no_sh4_por = "Outros",
-                    rank = NA,
+                    # rank = NA,
                     total = total_exp,
                     value = exp*total,
                     prop = exp,
@@ -66,7 +74,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                     co_sh4 = "0000",
                     path = "IMP",
                     no_sh4_por = "Outros",
-                    rank = NA,
+                    # rank = NA,
                     total = total_imp,
                     value = imp*total,
                     prop = imp,
@@ -76,5 +84,5 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                      type = "index",
                      align.labels=list(c("center", "center"), c("left", "top")),
                      palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                     title = glue::glue("Brasil-{pais}, Proporção de Exportações e Importações {frase}"))
+                     title = glue::glue("Brasil-{nome_pais}, Proporção de Exportações e Importações {frase}"))
 }
