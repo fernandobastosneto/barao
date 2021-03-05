@@ -22,9 +22,8 @@ devtools::install_github("fernandobastosneto/barao")
 
 ## Funcionalidades
 
-  - [x] - Comércio do Brasil com o Mundo (base de dados MEcon)
-  - [ ] - Comércio Internacional (base de dados COMTRADE-ONU)
-  - [ ] - Investimentos (base de dados Banco Central, BNDES e UNCTAD)
-  - [ ] - Dados Macroeconômicos (base de dados World Economic Report,
-    FMI)
-  - [ ] - Dados Tarifários (base de dados MACMAP-ONU)
+  - [x] Comércio do Brasil com o Mundo (base de dados MEcon)
+  - [ ] Comércio Internacional (base de dados COMTRADE-ONU)
+  - [ ] Investimentos (base de dados Banco Central, BNDES e UNCTAD)
+  - [ ] Dados Macroeconômicos (base de dados World Economic Report, FMI)
+  - [ ] Dados Tarifários (base de dados MACMAP-ONU)
