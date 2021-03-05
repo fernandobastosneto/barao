@@ -1,3 +1,7 @@
+#' Dados de comércio um país com todos os demais
+#'
+#' @param pais um país
+#'
 #' @export
 
 comerciomundo_dados_paises <- function(pais) {

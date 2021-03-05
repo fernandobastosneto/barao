@@ -1,29 +1,34 @@
-#' @export
+#' Tabela de Corrente de Comércio país-mundo
 #'
+#' em formato latex.
+#'
+#' @param pais um país
+#'
+#' @export
 
 comerciomundo_tabela_corrente <- function(pais) {
 
   tabela_prep <- barao::comerciomundo_dados_corrente(pais)  %>%
     dplyr::ungroup() %>%
-    tidyr::pivot_wider(names_from = trade_flow, values_from = value) %>%
-    dplyr::mutate(var_exp = Exportações/dplyr::lag(Exportações)-1) %>%
-    dplyr::mutate(var_imp = Importações/dplyr::lag(Importações)-1) %>%
-    dplyr::mutate(var_saldo = Saldo/abs(dplyr::lag(Saldo))-1) %>%
-    dplyr::mutate(var_corrente = Corrente/dplyr::lag(Corrente)-1) %>%
-    dplyr::filter(year != min(year)) %>%
-    dplyr::mutate(dplyr::across(starts_with("var"), scales::label_percent())) %>%
-    dplyr::mutate(dplyr::across(starts_with("var"), ~ paste0("(", .x, ")"))) %>%
+    tidyr::pivot_wider(names_from = .data$trade_flow, values_from = value) %>%
+    dplyr::mutate(var_exp = .data$Exportações/dplyr::lag(.data$Exportações)-1) %>%
+    dplyr::mutate(var_imp = .data$Importações/dplyr::lag(.data$Importações)-1) %>%
+    dplyr::mutate(var_saldo = .data$Saldo/abs(dplyr::lag(.data$Saldo))-1) %>%
+    dplyr::mutate(var_corrente = .data$Corrente/dplyr::lag(.data$Corrente)-1) %>%
+    dplyr::filter(.data$year != min(.data$year)) %>%
+    dplyr::mutate(dplyr::across(tidyselect::starts_with("var"), scales::label_percent())) %>%
+    dplyr::mutate(dplyr::across(tidyselect::starts_with("var"), ~ paste0("(", .x, ")"))) %>%
     dplyr::mutate(year = as.character(year)) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si(accuracy = 0.01))) %>%
     tidyr::unite("Exportações", c("Exportações","var_exp"), sep = " ") %>%
     tidyr::unite("Importações", c("Importações", "var_imp"), sep = " ") %>%
     tidyr::unite("Saldo", c("Saldo", "var_saldo"), sep = " ") %>%
     tidyr::unite("Corrente", c("Corrente", "var_corrente"), sep = " ") %>%
-    dplyr::relocate(year, Exportações, Importações, Saldo, Corrente) %>%
-    dplyr::arrange(desc(year)) %>%
-    tidyr::pivot_longer(Exportações:Corrente, names_to = "trade_flow", values_to = "value") %>%
+    dplyr::relocate(.data$year, .data$Exportações, .data$Importações, .data$Saldo, .data$Corrente) %>%
+    dplyr::arrange(dplyr::desc(year)) %>%
+    tidyr::pivot_longer(.data$Exportações:.data$Corrente, names_to = "trade_flow", values_to = "value") %>%
     tidyr::pivot_wider(names_from = year, values_from = value) %>%
-    dplyr::rename(" " = trade_flow) %>%
+    dplyr::rename(" " = .data$trade_flow) %>%
     dplyr::select(1:tidyselect::last_col()) %>%
     tibble::column_to_rownames(var = " ")
 

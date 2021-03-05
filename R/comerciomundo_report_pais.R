@@ -1,3 +1,7 @@
+#' Relatório de relações bilaterais comerciais país-mundo
+#'
+#' @param pais um país
+#'
 #' @export
 
 comerciomundo_report_pais <- function(pais) {

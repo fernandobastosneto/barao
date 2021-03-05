@@ -1,3 +1,7 @@
+#' Função que devolve um bloco associado a um país (ou lista de países)
+#'
+#' @param paises um país ou vetor de países
+#'
 #' @export
 #'
 

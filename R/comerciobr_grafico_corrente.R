@@ -1,3 +1,10 @@
+#' Gráfico de Fluxo de Comércio Brasil-país
+#'
+#' Com base na função \code{comerciobr_dados_corrente}.
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_corrente <- function(pais, periodo) {
 
@@ -25,9 +32,9 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
   comerciobr_dados_corrente(pais, periodo) %>%
     dplyr::mutate(co_ano = as.character(co_ano)) %>%
     ggplot2::ggplot() +
-    ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = trade_flow),
+    ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = .data$trade_flow),
                       show.legend = F) +
-    ggplot2::facet_wrap(~factor(trade_flow,
+    ggplot2::facet_wrap(~factor(.data$trade_flow,
                                 levels = c("Exportações", "Importações",
                                            "Corrente", "Saldo")),
                         scales = "free_x") +

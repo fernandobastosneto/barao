@@ -1,4 +1,13 @@
+#' Dados de comércio por agregação
+#'
+#' Dados de comércio selecionados pela agregação "ISIC", "Fator Agregado", "CGCE" e "CUCI"
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#' @param fator agregação: "isic", "fator", "cgce" ou "cuci".
+#'
 #' @export
+
 comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
   if (fator == "isic") {
@@ -121,4 +130,5 @@ comerciobr_dados_fatores <- function(pais, periodo, fator) {
   }
 
   df
+
 }

@@ -1,5 +1,8 @@
-#' @export
+#' Dados de fluxo de comércio bilateral entre o país alvo e o mundo
 #'
+#' @param pais um país
+#'
+#' @export
 
 comerciomundo_dados_corrente <- function(pais) {
 
@@ -13,9 +16,9 @@ comerciomundo_dados_corrente <- function(pais) {
                                                      TRUE ~ NA_character_)) %>%
     tidyr::drop_na() %>%
     tidyr::pivot_wider(names_from = trade_flow_code, values_from = value) %>%
-    dplyr::mutate(Corrente = Importações + Exportações,
-                  Saldo = Exportações - Importações) %>%
-    tidyr::pivot_longer(Importações:Saldo, names_to = "trade_flow", values_to = "value")
+    dplyr::mutate(Corrente = .data$Importações + .data$Exportações,
+                  Saldo = .data$Exportações - .data$Importações) %>%
+    tidyr::pivot_longer(.data$Importações:.data$Saldo, names_to = "trade_flow", values_to = "value")
 
 }
 

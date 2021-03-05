@@ -1,3 +1,8 @@
+#' Gráfico de comparação do fluxo de comércio de um país com o Brasil, em relação a países semelhantes
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_paises <- function(pais, periodo) {
 

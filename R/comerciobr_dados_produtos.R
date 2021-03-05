@@ -1,4 +1,10 @@
+#' Dados de principais produtos comercializados entre o Brasil e um determinado país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
+
 comerciobr_dados_produtos <- function(pais, periodo) {
 
   df <- comerciobr::sh4_df %>%
@@ -31,7 +37,7 @@ comerciobr_dados_produtos <- function(pais, periodo) {
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::group_by(path) %>%
-    dplyr::arrange(desc(value)) %>%
+    dplyr::arrange(dplyr::desc(value)) %>%
     dplyr::mutate(rank = dplyr::row_number()) %>%
     dplyr::filter(rank < 6) %>%
     dplyr::select(co_sh4, path)

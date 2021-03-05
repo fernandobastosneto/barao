@@ -1,3 +1,9 @@
+#' Tabela de dados de comércio por níveis de agregação
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#' @param fator "isic", "fator", "cgce" ou "cuci"
+#'
 #' @export
 comerciobr_tabela_fatores <- function(pais, periodo, fator) {
 
@@ -17,13 +23,13 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::arrange(path) %>%
       dplyr::group_by(path) %>%
-      dplyr::arrange(desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
       dplyr::mutate(total = sum(value),
-                    prop = value/total) %>%
+                    prop = value/.data$total) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-c(total)) %>%
+      dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_cuci_sec) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CUCI", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
@@ -40,13 +46,13 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::arrange(path) %>%
       dplyr::group_by(path) %>%
-      dplyr::arrange(desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
       dplyr::mutate(total = sum(value),
-                    prop = value/total) %>%
+                    prop = value/.data$total) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-c(total)) %>%
+      dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_isic_secao) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação ISIC", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
@@ -65,13 +71,13 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::arrange(path) %>%
       dplyr::group_by(path) %>%
-      dplyr::arrange(desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
       dplyr::mutate(total = sum(value),
-                    prop = value/total) %>%
+                    prop = value/.data$total) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-c(total)) %>%
+      dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_cgce_n1) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CGCE", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
@@ -90,13 +96,13 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::summarise(value = sum(value)) %>%
       dplyr::arrange(path) %>%
       dplyr::group_by(path) %>%
-      dplyr::arrange(desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
       dplyr::mutate(total = sum(value),
-                    prop = value/total) %>%
+                    prop = value/.data$total) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("value"), scales::label_number_si(accuracy = 0.1))) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("prop"), scales::label_percent(accuracy = 0.1, decimal.mark = ","))) %>%
       dplyr::ungroup() %>%
-      dplyr::select(-c(total)) %>%
+      dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_fat_agreg) %>%
       kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação Fator Agregado", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%

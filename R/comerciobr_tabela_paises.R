@@ -1,3 +1,8 @@
+#' Tabela de fluxo comercial por país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_tabela_paises <- function(pais, periodo) {
 
@@ -19,16 +24,16 @@ comerciobr_tabela_paises <- function(pais, periodo) {
 
   df <- df %>%
       dplyr::group_by(no_pais, path) %>%
-      dplyr::arrange(desc(co_ano), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(co_ano), .by_group = T) %>%
       dplyr::mutate(pct_var = value/dplyr::lead(value)-1) %>%
-      dplyr::mutate(pct_prop = (value/total)) %>%
+      dplyr::mutate(pct_prop = (value/.data$total)) %>%
       dplyr::ungroup() %>%
       dplyr::filter(co_ano >= max(co_ano)-3) %>%
-      dplyr::select(-c(rank, total)) %>%
+      dplyr::select(-c(rank, .data$total)) %>%
       dplyr::group_by(co_ano, path) %>%
-      dplyr::arrange(desc(value), .by_group = T) %>%
-      dplyr::arrange(desc(co_ano)) %>%
-      dplyr::relocate(co_ano, path, no_pais, value, pct_var, pct_prop) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(co_ano)) %>%
+      dplyr::relocate(co_ano, path, no_pais, value, .data$pct_var, .data$pct_prop) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
       dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .01)))
 

@@ -1,5 +1,11 @@
+#' Dados de fluxo de comércio bilateral entre Brasil e um determinado país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
+#' @return tibble com dados de comércio bilateral de 2010 em diante.
+#'
 #' @export
-
 comerciobr_dados_corrente <- function(pais, periodo) {
 
   df <- comerciobr::sh1_df %>%
@@ -25,10 +31,10 @@ comerciobr_dados_corrente <- function(pais, periodo) {
 
   df <- df %>%
     tidyr::pivot_wider(names_from = path, values_from = value) %>%
-    dplyr::mutate(Corrente = EXP + IMP,
-                  Saldo = EXP - IMP) %>%
+    dplyr::mutate(Corrente = .data$EXP + .data$IMP,
+                  Saldo = .data$EXP - .data$IMP) %>%
     dplyr::rename(Exportações = "EXP", Importações = "IMP") %>%
-    tidyr::pivot_longer(Exportações:Saldo, names_to = "trade_flow", values_to = "value")
+    tidyr::pivot_longer(.data$Exportações:.data$Saldo, names_to = "trade_flow", values_to = "value")
 
   df
 }

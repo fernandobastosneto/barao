@@ -1,3 +1,9 @@
+#' Gráfico de Composição de Comércio por Agregação
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#' @param fator "isic", "fator", "cgce", "cuci"
+#'
 #' @export
 comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 

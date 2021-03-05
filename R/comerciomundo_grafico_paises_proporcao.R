@@ -1,5 +1,8 @@
-#' @export
+#' Gráfico de ranking e proporção do fluxo de comércio do país com os demais países
 #'
+#' @param pais um país
+#'
+#' @export
 
 comerciomundo_grafico_paises_proporcao <- function(pais) {
 

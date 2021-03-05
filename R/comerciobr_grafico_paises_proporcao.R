@@ -1,3 +1,8 @@
+#' Gráfico de ranking e proporção do fluxo de comércio do brasil com um determinado país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
 
@@ -18,13 +23,13 @@ comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
   df <- df %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
-    dplyr::mutate(prop = value/total) %>%
+    dplyr::mutate(prop = value/.data$total) %>%
     dplyr::mutate(no_pais = dplyr::case_when(stringr::str_length(no_pais) > 20 ~ paste0(stringr::str_sub(no_pais, 1, 20), ".."),
                                              TRUE ~ no_pais)) %>%
     dplyr::ungroup()
 
   df %>%
-    ggplot2::ggplot(ggplot2::aes(prop, rank, label = no_pais)) +
+    ggplot2::ggplot(ggplot2::aes(.data$prop, rank, label = no_pais)) +
     ggplot2::geom_point() +
     ggplot2::geom_point(data = df %>% dplyr::filter(df$no_pais == pais),
                         ggplot2::aes(color = no_pais), show.legend = F) +

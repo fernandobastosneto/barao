@@ -1,3 +1,11 @@
+#' Dados de comércio bilateral de um país em relação a seus semelhantes
+#'
+#' Dados de comércio do Brasil com um determinado país, comparado com países
+#' em condições semelhantes (selecionados pelo ranking).
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_dados_paises <- function(pais, periodo) {
 

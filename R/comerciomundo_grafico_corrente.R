@@ -1,3 +1,9 @@
+#' Gráfico de Fluxo de Comércio país-mundo
+#'
+#' Com base na função \code{comerciomundo_dados_corrente}.
+#'
+#' @param pais um país
+#'
 #' @export
 
 comerciomundo_grafico_corrente <- function(pais) {
@@ -15,9 +21,9 @@ comerciomundo_grafico_corrente <- function(pais) {
   comerciomundo_dados_corrente(pais) %>%
     dplyr::mutate(year = as.character(year)) %>%
     ggplot2::ggplot() +
-    ggplot2::geom_col(ggplot2::aes(year, value, fill = trade_flow),
+    ggplot2::geom_col(ggplot2::aes(year, value, fill = .data$trade_flow),
                       show.legend = F) +
-    ggplot2::facet_wrap(~factor(trade_flow,
+    ggplot2::facet_wrap(~factor(.data$trade_flow,
                                 levels = c("Exportações", "Importações",
                                            "Corrente", "Saldo")),
                         scales = "free_x") +

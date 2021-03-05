@@ -1,3 +1,7 @@
+#' Relatório de relações bilaterais comerciais Brasil-país
+#'
+#' @param pais um país
+#'
 #' @export
 
 relatorio_barao <- function(pais) {

@@ -1,5 +1,8 @@
-#' @export
+#' Função que devolve meses em português
 #'
+#' @param num número de um mês
+#'
+#' @export
 meses <- function(num) {
 
   num <- as.integer(num)

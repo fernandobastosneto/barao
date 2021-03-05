@@ -1,3 +1,7 @@
+#' Gráfico de comparação do fluxo de comércio de um país com seus 10 principais parceiros
+#'
+#' @param pais um país
+#'
 #' @export
 
 comerciomundo_grafico_paises_ranking <- function(pais) {

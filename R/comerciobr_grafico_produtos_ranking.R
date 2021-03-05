@@ -1,3 +1,8 @@
+#' Gráfico de evolução dos produtos comercializados do Brasil com um determinado país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
 

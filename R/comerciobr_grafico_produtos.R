@@ -1,3 +1,8 @@
+#' Gráfico dos cinco principais produtos comercializados do Brasil com um país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_produtos <- function(pais, periodo) {
 

@@ -1,3 +1,8 @@
+#' Gráfico de proporção dos produtos comercializados do Brasil com um país
+#'
+#' @param pais um país
+#' @param periodo "anual" ou "mensal"
+#'
 #' @export
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
@@ -32,32 +37,32 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
   }
 
   df <- df %>%
-      dplyr::mutate(prop = value/total) %>%
+      dplyr::mutate(prop = value/.data$total) %>%
       dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 20 ~ paste0(stringr::str_sub(no_sh4_por, 1, 20), ".."),
                                                   TRUE ~ no_sh4_por)) %>%
       dplyr::group_by(co_ano, path) %>%
-      dplyr::mutate(total_prop = abs(sum(prop)-1)) %>%
+      dplyr::mutate(total_prop = abs(sum(.data$prop)-1)) %>%
       dplyr::ungroup()
 
   exp <- df %>%
     dplyr::filter(path == "EXP") %>%
-    dplyr::distinct(total_prop) %>%
-    dplyr::pull(total_prop)
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
 
   imp <- df %>%
     dplyr::filter(path == "IMP") %>%
-    dplyr::distinct(total_prop) %>%
-    dplyr::pull(total_prop)
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
 
   total_imp <- df %>%
     dplyr::filter(path == "IMP") %>%
-    dplyr::distinct(total) %>%
-    dplyr::pull(total)
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
 
   total_exp <- df %>%
     dplyr::filter(path == "EXP") %>%
-    dplyr::distinct(total) %>%
-    dplyr::pull(total)
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
 
 
   df %>%
@@ -67,7 +72,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                     no_sh4_por = "Outros",
                     # rank = NA,
                     total = total_exp,
-                    value = exp*total,
+                    value = exp*.data$total,
                     prop = exp,
                     total_prop = NA) %>%
     tibble::add_row(co_ano = ano_max,
@@ -76,7 +81,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                     no_sh4_por = "Outros",
                     # rank = NA,
                     total = total_imp,
-                    value = imp*total,
+                    value = imp*.data$total,
                     prop = imp,
                     total_prop = NA) %>%
     treemap::treemap(index = c("path", "no_sh4_por"),

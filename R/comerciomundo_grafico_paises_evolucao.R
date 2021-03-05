@@ -1,5 +1,8 @@
-#' @export
+#' Gráfico de evolução do fluxo de comércio de um país com seus cinco principais parceiros
 #'
+#' @param pais um país
+#'
+#' @export
 
 comerciomundo_grafico_paises_evolucao <- function(pais) {
 
