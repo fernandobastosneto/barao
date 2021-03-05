@@ -40,7 +40,6 @@ comerciobr_dados_produtos <- function(pais, periodo) {
     dplyr::group_by(co_ano, path) %>%
     dplyr::mutate(total = sum(value)) %>%
     dplyr::group_by(co_ano) %>%
-    # dplyr::mutate(rank = dplyr::row_number()) %>%
     dplyr::semi_join(dezmais) %>%
     dplyr::left_join(sh4)
 

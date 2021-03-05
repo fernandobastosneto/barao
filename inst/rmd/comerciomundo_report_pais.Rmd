@@ -1,0 +1,153 @@
+---
+title: "`r pais`-Mundo, Dados Comerciais"
+author: ""
+date: "Últimos dados disponíveis: `r barao::comerciomundo_get_ultimoano(pais)`"
+output:
+  pdf_document:
+    latex_engine: lualatex
+    toc: true
+    toc_depth: 2
+    number_sections: true
+organization: 
+toc-title: "Índice"
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{lscape}
+- \usepackage{fancyhdr}
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{graphicx}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \pagestyle{fancy}
+- \fancyhead{}
+- \fancyhead[CO,CE]{Brasil-`r pais`, Dados Comerciais}
+- \fancyfoot[CO,CE]{}
+- \fancyfoot[LE,RO]{\thepage}
+tables: yes
+graphics: yes
+---
+
+- Exceto disposição em contrário, todos os dados estão em USD Bilhões
+
+```{r setup, include = F}
+library(barao)
+library(kableExtra)
+library(tidyverse)
+
+knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
+```
+
+\newpage
+
+# Dados anuais
+
+## Fluxo de Comércio
+
+```{r, fig.height=6}
+barao::comerciomundo_grafico_corrente(pais)
+```
+
+```{r, results='asis'}
+purrr::walk(barao::comerciomundo_tabela_corrente(pais), print)
+
+```
+
+\newpage
+
+<!-- ## Destinos de exportações e origens de importações -->
+
+<!-- ```{r, fig.height=4} -->
+<!-- barao::comerciobr_grafico_paises(pais, periodo) -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height=4} -->
+<!-- barao::comerciobr_grafico_paises_proporcao(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \newpage -->
+
+<!-- \blandscape -->
+
+<!-- ```{r, fig.width=10, fig.height=7} -->
+<!-- barao::comerciobr_grafico_paises_evolucao(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \elandscape -->
+
+<!-- \newpage -->
+
+<!-- ```{r, fig.height=10, results = "asis"} -->
+<!-- barao::comerciobr_tabela_paises(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \newpage -->
+
+<!-- ## Produtos comercializados -->
+
+<!-- ```{r, fig.height=4.3} -->
+<!-- barao::comerciobr_grafico_produtos(pais, periodo) -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height=4.3} -->
+<!-- barao::comerciobr_grafico_produtos_proporcao(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \blandscape -->
+
+<!-- ```{r, fig.height=7, fig.width=10} -->
+<!-- barao::comerciobr_grafico_produtos_ranking(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \elandscape -->
+
+<!-- \newpage -->
+
+<!-- ```{r, fig.show="hold", results = "asis"} -->
+<!-- barao::comerciobr_tabela_produtos(pais, periodo) -->
+<!-- ``` -->
+
+<!-- \newpage -->
+
+<!-- ## Classificações do Comércio -->
+
+<!-- ```{r, fig.height=2.1} -->
+<!-- barao::comerciobr_grafico_fatores(pais, periodo, "isic") -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height=2.1} -->
+<!-- barao::comerciobr_grafico_fatores(pais, periodo, "fator") -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height=2.1} -->
+<!-- barao::comerciobr_grafico_fatores(pais, periodo, "cgce") -->
+<!-- ``` -->
+
+<!-- ```{r, fig.height=2.1} -->
+<!-- barao::comerciobr_grafico_fatores(pais, periodo, "cuci") -->
+
+<!-- ``` -->
+
+<!-- \newpage -->
+
+<!-- ```{r, fig.show='asis', out.width="50%"} -->
+<!-- barao::comerciobr_tabela_fatores(pais, periodo, "isic") -->
+
+<!-- barao::comerciobr_tabela_fatores(pais, periodo, "fator") -->
+
+<!-- barao::comerciobr_tabela_fatores(pais, periodo, "cgce") -->
+
+<!-- barao::comerciobr_tabela_fatores(pais, periodo, "cuci") -->
+
+<!-- ``` -->
+

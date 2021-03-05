@@ -2,6 +2,7 @@
 #'
 
 comerciobr_blocos_paises <- function(bloco) {
+
   lista_blocos <- comerciobr::dic_blocos %>%
     dplyr::distinct(no_bloco) %>%
     dplyr::pull(no_bloco)
