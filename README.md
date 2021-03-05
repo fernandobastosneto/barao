@@ -22,11 +22,6 @@ devtools::install_github("fernandobastosneto/barao")
 
 ## Funcionalidades
 
-``` r
-emo::ji("time")
-#> ⏳
-```
-
   - ✅ Comércio do Brasil com o Mundo (base de dados MEcon)
   - ⏳ Comércio Internacional (base de dados COMTRADE-ONU)
   - ❌ Investimentos (base de dados Banco Central, BNDES e UNCTAD)
