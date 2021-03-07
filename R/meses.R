@@ -1,13 +1,13 @@
-#' Função que devolve meses em português
+#' Fun\u00e7\u00e3o que devolve meses em portugu\u00eas
 #'
-#' @param num número de um mês
+#' @param num n\u00famero de um m\u00eas
 #'
 #' @export
 meses <- function(num) {
 
   num <- as.integer(num)
 
-  meses <- c("Janeiro", "Fevereiro", "Março", "Abril",
+  meses <- c("Janeiro", "Fevereiro", "Mar\u00e7o", "Abril",
              "Maio", "Junho", "Julho", "Agosto",
              "Setembro", "Outubro", "Novembro", "Dezembro")
 
