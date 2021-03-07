@@ -4,6 +4,7 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
   if (length(pais) > 1) {

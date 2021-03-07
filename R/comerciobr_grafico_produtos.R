@@ -37,7 +37,6 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
 
 
   df %>%
-    # dplyr::mutate(no_sh4_por = forcats::fct_reorder(no_sh4_por, value)) %>%
     ggplot2::ggplot() +
     ggplot2::geom_col(ggplot2::aes(tidytext::reorder_within(no_sh4_por, value, path, sum),
                                    value, fill = path),

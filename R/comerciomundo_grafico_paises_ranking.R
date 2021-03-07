@@ -7,7 +7,7 @@
 comerciomundo_grafico_paises_ranking <- function(pais) {
   nome_pais <- pais
 
-  max_ano <- barao::comerciomundo_dados_paises("Egito") %>%
+  max_ano <- barao::comerciomundo_dados_paises(pais) %>%
     dplyr::distinct(year) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::pull(max(year))
