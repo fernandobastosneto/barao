@@ -1,6 +1,6 @@
-#' Relatório de relações bilaterais comerciais país-mundo
+#' Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais pa\u00eds-mundo
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 

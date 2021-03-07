@@ -1,6 +1,6 @@
-#' Gráfico de Composição de Comércio por Agregação
+#' Gr\u00e1fico de Composi\u00e7\u00e3o de Com\u00e9rcio por Agrega\u00e7\u00e3o
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #' @param fator "isic", "fator", "cgce", "cuci"
 #'
@@ -8,7 +8,7 @@
 comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {
-    frase <- paste0("agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
   }
 
   else {
@@ -24,7 +24,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        type = "index",
                        align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Classificação CUCI {frase}"))
+                       title = glue::glue("Classifica\u00e7\u00e3o CUCI {frase}"))
 
     }
 
@@ -36,7 +36,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        type = "index",
                        align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Classificação ISIC {frase}"))
+                       title = glue::glue("Classifica\u00e7\u00e3o ISIC {frase}"))
 
     }
 
@@ -48,7 +48,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        type = "index",
                        align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Classificação CGCE {frase}"))
+                       title = glue::glue("Classifica\u00e7\u00e3o CGCE {frase}"))
 
     }
 
@@ -60,7 +60,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
                        type = "index",
                        align.labels=list(c("center", "center"), c("left", "top")),
                        palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                       title = glue::glue("Classificação Fator Agregado {frase}"))
+                       title = glue::glue("Classifica\u00e7\u00e3o Fator Agregado {frase}"))
 
     }
 }

@@ -1,6 +1,6 @@
-#' Gráfico de comparação do fluxo de comércio de um país com o Brasil, em relação a países semelhantes
+#' Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com o Brasil, em rela\u00e7\u00e3o a pa\u00edses semelhantes
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -10,7 +10,7 @@ comerciobr_grafico_paises <- function(pais, periodo) {
 
   df <- barao::comerciobr_dados_paises(pais, periodo) %>%
     dplyr::filter(co_ano == max(co_ano))
-  frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+  frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
 
   }
 
@@ -33,9 +33,9 @@ comerciobr_grafico_paises <- function(pais, periodo) {
     ggplot2::geom_label(ggplot2::aes(tidytext::reorder_within(no_pais, value, path), value,
     label = rank)) +
     ggplot2::facet_wrap(~path, scales = "free_y") +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, parceiros comerciais próximos",),
+    ggplot2::labs(title = glue::glue("Brasil-{pais}, parceiros comerciais pr\u00f3ximos",),
                   subtitle = glue::glue("{frase}"),
-    x = NULL, y = NULL, caption = "Fonte: Ministério da Economia") +
+    x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia") +
     ggplot2::coord_flip() +
     ggplot2::theme_minimal() +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +

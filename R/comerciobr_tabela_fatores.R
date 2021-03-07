@@ -1,6 +1,6 @@
-#' Tabela de dados de comércio por níveis de agregação
+#' Tabela de dados de com\u00e9rcio por n\u00edveis de agrega\u00e7\u00e3o
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #' @param fator "isic", "fator", "cgce" ou "cuci"
 #'
@@ -8,7 +8,7 @@
 comerciobr_tabela_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {
-    frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao::comerciobr_get_ulimoano(), ", agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
   }
 
   else {
@@ -31,7 +31,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::ungroup() %>%
       dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_cuci_sec) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CUCI", "Valor", "%")) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Dire\u00e7\u00e3o", "Classifica\u00e7\u00e3o CUCI", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
       kableExtra::kable_styling(full_width = T, font_size = 6) %>%
       kableExtra::column_spec(2, width = "55em")
@@ -54,7 +54,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::ungroup() %>%
       dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_isic_secao) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação ISIC", "Valor", "%")) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Dire\u00e7\u00e3o", "Classifica\u00e7\u00e3o ISIC", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
       kableExtra::add_header_above(header = c(setNames(4,frase))) %>%
       kableExtra::kable_styling(full_width = T, font_size = 6) %>%
@@ -79,7 +79,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::ungroup() %>%
       dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_cgce_n1) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação CGCE", "Valor", "%")) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Dire\u00e7\u00e3o", "Classifica\u00e7\u00e3o CGCE", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
       kableExtra::kable_styling(full_width = T, font_size = 6) %>%
       kableExtra::column_spec(2, width = "55em")
@@ -104,7 +104,7 @@ comerciobr_tabela_fatores <- function(pais, periodo, fator) {
       dplyr::ungroup() %>%
       dplyr::select(-c(.data$total)) %>%
       dplyr::relocate(path, .before = no_fat_agreg) %>%
-      kableExtra::kbl(booktabs = T, col.names = c("Direção", "Classificação Fator Agregado", "Valor", "%")) %>%
+      kableExtra::kbl(booktabs = T, col.names = c("Dire\u00e7\u00e3o", "Classifica\u00e7\u00e3o Fator Agregado", "Valor", "%")) %>%
       kableExtra::collapse_rows(columns = 1, latex_hline = "full", valign = "top") %>%
       kableExtra::kable_styling(full_width = T, font_size = 6) %>%
       kableExtra::column_spec(2, width = "55em")

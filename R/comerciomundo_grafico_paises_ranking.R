@@ -1,6 +1,6 @@
-#' Gráfico de comparação do fluxo de comércio de um país com seus 10 principais parceiros
+#' Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus 10 principais parceiros
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -18,8 +18,8 @@ comerciomundo_grafico_paises_ranking <- function(pais) {
     dplyr::ungroup() %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
-                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importações",
-                                                     trade_flow_code == "2" ~ "Exportações")) %>%
+                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%
     tidyr::drop_na() %>%
     ggplot2::ggplot() +
     ggplot2::geom_col(ggplot2::aes(x = value, y = tidytext::reorder_within(no_pais, value, trade_flow_code),

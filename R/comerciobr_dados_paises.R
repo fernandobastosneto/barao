@@ -1,9 +1,9 @@
-#' Dados de comércio bilateral de um país em relação a seus semelhantes
+#' Dados de com\u00e9rcio bilateral de um pa\u00eds em rela\u00e7\u00e3o a seus semelhantes
 #'
-#' Dados de comércio do Brasil com um determinado país, comparado com países
-#' em condições semelhantes (selecionados pelo ranking).
+#' Dados de com\u00e9rcio do Brasil com um determinado pa\u00eds, comparado com pa\u00edses
+#' em condi\u00e7\u00f5es semelhantes (selecionados pelo ranking).
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -38,7 +38,7 @@ comerciobr_dados_paises <- function(pais, periodo) {
 
   }
 
-  # identificando a posição do pais no ranking - exp
+  # identificando a posi\u00e7\u00e3o do pais no ranking - exp
 
   rank_pais_exp <- df %>%
     dplyr::filter(path == "EXP") %>%
@@ -47,7 +47,7 @@ comerciobr_dados_paises <- function(pais, periodo) {
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::pull(rank)
 
-  # identificando a posição do pais no ranking - imp
+  # identificando a posi\u00e7\u00e3o do pais no ranking - imp
 
   rank_pais_imp <- df %>%
     dplyr::filter(path == "IMP") %>%
@@ -56,9 +56,9 @@ comerciobr_dados_paises <- function(pais, periodo) {
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::pull(rank)
 
-  # fazer um semi join para extrair apenas os países com os quais o país deve ser comparado
+  # fazer um semi join para extrair apenas os pa\u00edses com os quais o pa\u00eds deve ser comparado
   ## tem que ser semi join porque queremos o ranking e o path
-  ## queremos um elemento com duas características
+  ## queremos um elemento com duas caracter\u00edsticas
 
   rank_paises <- tibble::tibble(path = c(rep("EXP", 5),
                                          rep("IMP", 5)),

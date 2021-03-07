@@ -1,6 +1,6 @@
-#' Gráfico, em proporção, dos principais produtos comercializados por um país com o mundo no último ano disponível
+#' Gr\u00e1fico, em propor\u00e7\u00e3o, dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -23,13 +23,13 @@ comerciomundo_grafico_produtos_proporcao <- function(pais) {
       TRUE ~ NO_SH2_POR)) %>%
     tidyr::unite("commodity_code", c("CO_SH2", "NO_SH2_POR"), sep = " - ") %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
-                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importações",
-                                                     trade_flow_code == "2" ~ "Exportações")) %>%
+                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%
     treemap::treemap(index = c("trade_flow_code", "commodity_code"),
                      vSize = "value",
                      type = "index",
                      palette = ggthemes::tableau_color_pal('Tableau 10')(10),
                      align.labels=list(c("center", "center"), c("left", "top")),
-                     title = glue::glue("{pais}-Mundo Principais produtos comercializados, proporção, em {max_ano}"))
+                     title = glue::glue("{pais}-Mundo Principais produtos comercializados, propor\u00e7\u00e3o, em {max_ano}"))
 
 }

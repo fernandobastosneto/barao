@@ -1,9 +1,9 @@
 #'
-#' Lista de países a partir de um bloco
+#' Lista de pa\u00edses a partir de um bloco
 #'
 #' @param bloco o nome de um bloco, de acordo com a base dic_blocos do pacote "comerciobr"
 #'
-#' @return lista de países associados a determinado bloco
+#' @return lista de pa\u00edses associados a determinado bloco
 #'
 #' @export
 
@@ -22,7 +22,7 @@ comerciobr_blocos_paises <- function(bloco) {
   }
 
   else {
-    print("Bloco não identificado, tente ajustar o grupo de acordo com a lista.")
+    print("Bloco n\u00e3o identificado, tente ajustar o grupo de acordo com a lista.")
   }
 
 }

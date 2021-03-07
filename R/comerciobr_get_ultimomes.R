@@ -1,4 +1,4 @@
-#' Último mês disponível do último ano disponível em comerciobr
+#' \u00daltimo m\u00eas dispon\u00edvel do \u00faltimo ano dispon\u00edvel em comerciobr
 #'
 #' @export
 comerciobr_get_ultimomes <- function() {

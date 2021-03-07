@@ -1,8 +1,8 @@
-#' Gráfico de Fluxo de Comércio Brasil-país
+#' Gr\u00e1fico de Fluxo de Com\u00e9rcio Brasil-pa\u00eds
 #'
-#' Com base na função \code{comerciobr_dados_corrente}.
+#' Com base na fun\u00e7\u00e3o \code{comerciobr_dados_corrente}.
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -19,13 +19,13 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
   if (periodo == "mensal") {
 
     ultimoano <- barao::comerciobr_get_ulimoano()
-    frase <- paste0("agregado até ", meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", meses(barao::comerciobr_get_ultimomes()))
 
   }
 
   else {
 
-    frase <- paste0("até ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
 
   }
 
@@ -35,13 +35,13 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
     ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = .data$trade_flow),
                       show.legend = F) +
     ggplot2::facet_wrap(~factor(.data$trade_flow,
-                                levels = c("Exportações", "Importações",
+                                levels = c("Exporta\u00e7\u00f5es", "Importa\u00e7\u00f5es",
                                            "Corrente", "Saldo")),
                         scales = "free_x") +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
     ggplot2::scale_x_discrete(breaks = scales::breaks_pretty()) +
-    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, Fluxo de Comércio {frase}"),
-                  x = NULL, y = NULL, caption = "Fonte: Ministério da Economia") +
+    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, Fluxo de Com\u00e9rcio {frase}"),
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia") +
     ggthemes::scale_fill_tableau() +
     ggplot2::theme_minimal()
 

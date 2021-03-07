@@ -1,6 +1,6 @@
-#' Gráfico de ranking e proporção do fluxo de comércio do brasil com um determinado país
+#' Gr\u00e1fico de ranking e propor\u00e7\u00e3o do fluxo de com\u00e9rcio do brasil com um determinado pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -9,7 +9,7 @@ comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
   if (periodo == "mensal") {
 
     df <- barao::comerciobr_dados_paises(pais, periodo)
-    frase <- paste0(barao::comerciobr_get_ulimoano(), " até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao::comerciobr_get_ulimoano(), " at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
 
   }
 
@@ -39,8 +39,8 @@ comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
     ggplot2::scale_y_reverse(breaks = scales::breaks_pretty(),
                              labels = scales::label_ordinal()) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("Brasil-{pais}, ranking e proporção de comercio, {frase}"),
-                  caption = "Fonte: Ministério da Economia",
+    ggplot2::labs(title = glue::glue("Brasil-{pais}, ranking e propor\u00e7\u00e3o de comercio, {frase}"),
+                  caption = "Fonte: Minist\u00e9rio da Economia",
                   x = NULL, y = NULL)
 
 }

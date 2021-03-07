@@ -1,8 +1,8 @@
-#' Tabela de Corrente de Comércio
+#' Tabela de Corrente de Com\u00e9rcio
 #'
 #' em formato latex.
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -11,8 +11,8 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
   tabela_prep <- barao::comerciobr_dados_corrente(pais, periodo)  %>%
     dplyr::ungroup() %>%
     tidyr::pivot_wider(names_from = .data$trade_flow, values_from = value) %>%
-    dplyr::mutate(var_exp = .data$Exportações/dplyr::lag(.data$Exportações)-1) %>%
-    dplyr::mutate(var_imp = .data$Importações/dplyr::lag(.data$Importações)-1) %>%
+    dplyr::mutate(var_exp = .data$Exportacoes/dplyr::lag(.data$Exportacoes)-1) %>%
+    dplyr::mutate(var_imp = .data$Importacoes/dplyr::lag(.data$Importacoes)-1) %>%
     dplyr::mutate(var_saldo = .data$Saldo/abs(dplyr::lag(.data$Saldo))-1) %>%
     dplyr::mutate(var_corrente = .data$Corrente/dplyr::lag(.data$Corrente)-1) %>%
     dplyr::filter(co_ano != min(co_ano)) %>%
@@ -20,13 +20,13 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     dplyr::mutate(dplyr::across(dplyr::starts_with("var"), ~ paste0("(", .x, ")"))) %>%
     dplyr::mutate(co_ano = as.character(co_ano)) %>%
     dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si())) %>%
-    tidyr::unite("Exportações", c("Exportações","var_exp"), sep = " ") %>%
-    tidyr::unite("Importações", c("Importações", "var_imp"), sep = " ") %>%
+    tidyr::unite("Exportacoes", c("Exportacoes","var_exp"), sep = " ") %>%
+    tidyr::unite("Importacoes", c("Importacoes", "var_imp"), sep = " ") %>%
     tidyr::unite("Saldo", c("Saldo", "var_saldo"), sep = " ") %>%
     tidyr::unite("Corrente", c("Corrente", "var_corrente"), sep = " ") %>%
-    dplyr::relocate(co_ano, .data$Exportações, .data$Importações, .data$Saldo, .data$Corrente) %>%
+    dplyr::relocate(co_ano, .data$Exportacoes, .data$Importacoes, .data$Saldo, .data$Corrente) %>%
     dplyr::arrange(dplyr::desc(co_ano)) %>%
-    tidyr::pivot_longer(.data$Exportações:.data$Corrente, names_to = "trade_flow", values_to = "value") %>%
+    tidyr::pivot_longer(.data$Exportacoes:.data$Corrente, names_to = "trade_flow", values_to = "value") %>%
     tidyr::pivot_wider(names_from = co_ano, values_from = value) %>%
     dplyr::rename(" " = .data$trade_flow) %>%
     dplyr::select(1:11) %>%

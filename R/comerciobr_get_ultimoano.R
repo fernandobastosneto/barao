@@ -1,6 +1,6 @@
-#' Último ano da base de dados
+#' \u00daltimo ano da base de dados
 #'
-#' @return o último ano disponível na base de dados "comerciobr"
+#' @return o \u00faltimo ano dispon\u00edvel na base de dados "comerciobr"
 #'
 #' @export
 comerciobr_get_ulimoano <- function() {

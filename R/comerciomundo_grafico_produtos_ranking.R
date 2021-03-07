@@ -1,6 +1,6 @@
-#' Gráfico dos principais produtos comercializados por um país no último ano disponível
+#' Gr\u00e1fico dos principais produtos comercializados por um pa\u00eds no \u00faltimo ano dispon\u00edvel
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -30,8 +30,8 @@ comerciomundo_grafico_produtos_ranking <- function(pais) {
 
   df %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
-                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importações",
-                                                     trade_flow_code == "2" ~ "Exportações")) %>%
+                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%
     ggplot2::ggplot() +
     ggplot2::geom_col(ggplot2::aes(value, tidytext::reorder_within(NO_SH2_POR,
                                                    value,

@@ -1,6 +1,6 @@
-#' Gráfico de proporção dos produtos comercializados do Brasil com um país
+#' Gr\u00e1fico de propor\u00e7\u00e3o dos produtos comercializados do Brasil com um pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -26,7 +26,7 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano == max(co_ano))
 
-    frase <- paste0(barao::comerciobr_get_ulimoano(), " até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao::comerciobr_get_ulimoano(), " at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
   }
 
   else {
@@ -90,5 +90,5 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
                      type = "index",
                      align.labels=list(c("center", "center"), c("left", "top")),
                      palette = ggthemes::tableau_color_pal('Tableau 10')(10),
-                     title = glue::glue("Brasil-{nome_pais}, Proporção de Exportações e Importações {frase}"))
+                     title = glue::glue("Brasil-{nome_pais}, Propor\u00e7\u00e3o de Exporta\u00e7\u00f5es e Importa\u00e7\u00f5es {frase}"))
 }

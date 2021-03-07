@@ -1,6 +1,6 @@
-#' Tabela de fluxo comercial por país
+#' Tabela de fluxo comercial por pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -8,7 +8,7 @@ comerciobr_tabela_paises <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    frase <- paste0("Dados Agregados até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
     df <- barao::comerciobr_dados_paises(pais, periodo) %>%
       dplyr::ungroup()
   }
@@ -38,7 +38,7 @@ comerciobr_tabela_paises <- function(pais, periodo) {
       dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .01)))
 
   df %>%
-    kableExtra::kbl(booktabs = T, col.names = c("Ano", "Direção", "País", "Valor", "Variação", "Proporção")) %>%
+    kableExtra::kbl(booktabs = T, col.names = c("Ano", "Dire\u00e7\u00e3o", "Pa\u00eds", "Valor", "Varia\u00e7\u00e3o", "Propor\u00e7\u00e3o")) %>%
     kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
     kableExtra::column_spec(3, width = "20em") %>%
     kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",

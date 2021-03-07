@@ -1,10 +1,10 @@
-#' Dados de comércio por agregação
+#' Dados de com\u00e9rcio por agrega\u00e7\u00e3o
 #'
-#' Dados de comércio selecionados pela agregação "ISIC", "Fator Agregado", "CGCE" e "CUCI"
+#' Dados de com\u00e9rcio selecionados pela agrega\u00e7\u00e3o "ISIC", "Fator Agregado", "CGCE" e "CUCI"
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
-#' @param fator agregação: "isic", "fator", "cgce" ou "cuci".
+#' @param fator agrega\u00e7\u00e3o: "isic", "fator", "cgce" ou "cuci".
 #'
 #' @export
 

@@ -1,6 +1,6 @@
-#' Dados de fluxo de comércio bilateral entre o país alvo e o mundo
+#' Dados de fluxo de com\u00e9rcio bilateral entre o pa\u00eds alvo e o mundo
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -11,14 +11,14 @@ comerciomundo_dados_corrente <- function(pais) {
     dplyr::filter(partner_code == 0) %>%
     dplyr::group_by(year, trade_flow_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
-    dplyr::mutate(trade_flow_code = dplyr::case_when(trade_flow_code == 1 ~ "Importações",
-                                                     trade_flow_code == 2 ~ "Exportações",
+    dplyr::mutate(trade_flow_code = dplyr::case_when(trade_flow_code == 1 ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == 2 ~ "Exporta\u00e7\u00f5es",
                                                      TRUE ~ NA_character_)) %>%
     tidyr::drop_na() %>%
     tidyr::pivot_wider(names_from = trade_flow_code, values_from = value) %>%
-    dplyr::mutate(Corrente = .data$Importações + .data$Exportações,
-                  Saldo = .data$Exportações - .data$Importações) %>%
-    tidyr::pivot_longer(.data$Importações:.data$Saldo, names_to = "trade_flow", values_to = "value")
+    dplyr::mutate(Corrente = .data$Importacoes + .data$Exportacoes,
+                  Saldo = .data$Exportacoes - .data$Importacoes) %>%
+    tidyr::pivot_longer(.data$Importacoes:.data$Saldo, names_to = "trade_flow", values_to = "value")
 
 }
 

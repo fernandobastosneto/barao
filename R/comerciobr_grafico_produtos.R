@@ -1,6 +1,6 @@
-#' Gráfico dos cinco principais produtos comercializados do Brasil com um país
+#' Gr\u00e1fico dos cinco principais produtos comercializados do Brasil com um pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -28,7 +28,7 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
   else {
     df <- df %>%
       dplyr::filter(co_ano == max(co_ano))
-    frase <- paste0(barao::comerciobr_get_ulimoano()," até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao::comerciobr_get_ulimoano()," at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
   }
 
   ano <- df %>%
@@ -48,6 +48,6 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
     tidytext::scale_x_reordered() +
     ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, pauta comercial, {frase}"),
-                  x = NULL, y = NULL, caption = "Fonte: Ministério da Economia")
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia")
 
 }

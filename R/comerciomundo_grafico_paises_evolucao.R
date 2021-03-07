@@ -1,6 +1,6 @@
-#' Gráfico de evolução do fluxo de comércio de um país com seus cinco principais parceiros
+#' Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus cinco principais parceiros
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -22,8 +22,8 @@ comerciomundo_grafico_paises_evolucao <- function(pais) {
     # dplyr::group_by(year, trade_flow_code) %>%
     # dplyr::slice_max(value, n = 5) %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
-                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importações",
-                                                     trade_flow_code == "2" ~ "Exportações")) %>%
+                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%
     tidyr::drop_na() %>%
     dplyr::ungroup() %>%
     ggplot2::ggplot(ggplot2::aes(year, value)) +
@@ -42,7 +42,7 @@ comerciomundo_grafico_paises_evolucao <- function(pais) {
     ggplot2::facet_wrap(~ trade_flow_code, scales = "free",
                         nrow = 2) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("{pais}-Mundo, evolução do comércio"),
+    ggplot2::labs(title = glue::glue("{pais}-Mundo, evolu\u00e7\u00e3o do com\u00e9rcio"),
                   caption = "Fonte: COMTRADE-ONU",
                   x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +

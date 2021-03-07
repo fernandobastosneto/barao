@@ -1,6 +1,6 @@
-#' Dados de principais produtos comercializados entre o Brasil e um determinado país
+#' Dados de principais produtos comercializados entre o Brasil e um determinado pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

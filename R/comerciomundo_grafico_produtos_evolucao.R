@@ -1,6 +1,6 @@
-#' Gráfico da evolução dos principais produtos comercializados por um país com o mundo no último ano disponível
+#' Gr\u00e1fico da evolu\u00e7\u00e3o dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 
@@ -35,8 +35,8 @@ comerciomundo_grafico_produtos_evolucao <- function(pais) {
     dplyr::filter(trade_flow_code == 1 | trade_flow_code == 2) %>%
     tidyr::unite("commodity_code", c("commodity_code", "NO_SH2_POR"), sep = " - ") %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
-                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importações",
-                                                     trade_flow_code == "2" ~ "Exportações")) %>%
+                  trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
+                                                     trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%
     tidyr::drop_na() %>%
     dplyr::ungroup() %>%
     ggplot2::ggplot(ggplot2::aes(year, value)) +
@@ -55,7 +55,7 @@ comerciomundo_grafico_produtos_evolucao <- function(pais) {
     ggplot2::facet_wrap(~ trade_flow_code, scales = "free",
                         nrow = 2) +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("{pais}-Mundo, produtos comercializados, evolução"),
+    ggplot2::labs(title = glue::glue("{pais}-Mundo, produtos comercializados, evolu\u00e7\u00e3o"),
                   caption = "Fonte: COMTRADE-ONU",
                   x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +

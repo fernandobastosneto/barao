@@ -1,6 +1,6 @@
-#' Dados de comércio um país com todos os demais
+#' Dados de com\u00e9rcio um pa\u00eds com todos os demais
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #'
 #' @export
 

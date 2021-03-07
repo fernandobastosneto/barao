@@ -1,6 +1,6 @@
-#' Gráfico de evolução dos produtos comercializados do Brasil com um determinado país
+#' Gr\u00e1fico de evolu\u00e7\u00e3o dos produtos comercializados do Brasil com um determinado pa\u00eds
 #'
-#' @param pais um país
+#' @param pais um pa\u00eds
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
@@ -20,7 +20,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     df <- comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup()
 
-    frase <- paste0("agregado até ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
 
   }
 
@@ -29,7 +29,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano)-1)
 
-    frase <- paste0("até ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
 
   }
 
@@ -50,8 +50,8 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
                         nrow = 2) +
     ggthemes::scale_color_pander() +
     ggplot2::theme_minimal() +
-    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, evolução do comércio, {frase}"),
-                  caption = "Fonte: Ministério da Economia",
+    ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, evolu\u00e7\u00e3o do com\u00e9rcio, {frase}"),
+                  caption = "Fonte: Minist\u00e9rio da Economia",
                   x = NULL, y = NULL) +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
     ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
