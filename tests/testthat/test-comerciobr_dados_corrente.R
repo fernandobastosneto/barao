@@ -22,7 +22,7 @@ test_that("dados exportações estão corretos", {
     dplyr::pull(value)
 
   base_normal <- barao::comerciobr_dados_corrente("China", "anual") %>%
-    dplyr::filter(trade_flow == "Exportações") %>%
+    dplyr::filter(trade_flow == "Exportacoes") %>%
     dplyr::select(-trade_flow) %>%
     dplyr::ungroup() %>%
     dplyr::pull(value)
@@ -54,7 +54,7 @@ test_that("dados importações estão corretos", {
     dplyr::pull(value)
 
   base_normal <- barao::comerciobr_dados_corrente("China", "anual") %>%
-    dplyr::filter(trade_flow == "Importações") %>%
+    dplyr::filter(trade_flow == "Importacoes") %>%
     dplyr::select(-trade_flow) %>%
     dplyr::ungroup() %>%
     dplyr::pull(value)

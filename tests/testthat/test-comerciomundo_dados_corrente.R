@@ -5,13 +5,13 @@ test_that("dados comerciomundo corrente estão corretos", {
   dado_imp <- comerciomundo_dados_corrente("China") %>%
     dplyr::ungroup() %>%
     dplyr::filter(year == max(year)) %>%
-    dplyr::filter(trade_flow == "Importações") %>%
+    dplyr::filter(trade_flow == "Importacoes") %>%
     dplyr::pull(value)
 
   dado_exp <- comerciomundo_dados_corrente("China") %>%
     dplyr::ungroup() %>%
     dplyr::filter(year == max(year)) %>%
-    dplyr::filter(trade_flow == "Exportações") %>%
+    dplyr::filter(trade_flow == "Exportacoes") %>%
     dplyr::pull(value)
 
 

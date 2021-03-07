@@ -33,8 +33,8 @@ comerciobr_dados_corrente <- function(pais, periodo) {
     tidyr::pivot_wider(names_from = path, values_from = value) %>%
     dplyr::mutate(Corrente = .data$EXP + .data$IMP,
                   Saldo = .data$EXP - .data$IMP) %>%
-    dplyr::rename(`Exportacoes` = "EXP", `Importacoes` = "IMP") %>%
-    tidyr::pivot_longer(.data$`Exportacoes`:.data$Saldo, names_to = "trade_flow", values_to = "value")
+    dplyr::rename(Exportacoes = "EXP", Importacoes = "IMP") %>%
+    tidyr::pivot_longer(.data$Exportacoes:.data$Saldo, names_to = "trade_flow", values_to = "value")
 
   df
 }

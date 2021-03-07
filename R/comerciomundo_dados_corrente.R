@@ -11,8 +11,8 @@ comerciomundo_dados_corrente <- function(pais) {
     dplyr::filter(partner_code == 0) %>%
     dplyr::group_by(year, trade_flow_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
-    dplyr::mutate(trade_flow_code = dplyr::case_when(trade_flow_code == 1 ~ "Importa\u00e7\u00f5es",
-                                                     trade_flow_code == 2 ~ "Exporta\u00e7\u00f5es",
+    dplyr::mutate(trade_flow_code = dplyr::case_when(trade_flow_code == 1 ~ "Importacoes",
+                                                     trade_flow_code == 2 ~ "Exportacoes",
                                                      TRUE ~ NA_character_)) %>%
     tidyr::drop_na() %>%
     tidyr::pivot_wider(names_from = trade_flow_code, values_from = value) %>%
