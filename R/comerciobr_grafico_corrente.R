@@ -35,7 +35,7 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
     ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = .data$trade_flow),
                       show.legend = F) +
     ggplot2::facet_wrap(~factor(.data$trade_flow,
-                                levels = c("Exporta\u00e7\u00f5es", "Importa\u00e7\u00f5es",
+                                levels = c("Exportacoes", "Importacoes",
                                            "Corrente", "Saldo")),
                         scales = "free_x") +
     ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
