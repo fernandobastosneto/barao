@@ -1,10 +1,7 @@
-This is LuaHBTeX, Version 1.12.0 (TeX Live 2020)  (format=lualatex 2021.1.5)  1 MAR 2021 16:35
+This is LuaHBTeX, Version 1.12.0 (TeX Live 2020)  (format=lualatex 2021.1.5)  16 MAR 2021 14:53
  restricted system commands enabled.
-**/Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha_20
-19_.tex
-
-(/Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha_201
-9_.tex
+**comerciomundo_China_2021_Fevereiro.tex
+(./comerciomundo_China_2021_Fevereiro.tex
 LaTeX2e <2020-02-02> patch level 5
 Lua module: luaotfload-main 2020-02-02 3.12 luaotfload entry point
 Lua module: luaotfload-init 2020-02-02 3.12 luaotfload submodule / initializatio
@@ -616,8 +613,8 @@ ess on input line 91.
 Package Fancyhdr Warning: \fancyfoot's `E' option without twoside option is usel
 ess on input line 92.
 
-(./comerciomundo_Alemanha_2019_.aux)
-\openout1 = comerciomundo_Alemanha_2019_.aux
+(./comerciomundo_China_2021_Fevereiro.aux)
+\openout1 = comerciomundo_China_2021_Fevereiro.aux
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 98.
 LaTeX Font Info:    ... okay on input line 98.
@@ -1065,57 +1062,124 @@ LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2020/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (./comerciomundo_Alemanha_2019_.toc)
+) (./comerciomundo_China_2021_Fevereiro.toc)
 \tf@toc=\write3
 
-\openout3 = comerciomundo_Alemanha_2019_.toc
+\openout3 = comerciomundo_China_2021_Fevereiro.toc
 [1
 
 {/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-</Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha_2019
-__files/figure-latex/unnamed-chunk-1-1.pdf, id=20, 469.755pt x 433.62pt>
-File: /Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha
-_2019__files/figure-latex/unnamed-chunk-1-1.pdf Graphic file (type pdf)
-<use /Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha_
-2019__files/figure-latex/unnamed-chunk-1-1.pdf>
-Package luatex.def Info: /Users/piduim/SynologyDrive/Programação/R/barao/com
-erciomundo_Alemanha_2019__files/figure-latex/unnamed-chunk-1-1.pdf  used on inpu
-t line 120.
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-1-1.pdf, id
+=24, 469.755pt x 433.62pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-1-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-1-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-1-1.pdf  used on input line 120.
 (luatex.def)             Requested size: 469.75386pt x 433.61894pt.
 
-Overfull \hbox (26.75499pt too wide) in paragraph at lines 124--134
+Overfull \hbox (51.47499pt too wide) in paragraph at lines 124--134
  [][] 
  []
 
-[2</Users/piduim/SynologyDrive/Programação/R/barao/comerciomundo_Alemanha_20
-19__files/figure-latex/unnamed-chunk-1-1.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 151.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 151.
-(./comerciomundo_Alemanha_2019_.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 151.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 151.
+[2<./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-1-1.pdf
+>]
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-3-1.pdf, id
+=35, 469.755pt x 289.08pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-3-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-3-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-3-1.pdf  used on input line 155.
+(luatex.def)             Requested size: 469.75386pt x 289.07928pt.
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-4-1.pdf, id
+=36, 469.755pt x 289.08pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-4-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-4-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-4-1.pdf  used on input line 157.
+(luatex.def)             Requested size: 469.75386pt x 289.07928pt.
+[3<./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-3-1.pdf
+><./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-4-1.pdf>
+]
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-5-1.pdf, id
+=53, 722.7pt x 505.89pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-5-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-5-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-5-1.pdf  used on input line 163.
+(luatex.def)             Requested size: 650.43501pt x 455.3045pt.
+[4
+
+<./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-5-1.pdf>]
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-6-1.pdf, id
+=62, 469.755pt x 310.15875pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-6-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-6-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-6-1.pdf  used on input line 172.
+(luatex.def)             Requested size: 469.75386pt x 310.15799pt.
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-7-1.pdf, id
+=63, 469.755pt x 310.15875pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-7-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-7-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-7-1.pdf  used on input line 174.
+(luatex.def)             Requested size: 469.75386pt x 310.15799pt.
+[5
+
+<./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-6-1.pdf><
+./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-7-1.pdf>]
+<comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-8-1.pdf, id
+=80, 722.7pt x 505.89pt>
+File: comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-8-1.pd
+f Graphic file (type pdf)
+<use comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-8-1.pdf
+>
+Package luatex.def Info: comerciomundo_China_2021_Fevereiro_files/figure-latex/u
+nnamed-chunk-8-1.pdf  used on input line 178.
+(luatex.def)             Requested size: 650.43501pt x 455.3045pt.
+[6
+
+<./comerciomundo_China_2021_Fevereiro_files/figure-latex/unnamed-chunk-8-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 182.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 182.
+(./comerciomundo_China_2021_Fevereiro.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 182.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 182.
 )
 
 Here is how much of LuaTeX's memory you used:
- 21227 strings out of 480992
+ 21304 strings out of 480992
  125171,953878 words of node,token memory allocated
- 524 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 6 attribute, 60 glue_spec,
- 6 attribute_list, 1 write nodes
-   avail lists: 1:2,2:437,3:34,4:14,5:98,6:11,7:1043,8:6,9:201,10:4,11:31
- 38055 multiletter control sequences out of 65536+600000
- 71 fonts using 21372683 bytes
- 59i,11n,118p,991b,341s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 531 words of node memory still in use:
+   6 hlist, 2 vlist, 2 rule, 2 glue, 4 kern, 1 glyph, 7 attribute, 60 glue_spec,
+ 7 attribute_list, 2 write nodes
+   avail lists: 1:2,2:435,3:40,4:18,5:98,6:13,7:1044,8:8,9:201,10:4,11:39
+ 38089 multiletter control sequences out of 65536+600000
+ 71 fonts using 21372767 bytes
+ 59i,11n,118p,945b,377s stack positions out of 5000i,500n,10000p,200000b,100000s
 </usr/local/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman10-regular.o
 tf></usr/local/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman10-bold.o
 tf></usr/local/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman12-bold.o
 tf></usr/local/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman12-regula
 r.otf></usr/local/texlive/2020/texmf-dist/fonts/opentype/public/lm/lmroman17-reg
 ular.otf>
-Output written on comerciomundo_Alemanha_2019_.pdf (2 pages, 26535 bytes).
+Output written on comerciomundo_China_2021_Fevereiro.pdf (6 pages, 90067 bytes).
 
-PDF statistics: 72 PDF objects out of 1000 (max. 8388607)
- 50 compressed objects within 1 object stream
- 8 named destinations out of 1000 (max. 131072)
- 17 words of extra memory for PDF output out of 10000 (max. 100000000)
+
+PDF statistics: 136 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 16 named destinations out of 1000 (max. 131072)
+ 33 words of extra memory for PDF output out of 10000 (max. 100000000)
 

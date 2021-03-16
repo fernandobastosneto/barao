@@ -2,12 +2,12 @@
 % Please edit documentation in R/comerciobr_tabela_corrente.R
 \name{comerciobr_tabela_corrente}
 \alias{comerciobr_tabela_corrente}
-\title{Tabela de Corrente de Comércio}
+\title{Tabela de Corrente de Com\u00e9rcio}
 \usage{
 comerciobr_tabela_corrente(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }

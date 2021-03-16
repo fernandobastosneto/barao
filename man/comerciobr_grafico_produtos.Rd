@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_grafico_produtos.R
 \name{comerciobr_grafico_produtos}
 \alias{comerciobr_grafico_produtos}
-\title{Gráfico dos cinco principais produtos comercializados do Brasil com um país}
+\title{Gr\u00e1fico dos cinco principais produtos comercializados do Brasil com um pa\u00eds}
 \usage{
 comerciobr_grafico_produtos(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Gráfico dos cinco principais produtos comercializados do Brasil com um país
+Gr\u00e1fico dos cinco principais produtos comercializados do Brasil com um pa\u00eds
 }

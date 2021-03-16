@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_grafico_paises_proporcao.R
 \name{comerciobr_grafico_paises_proporcao}
 \alias{comerciobr_grafico_paises_proporcao}
-\title{Gráfico de ranking e proporção do fluxo de comércio do brasil com um determinado país}
+\title{Gr\u00e1fico de ranking e propor\u00e7\u00e3o do fluxo de com\u00e9rcio do brasil com um determinado pa\u00eds}
 \usage{
 comerciobr_grafico_paises_proporcao(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Gráfico de ranking e proporção do fluxo de comércio do brasil com um determinado país
+Gr\u00e1fico de ranking e propor\u00e7\u00e3o do fluxo de com\u00e9rcio do brasil com um determinado pa\u00eds
 }

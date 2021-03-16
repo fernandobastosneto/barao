@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_paises_proporcao.R
 \name{comerciomundo_grafico_paises_proporcao}
 \alias{comerciomundo_grafico_paises_proporcao}
-\title{Gráfico de ranking e proporção do fluxo de comércio do país com os demais países}
+\title{Gr\u00e1fico de ranking e propor\u00e7\u00e3o do fluxo de com\u00e9rcio do pa\u00eds com os demais pa\u00edses}
 \usage{
 comerciomundo_grafico_paises_proporcao(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \description{
-Gráfico de ranking e proporção do fluxo de comércio do país com os demais países
+Gr\u00e1fico de ranking e propor\u00e7\u00e3o do fluxo de com\u00e9rcio do pa\u00eds com os demais pa\u00edses
 }

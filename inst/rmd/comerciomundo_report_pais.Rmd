@@ -10,6 +10,7 @@ output:
     number_sections: true
 organization: 
 toc-title: "Índice"
+self_contained: yes
 header-includes:
 - \usepackage{fancyhdr}
 - \usepackage{lscape}
@@ -65,25 +66,26 @@ purrr::walk(barao::comerciomundo_tabela_corrente(pais), print)
 
 \newpage
 
-<!-- ## Destinos de exportações e origens de importações -->
+## Destinos de exportações e origens de importações
 
-<!-- ```{r, fig.height=4} -->
-<!-- barao::comerciobr_grafico_paises(pais, periodo) -->
-<!-- ``` -->
+```{r, fig.height=4}
+barao::comerciomundo_grafico_paises_ranking(pais)
+```
 
-<!-- ```{r, fig.height=4} -->
-<!-- barao::comerciobr_grafico_paises_proporcao(pais, periodo) -->
-<!-- ``` -->
+```{r, fig.height=4}
+barao::comerciomundo_grafico_paises_proporcao(pais) 
 
-<!-- \newpage -->
+```
 
-<!-- \blandscape -->
+\newpage
 
-<!-- ```{r, fig.width=10, fig.height=7} -->
-<!-- barao::comerciobr_grafico_paises_evolucao(pais, periodo) -->
-<!-- ``` -->
+\blandscape
 
-<!-- \elandscape -->
+```{r, fig.width=10, fig.height=7}
+barao::comerciomundo_grafico_paises_evolucao(pais)
+```
+
+\elandscape
 
 <!-- \newpage -->
 
@@ -91,25 +93,31 @@ purrr::walk(barao::comerciomundo_tabela_corrente(pais), print)
 <!-- barao::comerciobr_tabela_paises(pais, periodo) -->
 <!-- ``` -->
 
-<!-- \newpage -->
+\newpage
 
-<!-- ## Produtos comercializados -->
+## Produtos comercializados
 
-<!-- ```{r, fig.height=4.3} -->
-<!-- barao::comerciobr_grafico_produtos(pais, periodo) -->
-<!-- ``` -->
+```{r, fig.height=4.3}
+barao::comerciomundo_grafico_produtos_ranking(pais)
 
-<!-- ```{r, fig.height=4.3} -->
-<!-- barao::comerciobr_grafico_produtos_proporcao(pais, periodo) -->
-<!-- ``` -->
+# barao::comerciobr_grafico_produtos(pais, periodo)
+```
 
-<!-- \blandscape -->
+```{r, fig.height=4.3}
+barao::comerciomundo_grafico_produtos_proporcao(pais)
 
-<!-- ```{r, fig.height=7, fig.width=10} -->
-<!-- barao::comerciobr_grafico_produtos_ranking(pais, periodo) -->
-<!-- ``` -->
+# barao::comerciobr_grafico_produtos_proporcao(pais, periodo)
+```
 
-<!-- \elandscape -->
+\blandscape
+
+```{r, fig.height=7, fig.width=10}
+barao::comerciomundo_grafico_produtos_evolucao(pais)
+
+# barao::comerciobr_grafico_produtos_ranking(pais, periodo)
+```
+
+\elandscape
 
 <!-- \newpage -->
 

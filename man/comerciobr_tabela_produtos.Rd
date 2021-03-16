@@ -7,7 +7,7 @@
 comerciobr_tabela_produtos(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }

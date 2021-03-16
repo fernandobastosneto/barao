@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_produtos_proporcao.R
 \name{comerciomundo_grafico_produtos_proporcao}
 \alias{comerciomundo_grafico_produtos_proporcao}
-\title{Gráfico, em proporção, dos principais produtos comercializados por um país com o mundo no último ano disponível}
+\title{Gr\u00e1fico, em propor\u00e7\u00e3o, dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel}
 \usage{
 comerciomundo_grafico_produtos_proporcao(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \description{
-Gráfico, em proporção, dos principais produtos comercializados por um país com o mundo no último ano disponível
+Gr\u00e1fico, em propor\u00e7\u00e3o, dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel
 }

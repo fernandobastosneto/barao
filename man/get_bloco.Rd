@@ -2,13 +2,13 @@
 % Please edit documentation in R/get_bloco.R
 \name{get_bloco}
 \alias{get_bloco}
-\title{Função que devolve um bloco associado a um país (ou lista de países)}
+\title{Fun\u00e7\u00e3o que devolve um bloco associado a um pa\u00eds (ou lista de pa\u00edses)}
 \usage{
 get_bloco(paises)
 }
 \arguments{
-\item{paises}{um país ou vetor de países}
+\item{paises}{um pa\u00eds ou vetor de pa\u00edses}
 }
 \description{
-Função que devolve um bloco associado a um país (ou lista de países)
+Fun\u00e7\u00e3o que devolve um bloco associado a um pa\u00eds (ou lista de pa\u00edses)
 }

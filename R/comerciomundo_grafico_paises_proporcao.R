@@ -11,8 +11,21 @@ comerciomundo_grafico_paises_proporcao <- function(pais) {
     dplyr::filter(year == max(year)) %>%
     dplyr::pull(max(year))
 
-  barao::comerciomundo_dados_paises(pais) %>%
+  comtrade_mdic <- comerciomundo::dic_comtrade_mdic %>%
+    dplyr::select(no_pais, text)
+
+  comerciomundo::comtrade %>%
     dplyr::filter(year == max(year)) %>%
+    dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
+    dplyr::filter(partner_code != 0) %>%
+    dplyr::filter(trade_flow_code == 1 | trade_flow_code == 2) %>%
+    dplyr::group_by(year, trade_flow_code, partner_code) %>%
+    dplyr::summarise(value = sum(trade_value_us)) %>%
+    dplyr::rename(id = partner_code) %>%
+    dplyr::mutate(id = as.character(id)) %>%
+    dplyr::left_join(comerciomundo::dic_partners) %>%
+    dplyr::left_join(comtrade_mdic) %>%
+    dplyr::ungroup() %>%
     dplyr::mutate(cor = dplyr::case_when(no_pais != "Brasil" & trade_flow_code == 1 ~ "#4E79A7",
                                          no_pais != "Brasil" & trade_flow_code == 2 ~ "#F28E2B",
                                          TRUE ~ "#2ca02c")) %>%

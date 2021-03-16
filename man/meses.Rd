@@ -2,13 +2,13 @@
 % Please edit documentation in R/meses.R
 \name{meses}
 \alias{meses}
-\title{Função que devolve meses em português}
+\title{Fun\u00e7\u00e3o que devolve meses em portugu\u00eas}
 \usage{
 meses(num)
 }
 \arguments{
-\item{num}{número de um mês}
+\item{num}{n\u00famero de um m\u00eas}
 }
 \description{
-Função que devolve meses em português
+Fun\u00e7\u00e3o que devolve meses em portugu\u00eas
 }

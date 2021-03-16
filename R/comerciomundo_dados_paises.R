@@ -6,6 +6,9 @@
 
 comerciomundo_dados_paises <- function(pais) {
 
+  comtrade_mdic <- comerciomundo::dic_comtrade_mdic %>%
+    dplyr::select(no_pais, text)
+
   df <- comerciomundo::comtrade %>%
     dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
     dplyr::filter(partner_code != 0)
@@ -26,6 +29,9 @@ comerciomundo_dados_paises <- function(pais) {
     dplyr::rename(id = partner_code) %>%
     dplyr::mutate(id = as.character(id)) %>%
     dplyr::left_join(comerciomundo::dic_partners) %>%
-    dplyr::rename(no_pais = text)
+    dplyr::left_join(comtrade_mdic) %>%
+    dplyr::ungroup()
+    # dplyr::select(-c(id, co_pais_isoa3, no_pais_ing, text))
+    # dplyr::rename(no_pais = text)
 
 }

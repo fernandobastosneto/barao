@@ -2,16 +2,16 @@
 % Please edit documentation in R/comerciomundo_get_ultimoano.R
 \name{comerciomundo_get_ultimoano}
 \alias{comerciomundo_get_ultimoano}
-\title{Último ano da base de dados}
+\title{\u00daltimo ano da base de dados}
 \usage{
 comerciomundo_get_ultimoano(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \value{
-o último ano disponível na base de dados "comerciomundo"
+o \u00faltimo ano dispon\u00edvel na base de dados "comerciomundo"
 }
 \description{
-Último ano da base de dados
+\u00daltimo ano da base de dados
 }

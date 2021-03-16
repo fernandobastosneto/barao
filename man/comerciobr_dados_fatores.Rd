@@ -2,17 +2,17 @@
 % Please edit documentation in R/comerciobr_dados_fatores.R
 \name{comerciobr_dados_fatores}
 \alias{comerciobr_dados_fatores}
-\title{Dados de comércio por agregação}
+\title{Dados de com\u00e9rcio por agrega\u00e7\u00e3o}
 \usage{
 comerciobr_dados_fatores(pais, periodo, fator)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 
-\item{fator}{agregação: "isic", "fator", "cgce" ou "cuci".}
+\item{fator}{agrega\u00e7\u00e3o: "isic", "fator", "cgce" ou "cuci".}
 }
 \description{
-Dados de comércio selecionados pela agregação "ISIC", "Fator Agregado", "CGCE" e "CUCI"
+Dados de com\u00e9rcio selecionados pela agrega\u00e7\u00e3o "ISIC", "Fator Agregado", "CGCE" e "CUCI"
 }

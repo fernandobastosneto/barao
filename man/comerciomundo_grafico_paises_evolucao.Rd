@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_paises_evolucao.R
 \name{comerciomundo_grafico_paises_evolucao}
 \alias{comerciomundo_grafico_paises_evolucao}
-\title{Gráfico de evolução do fluxo de comércio de um país com seus cinco principais parceiros}
+\title{Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus cinco principais parceiros}
 \usage{
 comerciomundo_grafico_paises_evolucao(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \description{
-Gráfico de evolução do fluxo de comércio de um país com seus cinco principais parceiros
+Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus cinco principais parceiros
 }

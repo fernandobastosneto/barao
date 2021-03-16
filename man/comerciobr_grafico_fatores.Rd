@@ -2,17 +2,17 @@
 % Please edit documentation in R/comerciobr_grafico_fatores.R
 \name{comerciobr_grafico_fatores}
 \alias{comerciobr_grafico_fatores}
-\title{Gráfico de Composição de Comércio por Agregação}
+\title{Gr\u00e1fico de Composi\u00e7\u00e3o de Com\u00e9rcio por Agrega\u00e7\u00e3o}
 \usage{
 comerciobr_grafico_fatores(pais, periodo, fator)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 
 \item{fator}{"isic", "fator", "cgce", "cuci"}
 }
 \description{
-Gráfico de Composição de Comércio por Agregação
+Gr\u00e1fico de Composi\u00e7\u00e3o de Com\u00e9rcio por Agrega\u00e7\u00e3o
 }

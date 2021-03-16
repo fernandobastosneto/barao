@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_tabela_paises.R
 \name{comerciobr_tabela_paises}
 \alias{comerciobr_tabela_paises}
-\title{Tabela de fluxo comercial por país}
+\title{Tabela de fluxo comercial por pa\u00eds}
 \usage{
 comerciobr_tabela_paises(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Tabela de fluxo comercial por país
+Tabela de fluxo comercial por pa\u00eds
 }

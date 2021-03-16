@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_paises_ranking.R
 \name{comerciomundo_grafico_paises_ranking}
 \alias{comerciomundo_grafico_paises_ranking}
-\title{Gráfico de comparação do fluxo de comércio de um país com seus 10 principais parceiros}
+\title{Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus 10 principais parceiros}
 \usage{
 comerciomundo_grafico_paises_ranking(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \description{
-Gráfico de comparação do fluxo de comércio de um país com seus 10 principais parceiros
+Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus 10 principais parceiros
 }

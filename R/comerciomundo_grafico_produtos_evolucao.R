@@ -18,8 +18,8 @@ comerciomundo_grafico_produtos_evolucao <- function(pais) {
     dplyr::pull(max(year))
 
   dic <- comerciobr::dic_sh6_sh2 %>%
-    dplyr::rename(commodity_code = CO_SH2) %>%
-    dplyr::select(-CO_SH6) %>%
+    dplyr::rename(commodity_code = co_sh2) %>%
+    dplyr::select(-co_sh6) %>%
     dplyr::distinct() %>%
     dplyr::filter(stringr::str_length(commodity_code) < 3)
 
@@ -29,11 +29,11 @@ comerciomundo_grafico_produtos_evolucao <- function(pais) {
     # dplyr::rename(CO_SH2 = commodity_code) %>%
     dplyr::left_join(dic) %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(NO_SH2_POR = dplyr::case_when(
-      stringr::str_length(NO_SH2_POR) > 20 ~ paste0(stringr::str_sub(NO_SH2_POR, 1, 20), ".."),
-      TRUE ~ NO_SH2_POR)) %>%
+    dplyr::mutate(no_sh2_por = dplyr::case_when(
+      stringr::str_length(no_sh2_por) > 20 ~ paste0(stringr::str_sub(no_sh2_por, 1, 20), ".."),
+      TRUE ~ no_sh2_por)) %>%
     dplyr::filter(trade_flow_code == 1 | trade_flow_code == 2) %>%
-    tidyr::unite("commodity_code", c("commodity_code", "NO_SH2_POR"), sep = " - ") %>%
+    tidyr::unite("commodity_code", c("commodity_code", "no_sh2_por"), sep = " - ") %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),
                   trade_flow_code = dplyr::case_when(trade_flow_code == "1" ~ "Importa\u00e7\u00f5es",
                                                      trade_flow_code == "2" ~ "Exporta\u00e7\u00f5es")) %>%

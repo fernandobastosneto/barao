@@ -2,17 +2,17 @@
 % Please edit documentation in R/comerciobr_tabela_fatores.R
 \name{comerciobr_tabela_fatores}
 \alias{comerciobr_tabela_fatores}
-\title{Tabela de dados de comércio por níveis de agregação}
+\title{Tabela de dados de com\u00e9rcio por n\u00edveis de agrega\u00e7\u00e3o}
 \usage{
 comerciobr_tabela_fatores(pais, periodo, fator)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 
 \item{fator}{"isic", "fator", "cgce" ou "cuci"}
 }
 \description{
-Tabela de dados de comércio por níveis de agregação
+Tabela de dados de com\u00e9rcio por n\u00edveis de agrega\u00e7\u00e3o
 }

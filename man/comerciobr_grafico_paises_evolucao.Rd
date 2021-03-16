@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_grafico_paises_evolucao.R
 \name{comerciobr_grafico_paises_evolucao}
 \alias{comerciobr_grafico_paises_evolucao}
-\title{Gráfico de evolução do fluxo de comércio de um país com o Brasil, comparado com países semelhantes}
+\title{Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com o Brasil, comparado com pa\u00edses semelhantes}
 \usage{
 comerciobr_grafico_paises_evolucao(pais, periodo)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Gráfico de evolução do fluxo de comércio de um país com o Brasil, comparado com países semelhantes
+Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com o Brasil, comparado com pa\u00edses semelhantes
 }

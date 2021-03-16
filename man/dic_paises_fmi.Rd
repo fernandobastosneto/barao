@@ -3,7 +3,7 @@
 \docType{data}
 \name{dic_paises_fmi}
 \alias{dic_paises_fmi}
-\title{Dicionário de Países - MEcon/FMI}
+\title{Dicion\u00e1rio de Pa\u00edses - MEcon/FMI}
 \format{
 An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 239 rows and 2 columns.
 }
@@ -11,6 +11,6 @@ An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, 
 dic_paises_fmi
 }
 \description{
-Nomes dos países em inglês, na grafia do FMI e, em português, na grafia do Ministério da Economia.
+Nomes dos pa\u00edses em ingl\u00eas, na grafia do FMI e, em portugu\u00eas, na grafia do Minist\u00e9rio da Economia.
 }
 \keyword{datasets}

@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_produtos_ranking.R
 \name{comerciomundo_grafico_produtos_ranking}
 \alias{comerciomundo_grafico_produtos_ranking}
-\title{Gráfico dos principais produtos comercializados por um país no último ano disponível}
+\title{Gr\u00e1fico dos principais produtos comercializados por um pa\u00eds no \u00faltimo ano dispon\u00edvel}
 \usage{
 comerciomundo_grafico_produtos_ranking(pais)
 }
 \arguments{
-\item{pais}{um país}
+\item{pais}{um pa\u00eds}
 }
 \description{
-Gráfico dos principais produtos comercializados por um país no último ano disponível
+Gr\u00e1fico dos principais produtos comercializados por um pa\u00eds no \u00faltimo ano dispon\u00edvel
 }

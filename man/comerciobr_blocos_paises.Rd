@@ -2,7 +2,7 @@
 % Please edit documentation in R/comerciobr_blocos_paises.R
 \name{comerciobr_blocos_paises}
 \alias{comerciobr_blocos_paises}
-\title{Lista de países a partir de um bloco}
+\title{Lista de pa\u00edses a partir de um bloco}
 \usage{
 comerciobr_blocos_paises(bloco)
 }
@@ -10,8 +10,8 @@ comerciobr_blocos_paises(bloco)
 \item{bloco}{o nome de um bloco, de acordo com a base dic_blocos do pacote "comerciobr"}
 }
 \value{
-lista de países associados a determinado bloco
+lista de pa\u00edses associados a determinado bloco
 }
 \description{
-Lista de países a partir de um bloco
+Lista de pa\u00edses a partir de um bloco
 }
