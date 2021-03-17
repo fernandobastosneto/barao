@@ -43,7 +43,6 @@ graphics: yes
 ```{r setup, include = F}
 library(barao)
 library(kableExtra)
-library(tidyverse)
 periodo <- "anual"
 
 knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
