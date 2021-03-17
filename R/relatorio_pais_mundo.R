@@ -12,7 +12,6 @@ relatorio_pais_mundo <- function(pais) {
                     ),
                     # intermediates_dir = here"temp",
                     # output_dir = here::here(),
-                    output_file = paste0("comerciomundo_", pais, "_",
-                                         barao::comerciobr_get_ulimoano(), "_",
-                                         barao::meses(barao::comerciobr_get_ultimomes())))
+                    output_dir = here::here("data/relatorios_comerciomundo"),
+                    output_file = paste0("comerciomundo_", pais))
 }
