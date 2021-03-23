@@ -1,9 +1,9 @@
-#' Dados de fluxo de com\u00e9rcio bilateral entre Brasil e um determinado pa\u00eds
+#' Dados de fluxo de comércio bilateral entre Brasil e um determinado país
 #'
-#' @param pais um pa\u00eds
+#' @param pais um países
 #' @param periodo "anual" ou "mensal"
 #'
-#' @return tibble com dados de com\u00e9rcio bilateral de 2010 em diante.
+#' @return tibble com dados de comércio bilateral de 2010 em diante.
 #'
 #' @export
 comerciobr_dados_corrente <- function(pais, periodo) {

@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_dados_corrente.R
 \name{comerciomundo_dados_corrente}
 \alias{comerciomundo_dados_corrente}
-\title{Dados de fluxo de com\u00e9rcio bilateral entre o pa\u00eds alvo e o mundo}
+\title{Dados de fluxo de comércio bilateral entre o países alvo e o mundo}
 \usage{
 comerciomundo_dados_corrente(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um países}
 }
 \description{
-Dados de fluxo de com\u00e9rcio bilateral entre o pa\u00eds alvo e o mundo
+Dados de fluxo de comércio bilateral entre o países alvo e o mundo
 }

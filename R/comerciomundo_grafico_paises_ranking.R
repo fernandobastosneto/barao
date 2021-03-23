@@ -1,6 +1,6 @@
-#' Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus 10 principais parceiros
+#' Gráfico de comparação do fluxo de comércio de um país com seus 10 principais parceiros
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

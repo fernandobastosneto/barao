@@ -1,8 +1,8 @@
-#' Tabela de Corrente de Com\u00e9rcio
+#' Tabela de Corrente de Comércio
 #'
 #' em formato latex.
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

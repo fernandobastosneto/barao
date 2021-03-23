@@ -1,6 +1,6 @@
-#' Dados de fluxo de com\u00e9rcio bilateral entre o pa\u00eds alvo e o mundo
+#' Dados de fluxo de comércio bilateral entre o países alvo e o mundo
 #'
-#' @param pais um pa\u00eds
+#' @param pais um países
 #'
 #' @export
 

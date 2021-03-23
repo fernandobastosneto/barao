@@ -1,8 +1,8 @@
-#' Gr\u00e1fico de Fluxo de Com\u00e9rcio Brasil-pa\u00eds
+#' Gráfico de Fluxo de Comércio Brasil-país
 #'
-#' Com base na fun\u00e7\u00e3o \code{comerciobr_dados_corrente}.
+#' Com base na função \code{comerciobr_dados_corrente}.
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

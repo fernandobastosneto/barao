@@ -2,13 +2,13 @@
 % Please edit documentation in R/relatorio_brasil_pais.R
 \name{relatorio_brasil_pais}
 \alias{relatorio_brasil_pais}
-\title{Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais Brasil-pa\u00eds}
+\title{Relatório de relações bilaterais comerciais Brasil-país}
 \usage{
 relatorio_brasil_pais(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais Brasil-pa\u00eds
+Relatório de relações bilaterais comerciais Brasil-país
 }

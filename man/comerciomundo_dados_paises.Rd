@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_dados_paises.R
 \name{comerciomundo_dados_paises}
 \alias{comerciomundo_dados_paises}
-\title{Dados de com\u00e9rcio um pa\u00eds com todos os demais}
+\title{Dados de comércio de um país com todos os demais}
 \usage{
 comerciomundo_dados_paises(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Dados de com\u00e9rcio um pa\u00eds com todos os demais
+Dados de comércio de um país com todos os demais
 }

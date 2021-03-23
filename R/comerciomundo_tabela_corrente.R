@@ -1,8 +1,8 @@
-#' Tabela de Corrente de Com\u00e9rcio pa\u00eds-mundo
+#' Tabela de Corrente de Comércio país-mundo
 #'
 #' em formato latex.
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

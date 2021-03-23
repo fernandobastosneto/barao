@@ -1,6 +1,7 @@
-#' Gr\u00e1fico de compara\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com o Brasil, em rela\u00e7\u00e3o a pa\u00edses semelhantes
+#' Gráfico de comparação do fluxo de comércio de um país com o Brasil,
+#' em relação a países semelhantes
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

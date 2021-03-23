@@ -2,18 +2,18 @@
 % Please edit documentation in R/comerciobr_dados_corrente.R
 \name{comerciobr_dados_corrente}
 \alias{comerciobr_dados_corrente}
-\title{Dados de fluxo de com\u00e9rcio bilateral entre Brasil e um determinado pa\u00eds}
+\title{Dados de fluxo de comércio bilateral entre Brasil e um determinado país}
 \usage{
 comerciobr_dados_corrente(pais, periodo)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um países}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \value{
-tibble com dados de com\u00e9rcio bilateral de 2010 em diante.
+tibble com dados de comércio bilateral de 2010 em diante.
 }
 \description{
-Dados de fluxo de com\u00e9rcio bilateral entre Brasil e um determinado pa\u00eds
+Dados de fluxo de comércio bilateral entre Brasil e um determinado país
 }

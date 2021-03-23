@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_report_pais.R
 \name{comerciomundo_report_pais}
 \alias{comerciomundo_report_pais}
-\title{Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais pa\u00eds-mundo}
+\title{Relatório de relações bilaterais comerciais país-mundo}
 \usage{
 comerciomundo_report_pais(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais pa\u00eds-mundo
+Relatório de relações bilaterais comerciais país-mundo
 }

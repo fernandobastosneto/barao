@@ -1,6 +1,6 @@
-#' Gr\u00e1fico de Composi\u00e7\u00e3o de Com\u00e9rcio por Agrega\u00e7\u00e3o
+#' Gráfico de Composição de Comércio por Agregação
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #' @param fator "isic", "fator", "cgce", "cuci"
 #'

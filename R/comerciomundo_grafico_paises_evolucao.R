@@ -1,6 +1,6 @@
-#' Gr\u00e1fico de evolu\u00e7\u00e3o do fluxo de com\u00e9rcio de um pa\u00eds com seus cinco principais parceiros
+#' Gráfico de evolução do fluxo de comércio de um país com seus cinco principais parceiros
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

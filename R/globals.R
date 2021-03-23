@@ -1,7 +1,8 @@
 #' @importFrom rlang .data
 #' @importFrom stats setNames
+#' @import utils
 
-globalVariables(c(".",
+utils::globalVariables(c(".",
                   "where",
                   names(c(
                         comerciobr::cgce_df,

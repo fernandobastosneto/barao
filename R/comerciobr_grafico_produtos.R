@@ -1,6 +1,6 @@
-#' Gr\u00e1fico dos cinco principais produtos comercializados do Brasil com um pa\u00eds
+#' Gráfico dos cinco principais produtos comercializados do Brasil com um país
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_dados_produtos.R
 \name{comerciobr_dados_produtos}
 \alias{comerciobr_dados_produtos}
-\title{Dados de principais produtos comercializados entre o Brasil e um determinado pa\u00eds}
+\title{Dados de principais produtos comercializados entre o Brasil e um determinado país}
 \usage{
 comerciobr_dados_produtos(pais, periodo)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Dados de principais produtos comercializados entre o Brasil e um determinado pa\u00eds
+Dados de principais produtos comercializados entre o Brasil e um determinado país
 }

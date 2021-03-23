@@ -1,6 +1,6 @@
-#' Fun\u00e7\u00e3o que devolve meses em portugu\u00eas
+#' Função que devolve meses em português
 #'
-#' @param num n\u00famero de um m\u00eas
+#' @param num número de um meses
 #'
 #' @export
 meses <- function(num) {

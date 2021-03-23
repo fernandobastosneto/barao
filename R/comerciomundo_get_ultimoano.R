@@ -1,8 +1,8 @@
-#' \u00daltimo ano da base de dados
+#' Último ano da base de dados
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
-#' @return o \u00faltimo ano dispon\u00edvel na base de dados "comerciomundo"
+#' @return o último ano disponível na base de dados "comerciomundo"
 #'
 #' @export
 

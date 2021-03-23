@@ -1,6 +1,6 @@
-#' Tabela de dados de com\u00e9rcio por n\u00edveis de agrega\u00e7\u00e3o
+#' Tabela de dados de comércio por níveis de agregação
 #'
-#' @param pais um pa\u00eds
+#' @param pais um países
 #' @param periodo "anual" ou "mensal"
 #' @param fator "isic", "fator", "cgce" ou "cuci"
 #'

@@ -1,8 +1,8 @@
-#' Gr\u00e1fico de Fluxo de Com\u00e9rcio pa\u00eds-mundo
+#' Gráfico de Fluxo de Comércio país-mundo
 #'
-#' Com base na fun\u00e7\u00e3o \code{comerciomundo_dados_corrente}.
+#' Com base na função \code{comerciomundo_dados_corrente}.
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

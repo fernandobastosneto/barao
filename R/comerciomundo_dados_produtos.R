@@ -1,6 +1,6 @@
-#' Dados dos principais produtos comercializados de um pa\u00eds com o mundo
+#' Dados dos principais produtos comercializados de um país com o mundo
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

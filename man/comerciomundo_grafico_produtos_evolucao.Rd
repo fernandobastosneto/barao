@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_produtos_evolucao.R
 \name{comerciomundo_grafico_produtos_evolucao}
 \alias{comerciomundo_grafico_produtos_evolucao}
-\title{Gr\u00e1fico da evolu\u00e7\u00e3o dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel}
+\title{Gráfico da evolução dos principais produtos comercializados por um país com o mundo no último ano disponível}
 \usage{
 comerciomundo_grafico_produtos_evolucao(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Gr\u00e1fico da evolu\u00e7\u00e3o dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel
+Gráfico da evolução dos principais produtos comercializados por um país com o mundo no último ano disponível
 }

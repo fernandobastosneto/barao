@@ -2,13 +2,13 @@
 % Please edit documentation in R/comerciomundo_grafico_corrente.R
 \name{comerciomundo_grafico_corrente}
 \alias{comerciomundo_grafico_corrente}
-\title{Gr\u00e1fico de Fluxo de Com\u00e9rcio pa\u00eds-mundo}
+\title{Gráfico de Fluxo de Comércio país-mundo}
 \usage{
 comerciomundo_grafico_corrente(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Com base na fun\u00e7\u00e3o \code{comerciomundo_dados_corrente}.
+Com base na função \code{comerciomundo_dados_corrente}.
 }

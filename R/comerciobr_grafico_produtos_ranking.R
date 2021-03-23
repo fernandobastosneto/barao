@@ -1,6 +1,6 @@
-#' Gr\u00e1fico de evolu\u00e7\u00e3o dos produtos comercializados do Brasil com um determinado pa\u00eds
+#' Gráfico de evolução dos produtos comercializados do Brasil com um determinado país
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export

@@ -2,16 +2,16 @@
 % Please edit documentation in R/comerciobr_dados_paises.R
 \name{comerciobr_dados_paises}
 \alias{comerciobr_dados_paises}
-\title{Dados de com\u00e9rcio bilateral de um pa\u00eds em rela\u00e7\u00e3o a seus semelhantes}
+\title{Dados de comércio bilateral de um país em relação a seus semelhantes}
 \usage{
 comerciobr_dados_paises(pais, periodo)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Dados de com\u00e9rcio do Brasil com um determinado pa\u00eds, comparado com pa\u00edses
-em condi\u00e7\u00f5es semelhantes (selecionados pelo ranking).
+Dados de comércio do Brasil com um determinado país, comparado com países
+em condições semelhantes (selecionados pelo ranking).
 }

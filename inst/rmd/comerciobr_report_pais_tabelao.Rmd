@@ -1,0 +1,48 @@
+---
+title: "Brasil-`r pais`, Dados Comerciais"
+author: "Divisão de Promoção da Indústria"
+date: "Dados até `r barao::comerciobr_get_ulimoano()-1`"
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    toc: no
+    toc_depth: 3
+    number_sections: yes
+organization: Ministério das Relações Exteriores
+toc-title: Índice
+geometry: margin=0.5in
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{booktabs}
+- \usepackage{lscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \usepackage{longtable}
+- \usepackage{graphicx}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+tables: yes
+graphics: yes
+---
+
+\newpage
+
+\blandscape
+
+```{r, echo = F, warning = F, message=FALSE}
+barao::comerciobr_tabelao_corrente(pais, "anual")
+```
+
+```{r, echo = F, warning = F, message=FALSE}
+barao::comerciobr_tabelao_produtos(pais, "anual")
+```
+
+\elandscape

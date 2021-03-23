@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_grafico_produtos_proporcao.R
 \name{comerciobr_grafico_produtos_proporcao}
 \alias{comerciobr_grafico_produtos_proporcao}
-\title{Gr\u00e1fico de propor\u00e7\u00e3o dos produtos comercializados do Brasil com um pa\u00eds}
+\title{Gráfico de proporção dos produtos comercializados do Brasil com um país}
 \usage{
 comerciobr_grafico_produtos_proporcao(pais, periodo)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Gr\u00e1fico de propor\u00e7\u00e3o dos produtos comercializados do Brasil com um pa\u00eds
+Gráfico de proporção dos produtos comercializados do Brasil com um país
 }

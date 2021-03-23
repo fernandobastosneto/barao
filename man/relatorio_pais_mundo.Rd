@@ -2,13 +2,14 @@
 % Please edit documentation in R/relatorio_pais_mundo.R
 \name{relatorio_pais_mundo}
 \alias{relatorio_pais_mundo}
-\title{Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais Pa\u00eds-Mundo}
+\title{Relatório de relações bilaterais comerciais País-Mundo}
 \usage{
 relatorio_pais_mundo(pais)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 }
 \description{
-Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais Pa\u00eds-Mundo
+O relatório deve ser usado em conjunto com o objeto "dic_comtrade_mdic",
+do pacote comerciomundo .
 }

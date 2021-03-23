@@ -2,10 +2,10 @@
 % Please edit documentation in R/comerciobr_get_ultimomes.R
 \name{comerciobr_get_ultimomes}
 \alias{comerciobr_get_ultimomes}
-\title{\u00daltimo m\u00eas dispon\u00edvel do \u00faltimo ano dispon\u00edvel em comerciobr}
+\title{Último mês disponível do último ano disponível em comerciobr}
 \usage{
 comerciobr_get_ultimomes()
 }
 \description{
-\u00daltimo m\u00eas dispon\u00edvel do \u00faltimo ano dispon\u00edvel em comerciobr
+Último mês disponível do último ano disponível em comerciobr
 }

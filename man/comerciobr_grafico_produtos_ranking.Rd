@@ -2,15 +2,15 @@
 % Please edit documentation in R/comerciobr_grafico_produtos_ranking.R
 \name{comerciobr_grafico_produtos_ranking}
 \alias{comerciobr_grafico_produtos_ranking}
-\title{Gr\u00e1fico de evolu\u00e7\u00e3o dos produtos comercializados do Brasil com um determinado pa\u00eds}
+\title{Gráfico de evolução dos produtos comercializados do Brasil com um determinado país}
 \usage{
 comerciobr_grafico_produtos_ranking(pais, periodo)
 }
 \arguments{
-\item{pais}{um pa\u00eds}
+\item{pais}{um país}
 
 \item{periodo}{"anual" ou "mensal"}
 }
 \description{
-Gr\u00e1fico de evolu\u00e7\u00e3o dos produtos comercializados do Brasil com um determinado pa\u00eds
+Gráfico de evolução dos produtos comercializados do Brasil com um determinado país
 }

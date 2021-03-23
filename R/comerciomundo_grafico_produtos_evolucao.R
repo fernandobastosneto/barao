@@ -1,6 +1,6 @@
-#' Gr\u00e1fico da evolu\u00e7\u00e3o dos principais produtos comercializados por um pa\u00eds com o mundo no \u00faltimo ano dispon\u00edvel
+#' Gráfico da evolução dos principais produtos comercializados por um país com o mundo no último ano disponível
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

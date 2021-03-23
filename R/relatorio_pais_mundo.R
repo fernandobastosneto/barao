@@ -1,9 +1,9 @@
-#' Relat\u00f3rio de rela\u00e7\u00f5es bilaterais comerciais Pa\u00eds-Mundo
+#' Relatório de relações bilaterais comerciais País-Mundo
 #'
 #' O relatório deve ser usado em conjunto com o objeto "dic_comtrade_mdic",
 #' do pacote comerciomundo .
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #'
 #' @export
 

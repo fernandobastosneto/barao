@@ -1,6 +1,6 @@
 #' Tabela de fluxo comercial por produtos
 #'
-#' @param pais um pa\u00eds
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
