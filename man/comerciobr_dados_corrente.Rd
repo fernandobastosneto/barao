@@ -7,7 +7,7 @@
 comerciobr_dados_corrente(pais, periodo)
 }
 \arguments{
-\item{pais}{um países}
+\item{pais}{um país}
 
 \item{periodo}{"anual" ou "mensal"}
 }
