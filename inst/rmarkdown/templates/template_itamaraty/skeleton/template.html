@@ -157,14 +157,14 @@ $endif$
 $if(subtitle)$
 <h1 class="subtitle"><span>$subtitle$</span></h1>
 $endif$
-$for(author)$
-$if(author.name)$
-<h2 class="author">$author.name$</h2>
-$if(author.affiliation)$
+$for(area)$
+$if(area.divisao)$
+<h2 class="author">area.divisao</h2>
+$if(area.departamento)$
 <address class="author-afil">
-$author.affiliation$<br/>$endif$
-$if(author.email)$
-<a class="author-email" href="mailto:#">$author.email$</a>
+area.departamento<br/>$endif$
+$if(area.secretaria)$
+<a class="author-email" href="mailto:#">area.secretaria</a>
 </address>
 $endif$
 $else$

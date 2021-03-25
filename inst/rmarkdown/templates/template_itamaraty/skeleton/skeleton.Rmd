@@ -1,8 +1,13 @@
 ---
 imagem: "![](logo-palacio.jpg){width=3in}"
 title: ""
-author: ""
-date: "`r paste0(barao::meses(barao::comerciobr_get_ultimomes()), ' de ', barao::comerciobr_get_ulimoano()"
+subtitle: ""
+shorttitle: ""
+area: 
+  divisao: ""
+  departamento: ""
+  secretaria: ""
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
   pagedown::html_paged:
     template: template.html
@@ -19,5 +24,4 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```
 
-## Adding an RMarkdown Template
-
+# Tema
