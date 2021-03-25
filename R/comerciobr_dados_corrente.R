@@ -1,6 +1,6 @@
 #' Dados de fluxo de comércio bilateral entre Brasil e um determinado país
 #'
-#' @param pais um países
+#' @param pais um país
 #' @param periodo "anual" ou "mensal"
 #'
 #' @return tibble com dados de comércio bilateral de 2010 em diante.

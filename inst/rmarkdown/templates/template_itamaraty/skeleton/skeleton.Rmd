@@ -1,0 +1,23 @@
+---
+imagem: "![](logo-palacio.jpg){width=3in}"
+title: ""
+author: ""
+date: "`r paste0(barao::meses(barao::comerciobr_get_ultimomes()), ' de ', barao::comerciobr_get_ulimoano()"
+output:
+  pagedown::html_paged:
+    template: template.html
+    toc: true
+    number_sections: true
+    css:
+      - tese.css
+toc-title: Índice
+paged-footnotes: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+## Adding an RMarkdown Template
+
