@@ -1,5 +1,6 @@
 #' Template de relatório para o Itamaraty
 #'
+#' @param file nome do arquivo a ser criado
 #' @export
 
 template_itamaraty <- function(file) {

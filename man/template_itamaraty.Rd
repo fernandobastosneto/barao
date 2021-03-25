@@ -6,6 +6,9 @@
 \usage{
 template_itamaraty(file)
 }
+\arguments{
+\item{file}{nome do arquivo a ser criado}
+}
 \description{
 Template de relatório para o Itamaraty
 }
