@@ -9,7 +9,8 @@ area:
   secretaria: ""
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
-  pagedown::html_paged:
+  # pagedown::html_paged:
+  barao::template_itamaraty:
     template: template.html
     toc: true
     number_sections: true
