@@ -1,4 +1,4 @@
-name: Template Itamaraty
+name: template_itamaraty
 description: >
    template para subsídios do itamaraty
-create_dir: FALSE
+create_dir: TRUE
