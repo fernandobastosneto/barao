@@ -159,12 +159,12 @@ $if(subtitle)$
 $endif$
 $for(area)$
 $if(area.divisao)$
-<h2 class="author">area.divisao</h2>
+<h2 class="author">$area.divisao$</h2>
 $if(area.departamento)$
 <address class="author-afil">
-area.departamento<br/>$endif$
+$area.departamento$<br/>$endif$
 $if(area.secretaria)$
-<a class="author-email" href="mailto:#">area.secretaria</a>
+<a class="author-email" href="mailto:#">$area.secretaria$</a>
 </address>
 $endif$
 $else$
