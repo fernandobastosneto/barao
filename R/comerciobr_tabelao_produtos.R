@@ -61,7 +61,7 @@ comerciobr_tabelao_produtos <- function(pais, periodo) {
                     "C\u00f3digo SH4", "Produto SH4", "Importa\u00e7\u00f5es")) %>%
     kableExtra::kable_styling(latex_options = c("striped", "scale_down", "hold_position"),
                               font_size = 13) %>%
-    kableExtra::add_header_above(c(" ", "Exporta\u00e7\u00f5es" = 3, "Importa\u00e7\u00f5es" = 3), bold = TRUE) %>%
+    kableExtra::add_header_above(c(" ", "Exportacoes" = 3, "Importacoes" = 3), bold = TRUE) %>%
     kableExtra::add_header_above(frase, bold = TRUE) %>%
     kableExtra::collapse_rows(columns = 1, latex_hline = "major") %>%
     kableExtra::column_spec(3, width = "23em") %>%
