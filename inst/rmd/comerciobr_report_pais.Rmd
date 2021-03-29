@@ -54,7 +54,7 @@ knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
 
 ## Fluxo de Comércio
 
-```{r, fig.height=6}
+```{r, fig.height=5}
 barao::comerciobr_grafico_corrente(pais, periodo)
 ```
 
@@ -160,7 +160,7 @@ periodo <- "mensal"
 
 ## Fluxo de Comércio
 
-```{r, fig.height=6}
+```{r, fig.height=5}
 barao::comerciobr_grafico_corrente(pais, periodo)
 ```
 
