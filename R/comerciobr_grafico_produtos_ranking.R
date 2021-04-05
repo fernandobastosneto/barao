@@ -27,9 +27,9 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
   else {
     df <- comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup() %>%
-      dplyr::filter(co_ano <= max(co_ano)-1)
+      dplyr::filter(co_ano <= max(co_ano))
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano())
 
   }
 

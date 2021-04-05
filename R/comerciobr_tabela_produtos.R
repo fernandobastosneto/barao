@@ -19,7 +19,7 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     frase <- paste0("Dados Anuais")
     df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup() %>%
-      dplyr::filter(co_ano <= max(co_ano)-1)
+      dplyr::filter(co_ano <= max(co_ano))
 
   }
 
