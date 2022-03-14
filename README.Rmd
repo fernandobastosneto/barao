@@ -36,7 +36,7 @@ O pacote barão busca agregar, em um único lugar, um conjunto de dados e funç�
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fernandobastosneto/barao")
+devtools::install_github("NIEscaec/barao")
 ```
 
 ## Funcionalidades
