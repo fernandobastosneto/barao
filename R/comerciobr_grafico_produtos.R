@@ -22,13 +22,13 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
   if (periodo == "anual") {
     df <- df %>%
       dplyr::filter(co_ano == max(co_ano)-1)
-    frase <- paste0(barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0(barao2::comerciobr_get_ulimoano()-1)
   }
 
   else {
     df <- df %>%
       dplyr::filter(co_ano == max(co_ano))
-    frase <- paste0(barao::comerciobr_get_ulimoano()," at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao2::comerciobr_get_ulimoano()," at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
   }
 
   ano <- df %>%
