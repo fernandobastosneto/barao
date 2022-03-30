@@ -6,8 +6,8 @@
 
 comerciomundo_dados_corrente <- function(pais) {
 
-  comerciomundo::comtrade %>%
-    dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
+  comerciomundo2::comtrade %>%
+    dplyr::filter(reporter_code == barao2::get_pais(pais, "comtrade")) %>%
     dplyr::filter(partner_code == 0) %>%
     dplyr::group_by(year, trade_flow_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
