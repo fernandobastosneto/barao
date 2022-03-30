@@ -8,7 +8,7 @@
 #' @export
 comerciobr_dados_corrente <- function(pais, periodo) {
 
-  df <- comerciobr::sh1_df %>%
+  df <- comerciobr2::sh1_df %>%
     dplyr::filter(no_pais %in% pais)
 
   if (periodo == "anual") {
