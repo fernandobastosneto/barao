@@ -20,7 +20,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     df <- comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup()
 
-    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
@@ -29,7 +29,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano))
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano())
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano())
 
   }
 
