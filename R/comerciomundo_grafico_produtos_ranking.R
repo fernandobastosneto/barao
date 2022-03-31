@@ -9,13 +9,13 @@ comerciomundo_grafico_produtos_ranking <- function(pais) {
 
   nome_pais <- paste0(pais)
 
-  dic <- comerciobr::dic_sh6_sh2 %>%
+  dic <- comerciobr2::dic_sh6_sh2 %>%
     dplyr::rename(commodity_code = co_sh2) %>%
     dplyr::select(-co_sh6) %>%
     dplyr::distinct() %>%
     dplyr::filter(stringr::str_length(commodity_code) < 3)
 
-  df <- barao::comerciomundo_dados_produtos(pais) %>%
+  df <- barao2::comerciomundo_dados_produtos(pais) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::group_by(commodity_code, trade_flow_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
