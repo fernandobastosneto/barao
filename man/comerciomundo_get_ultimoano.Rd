@@ -10,7 +10,7 @@ comerciomundo_get_ultimoano(pais)
 \item{pais}{um país}
 }
 \value{
-o último ano disponível na base de dados "comerciomundo"
+o último ano disponível na base de dados "comerciomundo2"
 }
 \description{
 Último ano da base de dados
