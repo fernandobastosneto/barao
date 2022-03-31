@@ -1,6 +1,6 @@
 test_that("dados de produtos exportados estão corretos", {
 
-  ano_final <- barao::comerciobr_get_ulimoano()-1
+  ano_final <- barao2::comerciobr_get_ulimoano()-1
   ano_inicial <- ano_final
 
   result <- paste0("http://api.comexstat.mdic.gov.br/general?filter=%7B%22yearStart%22:%22", ano_inicial,
@@ -19,7 +19,7 @@ test_that("dados de produtos exportados estão corretos", {
     dplyr::filter(vlFob == max(vlFob)) %>%
     dplyr::pull(vlFob)
 
-  expectativa <- barao::comerciobr_dados_produtos("Estados Unidos", "anual") %>%
+  expectativa <- barao2::comerciobr_dados_produtos("Estados Unidos", "anual") %>%
     dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::filter(path == "EXP") %>%
