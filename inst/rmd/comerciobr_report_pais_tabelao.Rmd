@@ -1,7 +1,7 @@
 ---
 title: "Brasil-`r pais`, Dados Comerciais"
 author: "Divisão de Promoção da Indústria"
-date: "Dados até `r barao::comerciobr_get_ulimoano()-1`"
+date: "Dados até `r barao2::comerciobr_get_ulimoano()-1`"
 output:
   pdf_document:
     latex_engine: pdflatex
@@ -38,11 +38,11 @@ graphics: yes
 \blandscape
 
 ```{r, echo = F, warning = F, message=FALSE}
-barao::comerciobr_tabelao_corrente(pais, "anual")
+barao2::comerciobr_tabelao_corrente(pais, "anual")
 ```
 
 ```{r, echo = F, warning = F, message=FALSE}
-barao::comerciobr_tabelao_produtos(pais, "anual")
+barao2::comerciobr_tabelao_produtos(pais, "anual")
 ```
 
 \elandscape
