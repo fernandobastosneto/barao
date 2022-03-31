@@ -10,7 +10,7 @@
 relatorio_pais_mundo <- function(pais) {
 
   pais_port <- comerciomundo2::dic_comtrade_mdic %>%
-    dplyr::filter(id == barao::get_pais(pais, "comtrade")) %>%
+    dplyr::filter(id == barao2::get_pais(pais, "comtrade")) %>%
     dplyr::pull(no_pais)
 
   rmarkdown::render(system.file("rmd", "comerciomundo_report_pais.Rmd", package = "barao2"),
