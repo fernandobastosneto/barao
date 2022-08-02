@@ -13,6 +13,6 @@ relatorio_barao <- function(pais) {
                     # intermediates_dir = "temp",
                     output_dir = here::here(),
                     output_file = paste0("comerciobr_", pais, "_",
-                                         barao2::comerciobr_get_ulimoano(), "_",
+                                         barao2::comerciobr_get_ultimoano(), "_",
                                          barao2::meses(barao2::comerciobr_get_ultimomes())))
 }
