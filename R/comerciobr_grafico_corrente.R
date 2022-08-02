@@ -25,7 +25,7 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
 
   else {
 
-    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ultimoano()-1)
 
   }
 
