@@ -1,7 +1,7 @@
 ---
 title: "Brasil-`r pais`, Dados Comerciais"
 author: ""
-date: "Últimos dados disponíveis: `r barao2::meses(barao2::comerciobr_get_ultimomes())` de `r barao2::comerciobr_get_ulimoano()`"
+date: "Últimos dados disponíveis: `r barao::meses(barao::comerciobr_get_ultimomes())` de `r barao::comerciobr_get_ulimoano()`"
 output:
   pdf_document:
     latex_engine: lualatex
@@ -41,7 +41,7 @@ graphics: yes
 - Exceto disposição em contrário, todos os dados estão em USD Bilhões
 
 ```{r setup, include = F}
-library(barao2)
+library(barao)
 library(kableExtra)
 periodo <- "anual"
 
@@ -55,7 +55,7 @@ knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
 ## Fluxo de Comércio
 
 ```{r, fig.height=5}
-barao2::comerciobr_grafico_corrente(pais, periodo)
+barao::comerciobr_grafico_corrente(pais, periodo)
 ```
 
 ```{r, results='asis'}
@@ -67,11 +67,11 @@ purrr::walk(comerciobr_tabela_corrente(pais, periodo), print)
 ## Destinos de exportações e origens de importações
 
 ```{r, fig.height=4}
-barao2::comerciobr_grafico_paises(pais, periodo)
+barao::comerciobr_grafico_paises(pais, periodo)
 ```
 
 ```{r, fig.height=4}
-barao2::comerciobr_grafico_paises_proporcao(pais, periodo)
+barao::comerciobr_grafico_paises_proporcao(pais, periodo)
 ```
 
 \newpage
@@ -79,7 +79,7 @@ barao2::comerciobr_grafico_paises_proporcao(pais, periodo)
 \blandscape
 
 ```{r, fig.width=10, fig.height=7}
-barao2::comerciobr_grafico_paises_evolucao(pais, periodo)
+barao::comerciobr_grafico_paises_evolucao(pais, periodo)
 ```
 
 \elandscape
@@ -87,7 +87,7 @@ barao2::comerciobr_grafico_paises_evolucao(pais, periodo)
 \newpage
 
 ```{r, fig.height=10, results = "asis"}
-barao2::comerciobr_tabela_paises(pais, periodo)
+barao::comerciobr_tabela_paises(pais, periodo)
 ```
 
 \newpage
@@ -95,17 +95,17 @@ barao2::comerciobr_tabela_paises(pais, periodo)
 ## Produtos comercializados
 
 ```{r, fig.height=4.3}
-barao2::comerciobr_grafico_produtos(pais, periodo)
+barao::comerciobr_grafico_produtos(pais, periodo)
 ```
 
 ```{r, fig.height=4.3}
-barao2::comerciobr_grafico_produtos_proporcao(pais, periodo)
+barao::comerciobr_grafico_produtos_proporcao(pais, periodo)
 ```
 
 \blandscape
 
 ```{r, fig.height=7, fig.width=10}
-barao2::comerciobr_grafico_produtos_ranking(pais, periodo)
+barao::comerciobr_grafico_produtos_ranking(pais, periodo)
 ```
 
 \elandscape
@@ -113,7 +113,7 @@ barao2::comerciobr_grafico_produtos_ranking(pais, periodo)
 \newpage
 
 ```{r, fig.show="hold", results = "asis"}
-barao2::comerciobr_tabela_produtos(pais, periodo)
+barao::comerciobr_tabela_produtos(pais, periodo)
 ```
 
 \newpage
@@ -121,34 +121,54 @@ barao2::comerciobr_tabela_produtos(pais, periodo)
 ## Classificações do Comércio
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "isic")
+barao::comerciobr_grafico_fatores(pais, periodo, "isic")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "fator")
+barao::comerciobr_grafico_fatores(pais, periodo, "fator")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "cgce")
+barao::comerciobr_grafico_fatores(pais, periodo, "cgce")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "cuci")
+barao::comerciobr_grafico_fatores(pais, periodo, "cuci")
 
 ```
 
 \newpage
 
 ```{r, fig.show='asis', out.width="50%"}
-barao2::comerciobr_tabela_fatores(pais, periodo, "isic")
+barao::comerciobr_tabela_fatores(pais, periodo, "isic")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "fator")
+barao::comerciobr_tabela_fatores(pais, periodo, "fator")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "cgce")
+barao::comerciobr_tabela_fatores(pais, periodo, "cgce")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "cuci")
+barao::comerciobr_tabela_fatores(pais, periodo, "cuci")
 
 ```
+
+\newpage
+
+```{r, fig.height=3.5}
+barao::comerciobr_grafico_concentracao_intraindustria(periodo, pais)
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabelas_comercio(pais, periodo), print)
+```
+
+### Índice Herfindahl–Hirschman (HH) -- Concentração comercial
+
+*Obs: 1 = monopólio / 0 = concorrência perfeita*
+
+### Índice de Grubel-Lloyd (GG) -- Comércio Intraindustrial
+
+*Obs: índices maiores indicam maior atividade*
+
+
 
 \newpage
 
@@ -161,7 +181,7 @@ periodo <- "mensal"
 ## Fluxo de Comércio
 
 ```{r, fig.height=5}
-barao2::comerciobr_grafico_corrente(pais, periodo)
+barao::comerciobr_grafico_corrente(pais, periodo)
 ```
 
 ```{r, results='asis'}
@@ -173,11 +193,11 @@ purrr::walk(comerciobr_tabela_corrente(pais, periodo), print)
 ## Destinos de Exportações e Origens de Importações
 
 ```{r, fig.height=4}
-barao2::comerciobr_grafico_paises(pais, periodo)
+barao::comerciobr_grafico_paises(pais, periodo)
 ```
 
 ```{r, fig.height=4}
-barao2::comerciobr_grafico_paises_proporcao(pais, periodo)
+barao::comerciobr_grafico_paises_proporcao(pais, periodo)
 ```
 
 \newpage
@@ -185,7 +205,7 @@ barao2::comerciobr_grafico_paises_proporcao(pais, periodo)
 \blandscape
 
 ```{r, fig.width=10, fig.height=7}
-barao2::comerciobr_grafico_paises_evolucao(pais, periodo)
+barao::comerciobr_grafico_paises_evolucao(pais, periodo)
 ```
 
 \elandscape
@@ -193,7 +213,7 @@ barao2::comerciobr_grafico_paises_evolucao(pais, periodo)
 \newpage
 
 ```{r, fig.height=10, results = "asis"}
-barao2::comerciobr_tabela_paises(pais, periodo)
+barao::comerciobr_tabela_paises(pais, periodo)
 ```
 
 \newpage
@@ -201,17 +221,17 @@ barao2::comerciobr_tabela_paises(pais, periodo)
 ## Produtos comercializados
 
 ```{r, fig.height=4.3}
-barao2::comerciobr_grafico_produtos(pais, periodo)
+barao::comerciobr_grafico_produtos(pais, periodo)
 ```
 
 ```{r, fig.height=4.3}
-barao2::comerciobr_grafico_produtos_proporcao(pais, periodo)
+barao::comerciobr_grafico_produtos_proporcao(pais, periodo)
 ```
 
 \blandscape
 
 ```{r, fig.height=7, fig.width=10}
-barao2::comerciobr_grafico_produtos_ranking(pais, periodo)
+barao::comerciobr_grafico_produtos_ranking(pais, periodo)
 ```
 
 \elandscape
@@ -219,7 +239,7 @@ barao2::comerciobr_grafico_produtos_ranking(pais, periodo)
 \newpage
 
 ```{r, fig.show="hold", results = "asis"}
-barao2::comerciobr_tabela_produtos(pais, periodo)
+barao::comerciobr_tabela_produtos(pais, periodo)
 ```
 
 \newpage
@@ -227,33 +247,49 @@ barao2::comerciobr_tabela_produtos(pais, periodo)
 ## Classificações do Comércio
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "isic")
+barao::comerciobr_grafico_fatores(pais, periodo, "isic")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "fator")
+barao::comerciobr_grafico_fatores(pais, periodo, "fator")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "cgce")
+barao::comerciobr_grafico_fatores(pais, periodo, "cgce")
 ```
 
 ```{r, fig.height=2.1}
-barao2::comerciobr_grafico_fatores(pais, periodo, "cuci")
+barao::comerciobr_grafico_fatores(pais, periodo, "cuci")
 
 ```
 
 \newpage
 
 ```{r, fig.show='asis', out.width="50%"}
-barao2::comerciobr_tabela_fatores(pais, periodo, "isic")
+barao::comerciobr_tabela_fatores(pais, periodo, "isic")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "fator")
+barao::comerciobr_tabela_fatores(pais, periodo, "fator")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "cgce")
+barao::comerciobr_tabela_fatores(pais, periodo, "cgce")
 
-barao2::comerciobr_tabela_fatores(pais, periodo, "cuci")
+barao::comerciobr_tabela_fatores(pais, periodo, "cuci")
 
 ```
 
+\newpage
+
+```{r, fig.height=3.5}
+barao::comerciobr_grafico_concentracao_intraindustria(periodo, pais)
+```
+```{r, results='asis'}
+purrr::walk(comerciobr_tabelas_comercio(pais, periodo), print)
+```
+
+### Índice Herfindahl–Hirschman (HH) -- Concentração comercial
+
+*Obs: 1 = monopólio / 0 = concorrência perfeita*
+
+### Índice de Grubel-Lloyd (GG) -- Comércio Intraindustrial
+
+*Obs: índices maiores indicam maior atividade*
 
