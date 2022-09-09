@@ -28,7 +28,7 @@ comerciobr_dados_intraindustria <- function(pais, periodo) {
       group_by(co_ano) %>%
       summarise(indiceGL = 1 - (sum(modulo+1e-10)/sum(soma+1e-10)),
                 media_ponderada = soma/sum(EXP+IMP),
-                indiceGL_ponderado = media_ponderada * indiceGL *100) %>%
+                indiceGL_ponderado = media_ponderada * indiceGL) %>%
       group_by(co_ano) %>%
       summarise(indiceGL_ponderado = sum(indiceGL_ponderado))%>%
       arrange(desc(co_ano))
@@ -53,7 +53,7 @@ comerciobr_dados_intraindustria <- function(pais, periodo) {
       group_by(co_ano) %>%
       summarise(indiceGL = 1 - (sum(modulo+1e-10)/sum(soma+1e-10)),
                 media_ponderada = soma/sum(EXP+IMP),
-                indiceGL_ponderado = media_ponderada * indiceGL *100) %>%
+                indiceGL_ponderado = media_ponderada * indiceGL) %>%
       group_by(co_ano) %>%
       summarise(indiceGL_ponderado = sum(indiceGL_ponderado))%>%
       arrange(desc(co_ano))

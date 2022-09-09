@@ -11,7 +11,11 @@ comerciobr_tabelas_comercio <- function(pais, periodo){
   if (periodo == "mensal") {
 
     frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
-    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo) %>%
+    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total") %>%
+      dplyr::ungroup()
+    dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
+      dplyr::ungroup()
+    dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
       dplyr::ungroup()
     dados_intraindustria <- barao::comerciobr_dados_intraindustria(pais, periodo) %>%
       dplyr::ungroup()
@@ -19,17 +23,25 @@ comerciobr_tabelas_comercio <- function(pais, periodo){
   }else {
 
     frase <- paste0("Dados Anuais")
-    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo) %>%
+    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total") %>%
+      dplyr::ungroup()
+    dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
+      dplyr::ungroup()
+    dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
       dplyr::ungroup()
     dados_intraindustria <- barao::comerciobr_dados_intraindustria(pais, periodo) %>%
       dplyr::ungroup()
   }
 
-  df.anual <- inner_join(dados_hh, dados_intraindustria ,by = "co_ano")
+  df.anual <- inner_join(dados_hh , dados_hh_exp ,by = "co_ano")
+  df.anual <- inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
+  df.anual <- inner_join(df.anual ,dados_intraindustria ,by = "co_ano")
+
   tabela<-as.data.frame(t(df.anual))
   colnames(tabela) <- tabela[1,]
   tabela <- tabela[-1, ]
-  rownames(tabela) <- c("Concentração comercial", "Comércio Intraindustrial")
+  rownames(tabela) <- c("Concentração comercial- Total","Concentração comercial- Exportação", "Concentração comercial- Importação", "Comércio Intraindustria")
+  options(OutDec= ",")
 
   tabela <- split(1:(ncol(tabela)), sort(rep_len(1:2, ncol(tabela)))) %>%
     purrr::map(~ dplyr::select(tabela, .)) %>%
