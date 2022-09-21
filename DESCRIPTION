@@ -28,12 +28,12 @@ Imports:
     ggthemes,
     glue,
     kableExtra,
-    comerciobr (>= 0.1.0),
+    comerciobr2 (>= 0.1.0),
     tidytext,
     treemap,
     ggrepel,
     jsonlite,
-    comerciomundo (>= 0.1.0),
+    comerciomundo2 (>= 0.1.0),
     tidyselect (>= 1.1.0),
     rmarkdown (>= 2.7),
     rlang,
@@ -44,8 +44,8 @@ Depends:
 URL: https://github.com/NIEscaec/barao2
 BugReports: https://github.com/NIEscaec/barao2/issues
 Remotes: 
-    NIEscaec/comerciobr,
-    NIEscaec/comerciomundo,
+    NIEscaec/comerciobr2,
+    NIEscaec/comerciomundo2,
     r-lib/tidyselect,
     rstudio/rmarkdown
 Suggests: 
