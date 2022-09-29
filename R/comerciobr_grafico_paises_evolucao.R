@@ -28,7 +28,7 @@ comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
   else {
     df <- barao2::comerciobr_dados_paises(pais, periodo) %>%
       dplyr::filter(co_ano <= max(co_ano)-1)
-    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ultimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
   }
 
   df %>%
