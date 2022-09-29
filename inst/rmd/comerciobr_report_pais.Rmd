@@ -41,7 +41,7 @@ graphics: yes
 - Exceto disposição em contrário, todos os dados estão em USD Bilhões
 
 ```{r setup, include = F}
-library(barao)
+library(barao2)
 library(kableExtra)
 periodo <- "anual"
 
