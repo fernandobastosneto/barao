@@ -7,7 +7,7 @@
 comerciobr_grafico_produtos <- function(pais, periodo) {
 
   if (length(pais) > 1) {
-    nome_pais <- get_bloco(pais).
+    nome_pais <- get_bloco(pais)
   }
 
   else {
