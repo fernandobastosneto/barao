@@ -3,7 +3,7 @@
 #' @return o último ano disponível na base de dados "comerciobr"
 #'
 #' @export
-comerciobr_get_ultimoano <- function() {
+comerciobr_get_ulimoano <- function() {
 
   comerciobr2::sh1_df %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
