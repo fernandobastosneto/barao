@@ -8,11 +8,11 @@
 comerciobr_tabela_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {
-    frase <- paste0(barao2::comerciobr_get_ultimoano(), ", agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    frase <- paste0(barao2::comerciobr_get_ulimoano(), ", agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
   }
 
   else {
-    frase <- paste0(barao2::comerciobr_get_ultimoano()-1)
+    frase <- paste0(barao2::comerciobr_get_ulimoano()-1)
   }
 
   if (fator == "cuci") {
