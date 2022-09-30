@@ -7,7 +7,7 @@
 comerciobr_get_ulimoano()
 }
 \value{
-o último ano disponível na base de dados "comerciobr2"
+o último ano disponível na base de dados "comerciobr"
 }
 \description{
 Último ano da base de dados

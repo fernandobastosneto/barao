@@ -11,5 +11,5 @@ relatorio_pais_mundo(pais)
 }
 \description{
 O relatório deve ser usado em conjunto com o objeto "dic_comtrade_mdic",
-do pacote comerciomundo2 .
+do pacote comerciomundo .
 }
