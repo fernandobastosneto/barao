@@ -37,7 +37,7 @@ comerciobr_dados_intraindustria <- function(pais, periodo) {
     dados_intraindustria <- comerciobr2::sh4_df %>%
       filter (no_pais == pais) %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
+      dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
       mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
       mutate(co_sh2 = as.numeric(co_sh2)) %>%
       mutate(fator = case_when(co_sh2 > 15 & co_sh2 < 68 ~ "Produto Industrializado",
