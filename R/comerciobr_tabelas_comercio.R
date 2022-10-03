@@ -10,26 +10,26 @@ comerciobr_tabelas_comercio <- function(pais, periodo){
 
   if (periodo == "mensal") {
 
-    frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
-    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total") %>%
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    dados_hh <- barao2::comerciobr_dados_concentracao(pais, periodo, "total") %>%
       dplyr::ungroup()
-    dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
+    dados_hh_exp <- barao2::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
       dplyr::ungroup()
-    dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
+    dados_hh_imp <- barao2::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
       dplyr::ungroup()
-    dados_intraindustria <- barao::comerciobr_dados_intraindustria(pais, periodo) %>%
+    dados_intraindustria <- barao2::comerciobr_dados_intraindustria(pais, periodo) %>%
       dplyr::ungroup()
 
   }else {
 
     frase <- paste0("Dados Anuais")
-    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total") %>%
+    dados_hh <- barao2::comerciobr_dados_concentracao(pais, periodo, "total") %>%
       dplyr::ungroup()
-    dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
+    dados_hh_exp <- barao2::comerciobr_dados_concentracao(pais, periodo, "imp")%>%
       dplyr::ungroup()
-    dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
+    dados_hh_imp <- barao2::comerciobr_dados_concentracao(pais, periodo, "exp")%>%
       dplyr::ungroup()
-    dados_intraindustria <- barao::comerciobr_dados_intraindustria(pais, periodo) %>%
+    dados_intraindustria <- barao2::comerciobr_dados_intraindustria(pais, periodo) %>%
       dplyr::ungroup()
   }
 
