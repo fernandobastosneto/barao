@@ -8,7 +8,7 @@ comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
 
   if (periodo == "mensal") {
 
-    frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao::comerciobr_get_ultimomes()))
     dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total")
     dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")
     dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo,"imp")
@@ -17,7 +17,7 @@ comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
     }else {
 
     frase <- paste0("Dados Anuais")
-    dados_hh <- barao::comerciobr_dados_concentracao(pais, periodo, "total")
+    dados_hh <- barao2::comerciobr_dados_concentracao(pais, periodo, "total")
     dados_hh_exp <- barao::comerciobr_dados_concentracao(pais, periodo, "exp")
     dados_hh_imp <- barao::comerciobr_dados_concentracao(pais, periodo,"imp")
     dados_intraindustria <- barao::comerciobr_dados_intraindustria(pais, periodo)
