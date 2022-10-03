@@ -10,7 +10,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
   if(periodo == "anual"){
 
     if(fluxo == "total"){
-      dados_hh <- comerciobr::sh4_df %>%
+      dados_hh <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais) %>%
         dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
@@ -27,7 +27,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::arrange(desc(co_ano))
 
     }else if(fluxo == "exp"){
-      dados_hh_exp <- comerciobr::sh4_df %>%
+      dados_hh_exp <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais)%>%
         dplyr::filter(path == "EXP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
@@ -47,7 +47,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::arrange(desc(co_ano))
 
     }else if(fluxo == "imp"){
-      dados_hh_imp <- comerciobr::sh4_df %>%
+      dados_hh_imp <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais)%>%
         dplyr::filter(path == "IMP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
@@ -70,7 +70,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
   } else {
 
     if(fluxo == "total"){
-      dados_hh <- comerciobr::sh4_df %>%
+      dados_hh <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais) %>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
@@ -89,7 +89,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
 
     }else if(fluxo == "exp"){
 
-      dados_hh_exp <- comerciobr::sh4_df %>%
+      dados_hh_exp <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais)%>%
         dplyr::filter(path == "EXP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
@@ -109,7 +109,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
 
     }else if(fluxo == "imp"){
 
-      dados_hh_imp <- comerciobr::sh4_df %>%
+      dados_hh_imp <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais)%>%
         dplyr::filter(path == "IMP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
