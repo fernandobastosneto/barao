@@ -10,7 +10,7 @@ comerciobr_dados_intraindustria <- function(pais, periodo) {
 
   if(periodo == "anual"){
 
-    dados_intraindustria <- comerciobr::sh4_df %>%
+    dados_intraindustria <- comerciobr2::sh4_df %>%
       filter (no_pais == pais) %>%
       filter(co_ano <= max(co_ano)-1) %>%
       mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
@@ -34,7 +34,7 @@ comerciobr_dados_intraindustria <- function(pais, periodo) {
       arrange(desc(co_ano))
   }else{
 
-    dados_intraindustria <- comerciobr::sh4_df %>%
+    dados_intraindustria <- comerciobr2::sh4_df %>%
       filter (no_pais == pais) %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
       dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
