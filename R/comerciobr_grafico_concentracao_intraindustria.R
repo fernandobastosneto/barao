@@ -23,12 +23,12 @@ comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
     dados_intraindustria <- barao2::comerciobr_dados_intraindustria(pais, periodo)
   }
 
-  df.anual <- inner_join(dados_hh , dados_intraindustria ,by = "co_ano")
-  df.anual <- inner_join(df.anual ,dados_hh_exp ,by = "co_ano")
-  df.anual <- inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
+  df.anual <- dplyr::inner_join(dados_hh , dados_intraindustria ,by = "co_ano")
+  df.anual <- dplyr::inner_join(df.anual ,dados_hh_exp ,by = "co_ano")
+  df.anual <- dplyr::inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
 
   df.TESTE <- df.anual %>%
-    pivot_longer(cols = HH:HH_imp, names_to = "tipo", values_to = "value")
+    tidyr::pivot_longer(cols = HH:HH_imp, names_to = "tipo", values_to = "value")
 
 
   df.TESTE$tipo <- ifelse(df.TESTE$tipo == "HH", "Concentração Comercial - Total",df.TESTE$tipo)

@@ -12,7 +12,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
     if(fluxo == "total"){
       dados_hh <- comerciobr2::sh4_df %>%
         dplyr::filter (no_pais == pais) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::filter(co_ano <= max(co_ano)-1) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
@@ -32,7 +32,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::filter(path == "EXP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::filter(co_ano <= max(co_ano)-1) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
@@ -52,7 +52,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::filter(path == "IMP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::filter(co_ano <= max(co_ano)-1) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
@@ -74,7 +74,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::filter (no_pais == pais) %>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
         dplyr::summarise(value = sum(value)) %>%
@@ -94,7 +94,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::filter(path == "EXP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
         dplyr::summarise(value = sum(value)) %>%
@@ -114,7 +114,7 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
         dplyr::filter(path == "IMP")%>%
         dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
         dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
-        dplyr::mutate(co_sh2 = str_sub(co_sh4, 1, 2)) %>%
+        dplyr::mutate(co_sh2 = stringr::str_sub(co_sh4, 1, 2)) %>%
         dplyr::mutate(co_sh2 = as.numeric(co_sh2)) %>%
         dplyr::group_by(co_ano, co_sh2) %>%
         dplyr::summarise(value = sum(value)) %>%

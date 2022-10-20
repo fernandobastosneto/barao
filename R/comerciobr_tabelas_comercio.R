@@ -33,9 +33,9 @@ comerciobr_tabelas_comercio <- function(pais, periodo){
       dplyr::ungroup()
   }
 
-  df.anual <- inner_join(dados_hh , dados_hh_exp ,by = "co_ano")
-  df.anual <- inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
-  df.anual <- inner_join(df.anual ,dados_intraindustria ,by = "co_ano")
+  df.anual <- dplyr::inner_join(dados_hh , dados_hh_exp ,by = "co_ano")
+  df.anual <- dplyr::inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
+  df.anual <- dplyr::inner_join(df.anual ,dados_intraindustria ,by = "co_ano")
 
   tabela<-as.data.frame(t(df.anual))
   colnames(tabela) <- tabela[1,]
