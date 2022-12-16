@@ -8,7 +8,7 @@
 
 comerciomundo_tabela_corrente <- function(pais) {
 
-  tabela_prep <- barao::comerciomundo_dados_corrente(pais)  %>%
+  tabela_prep <- barao2::comerciomundo_dados_corrente(pais)  %>%
     dplyr::ungroup() %>%
     tidyr::pivot_wider(names_from = .data$trade_flow, values_from = value) %>%
     dplyr::mutate(var_exp = .data$Exportacoes/dplyr::lag(.data$Exportacoes)-1) %>%

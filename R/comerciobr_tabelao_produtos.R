@@ -7,18 +7,18 @@
 
 comerciobr_tabelao_produtos <- function(pais, periodo) {
 
-  max_ano <- barao::comerciobr_get_ulimoano()-1
+  max_ano <- barao2::comerciobr_get_ulimoano()-1
 
-  produtos <- comerciobr::dic_sh6_sh4 %>%
+  produtos <- comerciobr2::dic_sh6_sh4 %>%
     dplyr::select(no_sh4_por, co_sh4) %>%
     dplyr::distinct(no_sh4_por, .keep_all = T)
 
-  agregados <- barao::comerciobr_dados_corrente(pais, periodo) %>%
+  agregados <- barao2::comerciobr_dados_corrente(pais, periodo) %>%
     dplyr::filter(co_ano > 2015) %>%
     tidyr::pivot_wider(names_from = co_ano, values_from = value) %>%
     dplyr::mutate(dplyr::across(2:tidyselect::last_col(), scales::label_number_si(accuracy = 0.01)))
 
-  exp <- comerciobr::sh4_df %>%
+  exp <- comerciobr2::sh4_df %>%
     dplyr::filter(no_pais == pais) %>%
     dplyr::filter(co_ano == max(co_ano)-1) %>%
     dplyr::group_by(path, co_ano, co_sh4) %>%
@@ -32,7 +32,7 @@ comerciobr_tabelao_produtos <- function(pais, periodo) {
     dplyr::left_join(produtos) %>%
     dplyr::select(-c(co_ano))
 
-  imp <- comerciobr::sh4_df %>%
+  imp <- comerciobr2::sh4_df %>%
     dplyr::filter(no_pais == pais) %>%
     dplyr::filter(co_ano == max(co_ano)-1) %>%
     dplyr::group_by(path, co_ano, co_sh4) %>%

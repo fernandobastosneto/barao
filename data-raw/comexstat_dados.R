@@ -2,8 +2,11 @@
 # baixa csvs de do comexstat
 
 library(magrittr)
-
-anos <- c(2026:2010)
+if(!fs::dir_exists(here::here("inst/extdata/"))) {
+  fs::dir_create("inst/extdata/")
+  fs::dir_create("inst/extdata/comex_stat/")
+}
+anos <- c(2022:2010)
 url_exp <- paste0("https://balanca.economia.gov.br/balanca/bd/comexstat-bd/ncm/EXP_")
 url_exp_lista <- purrr::map_chr(anos, ~ paste0(url_exp, .x, ".csv"))
 purrr::walk2(url_exp_lista, anos, ~ httr::GET(.x, config = httr::config(ssl_verifypeer = F),

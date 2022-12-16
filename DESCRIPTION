@@ -1,9 +1,10 @@
-Package: barao
+Package: barao2
 Type: Package
 Title: Relações Internacionais Do Brasil
 Version: 0.1.0
 Author: Fernando Bastos
 Maintainer: Fernando Bastos <fernando.bastos@itamaraty.gov.br>
+            Henrique Towata Sato <henrique.sato@itamaraty.gov.br>
 Description: Facilitando a vida de diplomatas.
     (e demais interessados nas relações internacionais).
 License: MIT + file LICENSE
@@ -27,24 +28,24 @@ Imports:
     ggthemes,
     glue,
     kableExtra,
-    comerciobr (>= 0.1.0),
+    comerciobr2 (>= 0.1.0),
     tidytext,
     treemap,
     ggrepel,
     jsonlite,
-    comerciomundo (>= 0.1.0),
+    comerciomundo2 (>= 0.1.0),
     tidyselect (>= 1.1.0),
     rmarkdown (>= 2.7),
     rlang,
     pagedown
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Depends: 
     R (>= 2.10)
-URL: https://github.com/fernandobastosneto/barao
-BugReports: https://github.com/fernandobastosneto/barao/issues
+URL: https://github.com/NIEscaec/barao2
+BugReports: https://github.com/NIEscaec/barao2/issues
 Remotes: 
-    fernandobastosneto/comerciobr,
-    fernandobastosneto/comerciomundo,
+    NIEscaec/comerciobr2,
+    NIEscaec/comerciomundo2,
     r-lib/tidyselect,
     rstudio/rmarkdown
 Suggests: 

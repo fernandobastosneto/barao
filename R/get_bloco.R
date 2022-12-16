@@ -7,8 +7,8 @@
 
 get_bloco <- function(paises) {
 
-  bloco <- comerciobr::dic_blocos %>%
-    dplyr::filter(no_pais %in% paises) %>%
+  bloco <- comerciobr2::dic_blocos %>%
+    dplyr::filter(no_pais %in% paises)%>%
     dplyr::distinct(no_bloco) %>%
     dplyr::pull(no_bloco)
 
