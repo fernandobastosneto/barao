@@ -1,6 +1,6 @@
 test_that("dados de fator isic estão corretos", {
 
-  ano_final <- barao::comerciobr_get_ulimoano()-1
+  ano_final <- barao2::comerciobr_get_ulimoano()-1
   ano_inicial <- 2010
 
   result <- paste0("http://api.comexstat.mdic.gov.br/general?filter=%7B%22yearStart%22:%22", ano_inicial,
@@ -22,7 +22,7 @@ test_that("dados de fator isic estão corretos", {
     dplyr::mutate(value = as.numeric(value)) %>%
     dplyr::pull(value)
 
-  base_normal <- barao::comerciobr_dados_fatores("China", "anual", "isic") %>%
+  base_normal <- barao2::comerciobr_dados_fatores("China", "anual", "isic") %>%
     dplyr::filter(path == "EXP") %>%
     dplyr::filter(no_isic_secao == "Agropecuária") %>%
     dplyr::pull(value)

@@ -1,0 +1,204 @@
+---
+title: "Brasil-`r bloco`, Dados Comerciais"
+author: "Núcleo de Inteligência - SCAEC"
+date: "Últimos dados disponíveis: `r barao2::meses(barao2::comerciobr_get_ultimomes())` de `2022`"
+output:
+  pdf_document:
+    latex_engine: lualatex
+    toc: true
+    toc_depth: 2
+    number_sections: true
+organization: 
+toc-title: "Índice"
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{lscape}
+- \usepackage{fancyhdr}
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{graphicx}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \pagestyle{fancy}
+- \fancyhead{}
+- \fancyhead[CO,CE]{Brasil-`r bloco`, Dados Comerciais}
+- \fancyfoot[CO,CE]{}
+- \fancyfoot[LE,RO]{\thepage}
+tables: yes
+graphics: yes
+---
+
+- Exceto disposição em contrário, todos os dados estão em USD Bilhões
+
+```{r setup, include = F}
+library(barao2)
+library(kableExtra)
+
+bloco <- get_bloco(paises)
+
+periodo <- "anual"
+
+knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
+```
+
+\newpage
+
+# Dados anuais
+
+## Fluxo de Comércio
+
+```{r, fig.height=5}
+barao2::comerciobr_grafico_corrente(paises, periodo)
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabela_corrente(paises, periodo), print)
+```
+
+\newpage
+
+## Produtos comercializados
+
+```{r, fig.height=4.3}
+barao2::comerciobr_grafico_produtos(paises, periodo)
+```
+
+```{r, fig.height=4.3}
+barao2::comerciobr_grafico_produtos_proporcao(paises, periodo)
+```
+
+\blandscape
+
+```{r, fig.height=7, fig.width=10}
+barao2::comerciobr_grafico_produtos_ranking(paises, periodo)
+```
+
+\elandscape
+
+\newpage
+
+```{r, fig.show="hold", results = "asis"}
+barao2::comerciobr_tabela_produtos(paises, periodo)
+```
+
+\newpage
+
+## Classificações do Comércio
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "isic")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "fator")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "cgce")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "cuci")
+
+```
+
+\newpage
+
+```{r, fig.show='asis', out.width="50%"}
+barao2::comerciobr_tabela_fatores(paises, periodo, "isic")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "fator")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "cgce")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "cuci")
+
+```
+
+
+\newpage
+
+# Dados mensais
+
+```{r, include = F}
+periodo <- "mensal"
+```
+
+## Fluxo de Comércio
+
+```{r, fig.height=5}
+barao2::comerciobr_grafico_corrente(paises, periodo)
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabela_corrente(paises, periodo), print)
+```
+\newpage
+
+## Produtos comercializados
+
+```{r, fig.height=4.3}
+barao2::comerciobr_grafico_produtos(paises, periodo)
+```
+
+```{r, fig.height=4.3}
+barao2::comerciobr_grafico_produtos_proporcao(paises, periodo)
+```
+
+\blandscape
+
+```{r, fig.height=7, fig.width=10}
+barao2::comerciobr_grafico_produtos_ranking(paises, periodo)
+```
+
+\elandscape
+
+\newpage
+
+```{r, fig.show="hold", results = "asis"}
+barao2::comerciobr_tabela_produtos(paises, periodo)
+```
+
+\newpage
+
+## Classificações do Comércio
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "isic")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "fator")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "cgce")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(paises, periodo, "cuci")
+
+```
+
+\newpage
+
+```{r, fig.show='asis', out.width="50%"}
+barao2::comerciobr_tabela_fatores(paises, periodo, "isic")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "fator")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "cgce")
+
+barao2::comerciobr_tabela_fatores(paises, periodo, "cuci")
+
+```

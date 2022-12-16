@@ -18,14 +18,14 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    ultimoano <- barao::comerciobr_get_ulimoano()
-    frase <- paste0("agregado at\u00e9 ", meses(barao::comerciobr_get_ultimomes()))
+    ultimoano <- barao2::comerciobr_get_ulimoano()
+    frase <- paste0("agregado at\u00e9 ", meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
   else {
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
 
   }
 

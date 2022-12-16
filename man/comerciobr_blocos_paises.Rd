@@ -7,7 +7,7 @@
 comerciobr_blocos_paises(bloco)
 }
 \arguments{
-\item{bloco}{o nome de um bloco, de acordo com a base dic_blocos do pacote "comerciobr"}
+\item{bloco}{o nome de um bloco, de acordo com a base dic_blocos do pacote "comerciobr2"}
 }
 \value{
 lista de países associados a determinado bloco

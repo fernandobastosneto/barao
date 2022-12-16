@@ -5,7 +5,7 @@
 #' @export
 
 relatorio_barao <- function(pais) {
-  rmarkdown::render(system.file("rmd", "comerciobr_report_pais.Rmd", package = "barao"),
+  rmarkdown::render(system.file("rmd", "comerciobr_report_pais.Rmd", package = "barao2"),
                     params = list(
                       title = paste0("Brasil-", pais, " , Dados Comerciais"),
                       pais = pais
@@ -13,6 +13,6 @@ relatorio_barao <- function(pais) {
                     # intermediates_dir = "temp",
                     output_dir = here::here(),
                     output_file = paste0("comerciobr_", pais, "_",
-                                         barao::comerciobr_get_ulimoano(), "_",
-                                         barao::meses(barao::comerciobr_get_ultimomes())))
+                                         barao2::comerciobr_get_ulimoano(), "_",
+                                         barao2::meses(barao2::comerciobr_get_ultimomes())))
 }

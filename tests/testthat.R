@@ -1,4 +1,4 @@
 library(testthat)
-library(barao)
+library(barao2)
 
-test_check("barao")
+test_check("barao2")

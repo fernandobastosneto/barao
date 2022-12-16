@@ -17,13 +17,13 @@ comerciomundo_grafico_produtos_evolucao <- function(pais) {
     dplyr::distinct(year) %>%
     dplyr::pull(max(year))
 
-  dic <- comerciobr::dic_sh6_sh2 %>%
+  dic <- comerciobr2::dic_sh6_sh2 %>%
     dplyr::rename(commodity_code = co_sh2) %>%
     dplyr::select(-co_sh6) %>%
     dplyr::distinct() %>%
     dplyr::filter(stringr::str_length(commodity_code) < 3)
 
-  barao::comerciomundo_dados_produtos(pais) %>%
+  barao2::comerciomundo_dados_produtos(pais) %>%
     dplyr::group_by(trade_flow_code, commodity_code, year) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
     # dplyr::rename(CO_SH2 = commodity_code) %>%

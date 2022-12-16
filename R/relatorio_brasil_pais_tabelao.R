@@ -6,7 +6,7 @@
 #' @export
 
 relatorio_brasil_pais_tabelao <- function(pais) {
-  rmarkdown::render(system.file("rmd", "comerciobr_report_pais_tabelao.Rmd", package = "barao"),
+  rmarkdown::render(system.file("rmd", "comerciobr_report_pais_tabelao.Rmd", package = "barao2"),
                     params = list(
                       title = paste0("Brasil-", pais, " , Dados Comerciais"),
                       pais = pais

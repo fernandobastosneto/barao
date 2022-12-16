@@ -16,7 +16,7 @@ comerciomundo_grafico_corrente <- function(pais) {
     nome_pais <- pais
   }
 
-  frase <- paste0("at\u00e9 ", barao::comerciomundo_get_ultimoano(pais))
+  frase <- paste0("at\u00e9 ", barao2::comerciomundo_get_ultimoano(pais))
 
   comerciomundo_dados_corrente(pais) %>%
     dplyr::mutate(year = as.character(year)) %>%
