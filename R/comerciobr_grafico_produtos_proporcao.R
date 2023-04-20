@@ -5,6 +5,9 @@
 #'
 #' @export
 
+# plota um treemap com a proporção das exportações e importações de um determinado país para diferentes categorias de produtos
+# são calculados os valores de exportação e importação totais e as proporções de desvio padrão para cada uma das duas categorias de caminho (EXP ou IMP).
+
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
   if (length(pais) > 1) {
@@ -22,19 +25,19 @@ comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
     dplyr::pull(max(co_ano))
 
   if (periodo == "mensal") {
-    df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup() %>%
       dplyr::filter(co_ano == max(co_ano))
 
-    frase <- paste0(barao::comerciobr_get_ulimoano(), " at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao2::comerciobr_get_ulimoano(), " at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
   }
 
   else {
-    df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup() %>%
       dplyr::filter(co_ano == max(co_ano)-1)
 
-    frase <- paste0("em ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("em ", barao2::comerciobr_get_ulimoano()-1)
   }
 
   df <- df %>%

@@ -4,6 +4,10 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# cria um gráfico da evolução do comércio do Brasil com outros países ao longo do tempo. O gráfico consiste em pontos e linhas que
+# representam a evolução do comércio para cada país ao longo do tempo. O país selecionado é destacado com uma linha mais espessa.
+
 comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
 
   ano_min <- comerciobr_dados_paises(pais, periodo) %>%
@@ -20,15 +24,15 @@ comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    df <- barao::comerciobr_dados_paises(pais, periodo)
-    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    df <- barao2::comerciobr_dados_paises(pais, periodo)
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
   else {
-    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+    df <- barao2::comerciobr_dados_paises(pais, periodo) %>%
       dplyr::filter(co_ano <= max(co_ano)-1)
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
   }
 
   df %>%

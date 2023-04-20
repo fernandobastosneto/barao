@@ -6,6 +6,17 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# O código apresentado é uma função R que produz um gráfico de colunas empilhadas
+# com os valores das exportações, importações, fluxo corrente e saldo comercial do Brasil
+# em relação a um país específico, considerando um período mensal ou anual.
+
+
+# O gráfico é dividido em quatro facetas, uma para cada uma das quatro variáveis de comércio
+# (exportações, importações, fluxo corrente e saldo comercial), e utiliza cores diferentes
+# para cada uma delas.
+
+
 comerciobr_grafico_corrente <- function(pais, periodo) {
 
   if (length(pais) > 1) {
@@ -18,14 +29,14 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    ultimoano <- barao::comerciobr_get_ulimoano()
-    frase <- paste0("agregado at\u00e9 ", meses(barao::comerciobr_get_ultimomes()))
+    ultimoano <- barao2::comerciobr_get_ulimoano()
+    frase <- paste0("agregado at\u00e9 ", meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
   else {
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
 
   }
 

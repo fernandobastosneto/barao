@@ -5,12 +5,15 @@
 #'
 #' @export
 
+
+# coletar dados de comércio de produtos de um determinado país em um determinado período.
+
 comerciobr_dados_produtos <- function(pais, periodo) {
 
-  df <- comerciobr::sh4_df %>%
+  df <- comerciobr2::sh4_df %>%
     dplyr::filter(no_pais %in% pais)
 
-  sh4 <- comerciobr::dic_sh6_sh4 %>%
+  sh4 <- comerciobr2::dic_sh6_sh4 %>%
     dplyr::select(no_sh4_por, co_sh4) %>%
     dplyr::distinct()
 

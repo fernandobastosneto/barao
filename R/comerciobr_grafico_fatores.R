@@ -5,20 +5,24 @@
 #' @param fator "isic", "fator", "cgce", "cuci"
 #'
 #' @export
+
+# plota um gráfico de treemap com base em diferentes classificações de fatores para o comércio
+# brasileiro.
+
 comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {
-    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
   }
 
   else {
 
-    frase <- paste0("em ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("em ", barao2::comerciobr_get_ulimoano()-1)
   }
 
   if (fator == "cuci") {
 
-    barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
+    barao2::comerciobr_dados_fatores(pais, periodo, fator) %>%
       treemap::treemap(index = c("path", "no_cuci_sec"),
                        vSize = "value",
                        type = "index",
@@ -30,7 +34,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   else if (fator == "isic") {
 
-    barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
+    barao2::comerciobr_dados_fatores(pais, periodo, fator) %>%
       treemap::treemap(index = c("path", "no_isic_secao"),
                        vSize = "value",
                        type = "index",
@@ -42,7 +46,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   else if (fator == "cgce") {
 
-    barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
+    barao2::comerciobr_dados_fatores(pais, periodo, fator) %>%
       treemap::treemap(index = c("path", "no_cgce_n1"),
                        vSize = "value",
                        type = "index",
@@ -54,7 +58,7 @@ comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   else if (fator == "fator") {
 
-    barao::comerciobr_dados_fatores(pais, periodo, fator) %>%
+    barao2::comerciobr_dados_fatores(pais, periodo, fator) %>%
       treemap::treemap(index = c("path", "no_fat_agreg"),
                        vSize = "value",
                        type = "index",

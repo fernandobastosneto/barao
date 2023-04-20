@@ -4,19 +4,29 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# gera uma tabela formatada com dados agregados de comércio entre países, exibindo valores, variações
+# e proporções em relação a um período de tempo específico.
+# O resultado final é uma tabela formatada que contém seis colunas: "Ano", "Direção", "País", "Valor",
+# "Variação" e "Proporção". A tabela é organizada de acordo com as opções selecionadas pelo usuário,
+# incluindo o período de tempo (mensal ou anual) e o país específico de interesse. A tabela apresenta
+# informações agregadas sobre o comércio entre países, incluindo a direção do comércio, o país parceiro
+# de comércio, o valor total do comércio, a variação percentual em relação ao período anterior e a
+# proporção do valor total do comércio.
+
 comerciobr_tabela_paises <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
-    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    df <- barao2::comerciobr_dados_paises(pais, periodo) %>%
       dplyr::ungroup()
   }
 
   else {
 
     frase <- paste0("Dados Anuais")
-    df <- barao::comerciobr_dados_paises(pais, periodo) %>%
+    df <- barao2::comerciobr_dados_paises(pais, periodo) %>%
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano)-1)
 

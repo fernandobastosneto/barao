@@ -4,6 +4,11 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# O objetivo do gráfico é mostrar a evolução das exportações e importações de um país (ou blocos de países) para diferentes
+# produtos ao longo do tempo.
+
+
 comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
 
     if (length(pais) > 1) {
@@ -20,7 +25,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     df <- comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup()
 
-    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
@@ -29,7 +34,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano))
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano())
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano())
 
   }
 
@@ -57,3 +62,6 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
 
 }
+
+
+# a função mutate() para encurtar os nomes dos produtos para 15 caracteres.
