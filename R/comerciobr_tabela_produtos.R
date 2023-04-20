@@ -4,6 +4,10 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# gera uma tabela agrega os dados do comércio brasileiro por produto em nível mensal (anual) até o último mês (ano) disponível e desagrega os dados em nível de produto.
+# logo, apresenta informações sobre o comércio brasileiro por produto, como valor, variação e proporção, desagregadas por ano, direção (exportação ou importação), produto (código SH4) e descrição do produto.
+
 comerciobr_tabela_produtos <- function(pais, periodo) {
 
   if (periodo == "mensal") {

@@ -4,6 +4,11 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# cria um gráfico de colunas empilhadas para visualizar a composição da pauta de exportação ou importação
+# de um país em um determinado período.
+
+
 comerciobr_grafico_produtos <- function(pais, periodo) {
 
   if (length(pais) > 1) {

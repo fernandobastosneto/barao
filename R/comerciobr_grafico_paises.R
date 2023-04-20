@@ -5,6 +5,11 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# plota um gráfico que mostra a composição do comércio exterior do Brasil com outros países.
+
+
+
 comerciobr_grafico_paises <- function(pais, periodo) {
 
   if (periodo == "mensal") {

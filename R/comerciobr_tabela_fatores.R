@@ -5,6 +5,11 @@
 #' @param fator "isic", "fator", "cgce" ou "cuci"
 #'
 #' @export
+
+
+# Esse é um código em R que produz uma tabela em formato de relatório contendo informações sobre
+# um determinado fator econômico (cuci, isic, fator agregado ou cgce) de um país, para um determinado período (mensal
+# ou anual).
 comerciobr_tabela_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {

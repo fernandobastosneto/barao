@@ -5,6 +5,10 @@
 #'
 #' @export
 
+# realiza o cálculo do índice de competitividade intrassetorial ponderado para um país e período específico.
+# O resultado é baseado na diferença entre as exportações e importações de produtos industrializados e em
+# outros produtos, ponderado pela participação das exportações e importações totais.
+
 
 comerciobr_dados_intraindustria <- function(pais, periodo) {
 

@@ -5,6 +5,10 @@
 #' @param fator "isic", "fator", "cgce", "cuci"
 #'
 #' @export
+
+# plota um gráfico de treemap com base em diferentes classificações de fatores para o comércio
+# brasileiro.
+
 comerciobr_grafico_fatores <- function(pais, periodo, fator) {
 
   if (periodo == "mensal") {

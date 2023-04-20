@@ -4,6 +4,8 @@
 #'
 #' @export
 
+#pega o rmd, compila e transforma em relátorios pdf's para cada páis
+
 relatorio_barao <- function(pais) {
   rmarkdown::render(system.file("rmd", "comerciobr_report_pais.Rmd", package = "barao2"),
                     params = list(

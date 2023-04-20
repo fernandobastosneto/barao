@@ -6,6 +6,8 @@
 #'
 #' @export
 
+# tentativa de automatizar a geração de relatorio para blocos. Tentou-se gerar uma lista de blocos na qual conteria uma lista de países para cada bloco
+
 comerciobr_lista_lista <- function(x) {
 
   lista_blocos <- comerciobr2::dic_blocos %>%

@@ -4,6 +4,20 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+#'
+#' calcula o índice de Herfindahl-Hirschman (HH) de concentração do comércio de um país com um parceiro comercial específico.
+#' O HH é um índice usado para medir a concentração do mercado e é comumente usado na análise antitruste.
+#'
+#' A função tem três argumentos:
+
+#pais: nome do país parceiro comercial;
+#periodo: período de tempo para o cálculo do índice de concentração, podendo ser "anual" ou "mensal";
+#fluxo: fluxo do comércio, podendo ser "total" (importação + exportação), "imp" (apenas importação) ou "exp" (apenas exportação).
+
+#Se o período de tempo escolhido for "anual", a função calcula o índice HH anualmente. Se for "mensal", a função calcula o
+#índice HH mensalmente até o último mês disponível no banco de dados.
+
+#Dependendo do fluxo de comércio escolhido, a função calcula o índice HH para o comércio total, importações ou exportações.
 
 comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
 
@@ -131,3 +145,6 @@ comerciobr_dados_concentracao <- function(pais, periodo, fluxo) {
   }
 
 }
+
+# A saída da função é um data frame com os anos ou meses (dependendo do período escolhido) e seus respectivos valores de
+# índice HH, em ordem decrescente.

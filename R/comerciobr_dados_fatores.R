@@ -8,6 +8,13 @@
 #'
 #' @export
 
+
+# Cada bloco if else lê dados de um dataframe correspondente ao fator e período especificado,
+# faz um agrupamento dos dados por país, fator e categoria (seção no caso de "isic", cuci_sec no
+# caso de "cuci", fat_agreg no caso de "fator" e co_cgce_n1 no caso de "cgce"), e retorna um dataframe
+# resumido com a soma dos valores.
+
+
 comerciobr_dados_fatores <- function(pais, periodo, fator) {
 
   if (fator == "isic") {

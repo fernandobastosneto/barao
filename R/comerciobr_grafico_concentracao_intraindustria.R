@@ -6,6 +6,9 @@
 
 comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
 
+# A função utiliza a API barao2 para obter dados sobre a concentração comercial de um país, tanto em nível total quanto
+# em relação a suas exportações e importações, bem como dados sobre o comércio intra-indústria do país.
+
   if (periodo == "mensal") {
 
     frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
@@ -23,9 +26,9 @@ comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
     dados_intraindustria <- barao2::comerciobr_dados_intraindustria(pais, periodo)
   }
 
-  df.anual <- dplyr::inner_join(dados_hh , dados_intraindustria ,by = "co_ano")
-  df.anual <- dplyr::inner_join(df.anual ,dados_hh_exp ,by = "co_ano")
-  df.anual <- dplyr::inner_join(df.anual ,dados_hh_imp ,by = "co_ano")
+  df.anual <- dplyr::full_join(dados_hh , dados_intraindustria ,by = "co_ano")
+  df.anual <- dplyr::full_join(df.anual ,dados_hh_exp ,by = "co_ano")
+  df.anual <- dplyr::full_join(df.anual ,dados_hh_imp ,by = "co_ano")
 
   df.TESTE <- df.anual %>%
     tidyr::pivot_longer(cols = HH:HH_imp, names_to = "tipo", values_to = "value")
@@ -35,6 +38,10 @@ comerciobr_grafico_concentracao_intraindustria <- function(periodo, pais){
   df.TESTE$tipo <- ifelse(df.TESTE$tipo == "HH_exp", "Concentração Comercial - Exportação",df.TESTE$tipo)
   df.TESTE$tipo <- ifelse(df.TESTE$tipo == "HH_imp", "Concentração Comercial - Importação",df.TESTE$tipo)
   df.TESTE$tipo <- ifelse(df.TESTE$tipo == "indiceGL_ponderado", "Comércio Intraindústria",df.TESTE$tipo)
+
+
+# A função faz algumas manipulações nos dados para transformá-los em um formato adequado para a criação de um gráfico
+# usando a biblioteca ggplot2.
 
   df.TESTE %>%
     dplyr::mutate(co_ano = as.character(co_ano)) %>%

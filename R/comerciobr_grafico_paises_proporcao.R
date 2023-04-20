@@ -4,6 +4,11 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# cria um gráfico com o ranking e proporção de comércio de um determinado país com o Brasil.
+# O gráfico inclui pontos representando a proporção de comércio para cada país, com o rótulo do país, e o ponto correspondente
+# ao país selecionado é colorido de forma diferente.
+
 comerciobr_grafico_paises_proporcao <- function(pais, periodo) {
 
   if (periodo == "mensal") {

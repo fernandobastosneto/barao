@@ -4,6 +4,10 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# cria um gráfico da evolução do comércio do Brasil com outros países ao longo do tempo. O gráfico consiste em pontos e linhas que
+# representam a evolução do comércio para cada país ao longo do tempo. O país selecionado é destacado com uma linha mais espessa.
+
 comerciobr_grafico_paises_evolucao <- function(pais, periodo) {
 
   ano_min <- comerciobr_dados_paises(pais, periodo) %>%

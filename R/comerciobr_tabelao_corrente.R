@@ -5,6 +5,10 @@
 #'
 #' @export
 
+
+# reune os dados correntes que foram criados na função comerciobr dados corrente para gerar uma tabela sobre esses dados
+
+
 comerciobr_tabelao_corrente <- function(pais, periodo) {
 
   agregados <- barao2::comerciobr_dados_corrente(pais, periodo) %>%

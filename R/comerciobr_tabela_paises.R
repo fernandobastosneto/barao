@@ -33,19 +33,19 @@ comerciobr_tabela_paises <- function(pais, periodo) {
   }
 
   df <- df %>%
-    dplyr::group_by(no_pais, path) %>%
-    dplyr::arrange(dplyr::desc(co_ano), .by_group = T) %>%
-    dplyr::mutate(pct_var = value/dplyr::lead(value)-1) %>%
-    dplyr::mutate(pct_prop = (value/.data$total)) %>%
-    dplyr::ungroup() %>%
-    dplyr::filter(co_ano >= max(co_ano)-3) %>%
-    dplyr::select(-c(rank, .data$total)) %>%
-    dplyr::group_by(co_ano, path) %>%
-    dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
-    dplyr::arrange(dplyr::desc(co_ano)) %>%
-    dplyr::relocate(co_ano, path, no_pais, value, .data$pct_var, .data$pct_prop) %>%
-    dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
-    dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .01)))
+      dplyr::group_by(no_pais, path) %>%
+      dplyr::arrange(dplyr::desc(co_ano), .by_group = T) %>%
+      dplyr::mutate(pct_var = value/dplyr::lead(value)-1) %>%
+      dplyr::mutate(pct_prop = (value/.data$total)) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano >= max(co_ano)-3) %>%
+      dplyr::select(-c(rank, .data$total)) %>%
+      dplyr::group_by(co_ano, path) %>%
+      dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
+      dplyr::arrange(dplyr::desc(co_ano)) %>%
+      dplyr::relocate(co_ano, path, no_pais, value, .data$pct_var, .data$pct_prop) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
+      dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .01)))
 
   df %>%
     kableExtra::kbl(booktabs = T, col.names = c("Ano", "Dire\u00e7\u00e3o", "Pa\u00eds", "Valor", "Varia\u00e7\u00e3o", "Propor\u00e7\u00e3o")) %>%

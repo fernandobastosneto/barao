@@ -4,6 +4,11 @@
 #' @param periodo "anual" ou "mensal"
 #'
 #' @export
+
+# O objetivo do gráfico é mostrar a evolução das exportações e importações de um país (ou blocos de países) para diferentes
+# produtos ao longo do tempo.
+
+
 comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
 
     if (length(pais) > 1) {
@@ -57,3 +62,6 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
 
 }
+
+
+# a função mutate() para encurtar os nomes dos produtos para 15 caracteres.

@@ -5,6 +5,9 @@
 #'
 #' @export
 
+# plota um treemap com a proporção das exportações e importações de um determinado país para diferentes categorias de produtos
+# são calculados os valores de exportação e importação totais e as proporções de desvio padrão para cada uma das duas categorias de caminho (EXP ou IMP).
+
 comerciobr_grafico_produtos_proporcao <- function(pais, periodo) {
 
   if (length(pais) > 1) {

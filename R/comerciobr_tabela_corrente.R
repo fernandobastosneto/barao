@@ -8,6 +8,11 @@
 #' @export
 comerciobr_tabela_corrente <- function(pais, periodo) {
 
+
+#  Essas funções permitem que a função organize os dados em um formato tabular adequado e calcule as variações percentuais
+# das exportações, importações, saldo e corrente comercial em relação ao período anterior. A função também formata os valores
+# numéricos como números com separadores de milhares e os valores percentuais como porcentagens com um sinal de parêntese.
+
   tabela_prep <- barao2::comerciobr_dados_corrente(pais, periodo)  %>%
     dplyr::ungroup() %>%
     tidyr::pivot_wider(names_from = .data$trade_flow, values_from = value) %>%
@@ -29,8 +34,14 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     tidyr::pivot_longer(.data$Exportacoes:.data$Corrente, names_to = "trade_flow", values_to = "value") %>%
     tidyr::pivot_wider(names_from = co_ano, values_from = value) %>%
     dplyr::rename(" " = .data$trade_flow) %>%
-    dplyr::select(1:11) %>%
+    dplyr::select(1:11) %>% #seleciona periodo do gráfico ## ideia de fazer um if para gerar 1:11 quando tiver mais que 10 anos
+                                                           #e o else para geral todos os anos quando tiver menos de 10 anos
     tibble::column_to_rownames(var = " ")
+
+  #tabela_prep=do.call(data.frame, lapply(tabela_prep, function(value) replace(value, is.infinite(value),NA))) #esse código fez aparecir um "X"
+                                                                                                                # depois dos anos
+  #tabela_prep=do.call(data.frame, lapply(tabela_prep, function(value) replace(value, is.nan(value),NA)))
+
 
   tabela <- split(1:(ncol(tabela_prep)), sort(rep_len(1:2, ncol(tabela_prep)))) %>%
     purrr::map(~ dplyr::select(tabela_prep, .)) %>%

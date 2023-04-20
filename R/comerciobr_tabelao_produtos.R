@@ -5,6 +5,8 @@
 #'
 #' @export
 
+# cria uma tabela com informações sobre os produtos comercializados, tanto exportado como importado, por um país em um determinado período de tempo.
+
 comerciobr_tabelao_produtos <- function(pais, periodo) {
 
   max_ano <- barao2::comerciobr_get_ulimoano()-1

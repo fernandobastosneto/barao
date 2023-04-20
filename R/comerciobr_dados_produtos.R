@@ -5,6 +5,9 @@
 #'
 #' @export
 
+
+# coletar dados de comércio de produtos de um determinado país em um determinado período.
+
 comerciobr_dados_produtos <- function(pais, periodo) {
 
   df <- comerciobr2::sh4_df %>%
