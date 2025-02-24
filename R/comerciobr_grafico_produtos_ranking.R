@@ -20,7 +20,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     df <- comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup()
 
-    frase <- paste0("agregado at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
@@ -29,7 +29,7 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano))
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano())
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano())
 
   }
 
@@ -51,9 +51,9 @@ comerciobr_grafico_produtos_ranking <- function(pais, periodo) {
     ggthemes::scale_color_pander() +
     ggplot2::theme_minimal() +
     ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, evolu\u00e7\u00e3o do com\u00e9rcio, {frase}"),
-                  caption = "Fonte: Minist\u00e9rio da Economia",
+                  caption = "Fonte: MDIC-ComexStat",
                   x = NULL, y = NULL) +
-    ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
     ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
 
 }

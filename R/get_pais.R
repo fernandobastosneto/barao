@@ -9,7 +9,7 @@
 get_pais <- function(pais, base) {
 
   if (base == "fmi") {
-    pais_escolhido <- barao::dic_paises_fmi %>%
+    pais_escolhido <- barao2::dic_paises_fmi %>%
       dplyr::filter_all(dplyr::any_vars(. == pais)) %>%
       dplyr::pull(.data$ing_fmi)
     if (length(pais_escolhido) < 1) {
@@ -18,14 +18,14 @@ get_pais <- function(pais, base) {
   }
 
   else if (base == "mecon") {
-    pais_escolhido <- barao::dic_paises_fmi %>%
+    pais_escolhido <- barao2::dic_paises_fmi %>%
       dplyr::filter_all(dplyr::any_vars(. == pais)) %>%
       dplyr::pull(.data$port)
   }
 
   else if (base == "comtrade") {
 
-    pais_escolhido <- comerciomundo::dic_comtrade_mdic %>%
+    pais_escolhido <- comerciomundo2::dic_comtrade_mdic %>%
       dplyr::filter_all(dplyr::any_vars(. == pais)) %>%
       dplyr::pull(id)
   }

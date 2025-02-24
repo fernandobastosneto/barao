@@ -7,8 +7,10 @@
 #'
 #' @export
 comerciobr_tabela_corrente <- function(pais, periodo) {
+#
+    #return(paste(pais, periodo))
 
-  tabela_prep <- barao::comerciobr_dados_corrente(pais, periodo)  %>%
+  tabela_prep <- barao2::comerciobr_dados_corrente(pais, periodo)  %>%
     dplyr::ungroup() %>%
     tidyr::pivot_wider(names_from = .data$trade_flow, values_from = value) %>%
     dplyr::mutate(var_exp = .data$Exportacoes/dplyr::lag(.data$Exportacoes)-1) %>%
@@ -16,10 +18,21 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     dplyr::mutate(var_saldo = .data$Saldo/abs(dplyr::lag(.data$Saldo))-1) %>%
     dplyr::mutate(var_corrente = .data$Corrente/dplyr::lag(.data$Corrente)-1) %>%
     dplyr::filter(co_ano != min(co_ano)) %>%
-    dplyr::mutate(dplyr::across(dplyr::starts_with("var"), scales::label_percent())) %>%
+    # dplyr::mutate(dplyr::across(dplyr::starts_with("var"), scales::label_percent())) %>%
+    dplyr::mutate(dplyr::across(dplyr::starts_with("var"), scales::label_percent(accuracy = 0.1))) %>% # diminui porcentagem apos virgula
     dplyr::mutate(dplyr::across(dplyr::starts_with("var"), ~ paste0("(", .x, ")"))) %>%
     dplyr::mutate(co_ano = as.character(co_ano)) %>%
-    dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number_si())) %>%
+
+    # dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number(scale_cut = scales::cut_short_scale()))) %>%
+
+
+    dplyr::mutate(dplyr::across(where(is.numeric), scales::label_number(scale_cut = scales::cut_si(""), accuracy = 1))) %>%
+
+    ## reduz espaço e muda G para B de bilhao
+    dplyr::mutate(dplyr::across(where(is.character),
+                                ~ gsub(" G", "B", gsub(" M", "M", gsub(" k", "K", .x))))) %>%
+
+
     tidyr::unite("Exportacoes", c("Exportacoes","var_exp"), sep = " ") %>%
     tidyr::unite("Importacoes", c("Importacoes", "var_imp"), sep = " ") %>%
     tidyr::unite("Saldo", c("Saldo", "var_saldo"), sep = " ") %>%
@@ -36,10 +49,9 @@ comerciobr_tabela_corrente <- function(pais, periodo) {
     purrr::map(~ dplyr::select(tabela_prep, .)) %>%
     purrr::map(~ kableExtra::kbl(.x, format = "latex", booktabs = TRUE, align = "r", escape = T)) %>%
     purrr::map(~ kableExtra::kable_styling(.x, position = "center", full_width = FALSE, latex_options = "hold_position"))
-  # %>%
-  #   purrr::walk(print)
+
+  # purrr::walk(tabela, print)
 
   tabela
 
 }
-

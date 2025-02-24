@@ -18,7 +18,7 @@ comerciomundo_grafico_paises_evolucao <- function(pais) {
     dplyr::distinct(year) %>%
     dplyr::pull(max(year))
 # browser()
-  barao::comerciomundo_dados_paises(pais) %>%
+  barao2::comerciomundo_dados_paises(pais) %>%
     # dplyr::group_by(year, trade_flow_code) %>%
     # dplyr::slice_max(value, n = 5) %>%
     dplyr::mutate(trade_flow_code = as.character(trade_flow_code),

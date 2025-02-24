@@ -3,7 +3,7 @@
 #' @export
 comerciobr_get_ultimomes <- function() {
 
-  ultimomes <- comerciobr::sh1_df %>%
+  ultimomes <- comerciobr2::sh1_df %>%
     # dplyr::ungroup() %>%
     dplyr::filter(co_ano == max(co_ano)) %>%
     dplyr::filter(co_mes == max(co_mes)) %>%

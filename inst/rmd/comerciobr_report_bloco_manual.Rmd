@@ -1,0 +1,753 @@
+---
+title: "Brasil-CELAC, Dados Comerciais"
+author: "Núcleo de Inteligência - SAEF"
+date: "Últimos dados disponíveis: `r barao2::meses(barao2::comerciobr_get_ultimomes())` de `r barao2::comerciobr_get_ulimoano()`"
+output:
+  pdf_document:
+    latex_engine: lualatex
+    toc: true
+    toc_depth: 2
+    number_sections: true
+organization: 
+toc-title: "Índice"
+header-includes:
+- \usepackage{fancyhdr}
+- \usepackage{lscape}
+- \usepackage{fancyhdr}
+- \usepackage{booktabs}
+- \usepackage{longtable}
+- \usepackage{graphicx}
+- \usepackage{array}
+- \usepackage{multirow}
+- \usepackage{wrapfig}
+- \usepackage{float}
+- \usepackage{colortbl}
+- \usepackage{pdflscape}
+- \usepackage{tabu}
+- \usepackage{threeparttable}
+- \usepackage[normalem]{ulem}
+- \usepackage{xcolor}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+- \pagestyle{fancy}
+- \fancyhead{}
+- \fancyhead[CO,CE]{Brasil-CELAC, Dados Comerciais}
+- \fancyfoot[CO,CE]{}
+- \fancyfoot[LE,RO]{\thepage}
+tables: yes
+graphics: yes
+---
+
+-   Exceto disposição em contrário, todos os dados estão em USD Bilhões
+
+```{r setup, include = F}
+library(barao2)
+library(kableExtra)
+periodo <- "anual"
+pais <- c("Antígua e Barbuda", "Argentina", "Bahamas", "Barbados", "Belize", "Bolívia", "Chile", "Colômbia", "Costa Rica", "Cuba", "Dominica", "Equador", "El Salvador", "Granada", "Guatemala", "Guiana", "Haiti", "Honduras", "Jamaica", "México", "Nicarágua", "Panamá", "Paraguai", "Peru", "República Dominicana", "Santa Lúcia", "São Cristóvão e Névis", "São Vicente e Granadinas", "Suriname", "Trinidad e Tobago", "Uruguai", "Venezuela")
+knitr::opts_chunk$set(echo = F, message = F, warning = F, error = T)
+```
+
+```{r}
+```
+
+\newpage
+
+# Dados anuais
+
+## Fluxo de Comércio
+
+```{r, fig.height=5}
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }else {
+    nome_pais <- pais
+  }
+
+  if (periodo == "mensal") {
+
+    ultimoano <- barao2::comerciobr_get_ulimoano()
+    frase <- paste0("agregado at\u00e9 ", meses(barao2::comerciobr_get_ultimomes()))
+
+  }else {
+
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
+
+  }
+
+  comerciobr_dados_corrente(pais, periodo) %>%
+    dplyr::mutate(co_ano = as.character(co_ano)) %>%
+    ggplot2::ggplot() +
+    ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = .data$trade_flow),
+                      show.legend = F) +
+    ggplot2::facet_wrap(~factor(.data$trade_flow,
+                                levels = c("Exportacoes", "Importacoes",
+                                           "Corrente", "Saldo")),
+                        scales = "free_x") +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    ggplot2::scale_x_discrete(breaks = scales::breaks_pretty()) +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, Fluxo de Com\u00e9rcio {frase}"),
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia") +
+    ggthemes::scale_fill_tableau() +
+    ggplot2::theme_minimal()
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabela_corrente(pais, periodo), print)
+```
+
+\newpage
+
+## Produtos comercializados
+
+```{r, fig.height=4.3}
+
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }else {
+    nome_pais <- pais
+  }
+
+  df <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 30 ~
+                                              paste0(stringr::str_sub(no_sh4_por, 1, 30), ".."),
+                                              TRUE ~ no_sh4_por))
+  if (periodo == "anual") {
+    df <- df %>%
+      dplyr::filter(co_ano == max(co_ano)-1)
+    frase <- paste0(barao2::comerciobr_get_ulimoano()-1)
+  }else {
+    df <- df %>%
+      dplyr::filter(co_ano == max(co_ano))
+    frase <- paste0(barao2::comerciobr_get_ulimoano()," at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+  }
+
+  ano <- df %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(co_ano)
+
+
+  df %>%
+    ggplot2::ggplot() +
+    ggplot2::geom_col(ggplot2::aes(tidytext::reorder_within(no_sh4_por, value, path, sum),
+                                   value, fill = path),
+                      show.legend = F) +
+    ggplot2::facet_wrap(~ path, scales = "free_y") +
+    ggplot2::coord_flip() +
+    ggplot2::theme_minimal() +
+    ggthemes::scale_fill_tableau() +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    tidytext::scale_x_reordered() +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, pauta comercial, {frase}"),
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia")
+
+```
+
+```{r, fig.height=4.3}
+if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }else {
+    nome_pais <- pais
+  }
+
+  ano_max <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano == max(co_ano)) %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(max(co_ano))
+
+  if (periodo == "mensal") {
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano == max(co_ano))
+
+    frase <- paste0(barao2::comerciobr_get_ulimoano(), " at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+  }else {
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano == max(co_ano)-1)
+
+    frase <- paste0("em ", barao2::comerciobr_get_ulimoano()-1)
+  }
+
+  df <- df %>%
+      dplyr::mutate(prop = value/.data$total) %>%
+      dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 20 ~ paste0(stringr::str_sub(no_sh4_por, 1, 20), ".."),
+                                                  TRUE ~ no_sh4_por)) %>%
+      dplyr::group_by(co_ano, path) %>%
+      dplyr::mutate(total_prop = abs(sum(.data$prop)-1)) %>%
+      dplyr::ungroup()
+
+  exp <- df %>%
+    dplyr::filter(path == "EXP") %>%
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
+
+  imp <- df %>%
+    dplyr::filter(path == "IMP") %>%
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
+
+  total_imp <- df %>%
+    dplyr::filter(path == "IMP") %>%
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
+
+  total_exp <- df %>%
+    dplyr::filter(path == "EXP") %>%
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
+
+
+  df %>%
+    tibble::add_row(co_ano = ano_max,
+                    co_sh4 = "0000",
+                    path = "EXP",
+                    no_sh4_por = "Outros",
+                    # rank = NA,
+                    total = total_exp,
+                    value = exp*.data$total,
+                    prop = exp,
+                    total_prop = NA) %>%
+    tibble::add_row(co_ano = ano_max,
+                    co_sh4 = "0000",
+                    path = "IMP",
+                    no_sh4_por = "Outros",
+                    # rank = NA,
+                    total = total_imp,
+                    value = imp*.data$total,
+                    prop = imp,
+                    total_prop = NA) %>%
+    treemap::treemap(index = c("path", "no_sh4_por"),
+                     vSize = "value",
+                     type = "index",
+                     align.labels=list(c("center", "center"), c("left", "top")),
+                     palette = ggthemes::tableau_color_pal('Tableau 10')(10),
+                     title = glue::glue("Brasil-CELAC, Propor\u00e7\u00e3o de Exporta\u00e7\u00f5es e Importa\u00e7\u00f5es {frase}"))
+```
+
+\blandscape
+
+```{r, fig.height=7, fig.width=10}
+    if (length(pais) > 1) {
+      nome_pais <- get_bloco(pais)
+    }else {
+      nome_pais <- pais
+    }
+
+
+  if (periodo == "mensal") {
+
+    df <- comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup()
+
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+
+  }else {
+    df <- comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano <= max(co_ano))
+
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano())
+
+  }
+
+  df %>%
+    dplyr::mutate(no_sh4_por = stringr::str_sub(no_sh4_por, 1, 15)) %>%
+    # dplyr::mutate(co_ano = as.character(co_ano)) %>%
+    ggplot2::ggplot(ggplot2::aes(co_ano, value)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_line(ggplot2::aes(color = no_sh4_por,
+                                    group = no_sh4_por), size = 2, show.legend = F) +
+    ggrepel::geom_label_repel(data = . %>%
+                 dplyr::filter(co_ano == max(co_ano) |
+                                 co_ano == min(co_ano) |
+                                 co_ano == max(co_ano)-5),
+               ggplot2::aes(co_ano, value, label = no_sh4_por),
+               size = 2, show.legend = F) +
+    ggplot2::facet_wrap(~ path, scales = "free",
+                        nrow = 2) +
+    ggthemes::scale_color_pander() +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, evolu\u00e7\u00e3o do com\u00e9rcio, {frase}"),
+                  caption = "Fonte: Minist\u00e9rio da Economia",
+                  x = NULL, y = NULL) +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
+
+```
+
+\elandscape
+
+\newpage
+
+```{r, fig.show="hold", results = "asis"}
+if (periodo == "mensal") {
+
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup()
+
+  }else {
+
+    frase <- paste0("Dados Anuais")
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano <= max(co_ano))
+
+  }
+
+  df %>%
+    dplyr::group_by(path) %>%
+    dplyr::arrange(no_sh4_por) %>%
+    dplyr::group_by(no_sh4_por) %>%
+    dplyr::mutate(pct_var = value/dplyr::lag(value)-1) %>%
+    dplyr::mutate(pct_prop = value/.data$total) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano >= max(co_ano)-3) %>%
+    dplyr::select(-c(.data$total)) %>%
+    # dplyr::select(-c(rank, total)) %>%
+    tidyr::drop_na() %>%
+    dplyr::group_by(co_ano, path) %>%
+    dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano >= max(co_ano)-4) %>%
+    dplyr::arrange(dplyr::desc(co_ano)) %>%
+    dplyr::relocate(co_ano, path, no_sh4_por, co_sh4, value, .data$pct_var, .data$pct_prop) %>%
+    #dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number(scale_cut = scales::cut_short_scale()))) %>%
+    
+    dplyr::mutate(dplyr::across(dplyr::starts_with("val"), ~ formatar_valor_tabela_produto(.x))) %>%
+    
+    dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
+    dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 50 ~
+                                           paste0(stringr::str_sub(no_sh4_por, 1, 50), ".."),
+                                         TRUE ~ no_sh4_por)) %>%
+    kableExtra::kbl(booktabs = T, col.names = c("Ano", "Dire\u00e7\u00e3o", "Produto (SH4)", "C\u00f3digo (SH4)", "Valor", "Varia\u00e7\u00e3o", "Propor\u00e7\u00e3o")) %>%
+    kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
+    kableExtra::column_spec(3, width = "30em") %>%
+    kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+                              row_group_label_position = "stack", target = 2) %>%
+    kableExtra::add_header_above(header = c(setNames(7, frase)))
+
+```
+
+\newpage
+
+## Classificações do Comércio
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "isic")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "fator")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "cgce")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "cuci")
+
+```
+
+\newpage
+
+```{r, fig.show='asis', out.width="50%"}
+barao2::comerciobr_tabela_fatores(pais, periodo, "isic")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "fator")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "cgce")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "cuci")
+
+```
+
+\newpage
+
+## Índices de concentração comercial e de comércio intraindústria
+
+```{r, fig.height=5}
+barao2::comerciobr_grafico_concentracao_intraindustria(periodo, pais)
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabelas_comercio(pais, periodo), print)
+```
+
+\newpage
+
+### Concentração Comercial
+
+O índice Herfindahl-Hirschman, originalmente utilizado para a caracterização da competitividade de mercados, é utilizado nesse relatório como referência para concentração da pauta de exportações e importações.
+
+O índice é aqui calculado com base na desagregação das pautas até o nível de dois dígitos (SH2). Quanto maior o valor do índice, mais concentrada é a pauta. O índice varia entre os valores de 0 e 1. Nas situações extremas teríamos:
+
+-   1 = Somente um produto compõe a pauta
+
+-   0 = Infinitos produtos compõem a pauta
+
+### Comércio intraindústria
+
+O índice Grubel-Lloyd foi originalmente concebido para avaliar o comércio intraindústria de um produto determinado. O índice é usado neste relatório de forma agregada para diversos produtos, sendo cada classificação considerada uma “indústria” para fins de cálculo do índice.
+
+O índice é aqui calculado com base na desagregação até o nível de dois dígitos (SH2) e somente para produtos caracterizados como industrializados em um corte simplificado (SH2 entre 16 e 67 e acima de 72). Quanto maior o valor do índice, maior é o comércio intraindústria. O índice varia entre os valores de 0 e 1. Nas situações extremas teríamos:
+
+-   1 = O comércio intraindústria é total (haveria reexportação ou reimportação de todos os produtos)
+
+-   0 = Não há comércio intraindústria
+
+\newpage
+
+# Dados mensais
+
+```{r, include = F}
+periodo <- "mensal"
+```
+
+## Fluxo de Comércio
+
+```{r, fig.height=5}
+
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  } else {
+    nome_pais <- pais
+  }
+
+  if (periodo == "mensal") {
+
+    ultimoano <- barao2::comerciobr_get_ulimoano()
+    frase <- paste0("agregado at\u00e9 ", meses(barao2::comerciobr_get_ultimomes()))
+
+  }else {
+
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
+
+  }
+
+  comerciobr_dados_corrente(pais, periodo) %>%
+    dplyr::mutate(co_ano = as.character(co_ano)) %>%
+    ggplot2::ggplot() +
+    ggplot2::geom_col(ggplot2::aes(co_ano, value, fill = .data$trade_flow),
+                      show.legend = F) +
+    ggplot2::facet_wrap(~factor(.data$trade_flow,
+                                levels = c("Exportacoes", "Importacoes",
+                                           "Corrente", "Saldo")),
+                        scales = "free_x") +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    ggplot2::scale_x_discrete(breaks = scales::breaks_pretty()) +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, Fluxo de Com\u00e9rcio {frase}"),
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia") +
+    ggthemes::scale_fill_tableau() +
+    ggplot2::theme_minimal()
+
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabela_corrente(pais, periodo), print)
+```
+
+\newpage
+
+## Produtos comercializados
+
+```{r, fig.height=4.3}
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  }else {
+    nome_pais <- pais
+  }
+
+  df <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 30 ~
+                                              paste0(stringr::str_sub(no_sh4_por, 1, 30), ".."),
+                                              TRUE ~ no_sh4_por))
+  if (periodo == "anual") {
+    df <- df %>%
+      dplyr::filter(co_ano == max(co_ano)-1)
+    frase <- paste0(barao2::comerciobr_get_ulimoano()-1)
+  }else {
+    df <- df %>%
+      dplyr::filter(co_ano == max(co_ano))
+    frase <- paste0(barao2::comerciobr_get_ulimoano()," at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+  }
+
+  ano <- df %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(co_ano)
+
+
+  df %>%
+    ggplot2::ggplot() +
+    ggplot2::geom_col(ggplot2::aes(tidytext::reorder_within(no_sh4_por, value, path, sum),
+                                   value, fill = path),
+                      show.legend = F) +
+    ggplot2::facet_wrap(~ path, scales = "free_y") +
+    ggplot2::coord_flip() +
+    ggplot2::theme_minimal() +
+    ggthemes::scale_fill_tableau() +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    tidytext::scale_x_reordered() +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, pauta comercial, {frase}"),
+                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia")
+```
+
+```{r, fig.height=4.3}
+  if (length(pais) > 1) {
+    nome_pais <- get_bloco(pais)
+  } else {
+    nome_pais <- pais
+  }
+
+  ano_max <- comerciobr_dados_produtos(pais, periodo) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano == max(co_ano)) %>%
+    dplyr::distinct(co_ano) %>%
+    dplyr::pull(max(co_ano))
+
+  if (periodo == "mensal") {
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano == max(co_ano))
+
+    frase <- paste0(barao2::comerciobr_get_ulimoano(), "  ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+  } else {
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano == max(co_ano)-1)
+
+    frase <- paste0("em ", barao2::comerciobr_get_ulimoano()-1)
+  }
+
+  df <- df %>%
+      dplyr::mutate(prop = value/.data$total) %>%
+      dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 20 ~ paste0(stringr::str_sub(no_sh4_por, 1, 20), ".."),
+                                                  TRUE ~ no_sh4_por)) %>%
+      dplyr::group_by(co_ano, path) %>%
+      dplyr::mutate(total_prop = abs(sum(.data$prop)-1)) %>%
+      dplyr::ungroup()
+
+  exp <- df %>%
+    dplyr::filter(path == "EXP") %>%
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
+
+  imp <- df %>%
+    dplyr::filter(path == "IMP") %>%
+    dplyr::distinct(.data$total_prop) %>%
+    dplyr::pull(.data$total_prop)
+
+  total_imp <- df %>%
+    dplyr::filter(path == "IMP") %>%
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
+
+  total_exp <- df %>%
+    dplyr::filter(path == "EXP") %>%
+    dplyr::distinct(.data$total) %>%
+    dplyr::pull(.data$total)
+
+
+  df %>%
+    tibble::add_row(co_ano = ano_max,
+                    co_sh4 = "0000",
+                    path = "EXP",
+                    no_sh4_por = "Outros",
+                    # rank = NA,
+                    total = total_exp,
+                    value = exp*.data$total,
+                    prop = exp,
+                    total_prop = NA) %>%
+    tibble::add_row(co_ano = ano_max,
+                    co_sh4 = "0000",
+                    path = "IMP",
+                    no_sh4_por = "Outros",
+                    # rank = NA,
+                    total = total_imp,
+                    value = imp*.data$total,
+                    prop = imp,
+                    total_prop = NA) %>%
+    treemap::treemap(index = c("path", "no_sh4_por"),
+                     vSize = "value",
+                     type = "index",
+                     align.labels=list(c("center", "center"), c("left", "top")),
+                     palette = ggthemes::tableau_color_pal('Tableau 10')(10),
+                     title = glue::glue("Brasil-CELAC, Propor {frase}"))
+```
+
+\blandscape
+
+```{r, fig.height=7, fig.width=10}
+if (length(pais) > 1) {
+      nome_pais <- get_bloco(pais)
+    }else {
+      nome_pais <- pais
+    }
+
+
+  if (periodo == "mensal") {
+
+    df <- comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup()
+
+    frase <- paste0("agregado at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+
+  }else {
+    df <- comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano <= max(co_ano))
+
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano())
+
+  }
+
+  df %>%
+    dplyr::mutate(no_sh4_por = stringr::str_sub(no_sh4_por, 1, 15)) %>%
+    # dplyr::mutate(co_ano = as.character(co_ano)) %>%
+    ggplot2::ggplot(ggplot2::aes(co_ano, value)) +
+    ggplot2::geom_point() +
+    ggplot2::geom_line(ggplot2::aes(color = no_sh4_por,
+                                    group = no_sh4_por), size = 2, show.legend = F) +
+    ggrepel::geom_label_repel(data = . %>%
+                 dplyr::filter(co_ano == max(co_ano) |
+                                 co_ano == min(co_ano) |
+                                 co_ano == max(co_ano)-5),
+               ggplot2::aes(co_ano, value, label = no_sh4_por),
+               size = 2, show.legend = F) +
+    ggplot2::facet_wrap(~ path, scales = "free",
+                        nrow = 2) +
+    ggthemes::scale_color_pander() +
+    ggplot2::theme_minimal() +
+    ggplot2::labs(title = glue::glue("Brasil-CELAC, evolu\u00e7\u00e3o do com\u00e9rcio, {frase}"),
+                  caption = "Fonte: Minist\u00e9rio da Economia",
+                  x = NULL, y = NULL) +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
+    ggplot2::scale_x_continuous(breaks = scales::breaks_pretty())
+
+```
+
+\elandscape
+
+\newpage
+
+```{r, fig.show="hold", results = "asis"}
+if (periodo == "mensal") {
+
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup()
+
+  }else {
+
+    frase <- paste0("Dados Anuais")
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
+      dplyr::ungroup() %>%
+      dplyr::filter(co_ano <= max(co_ano))
+
+  }
+
+  df %>%
+    dplyr::group_by(path) %>%
+    dplyr::arrange(no_sh4_por) %>%
+    dplyr::group_by(no_sh4_por) %>%
+    dplyr::mutate(pct_var = value/dplyr::lag(value)-1) %>%
+    dplyr::mutate(pct_prop = value/.data$total) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano >= max(co_ano)-3) %>%
+    dplyr::select(-c(.data$total)) %>%
+    # dplyr::select(-c(rank, total)) %>%
+    tidyr::drop_na() %>%
+    dplyr::group_by(co_ano, path) %>%
+    dplyr::arrange(dplyr::desc(value), .by_group = T) %>%
+    dplyr::ungroup() %>%
+    dplyr::filter(co_ano >= max(co_ano)-4) %>%
+    dplyr::arrange(dplyr::desc(co_ano)) %>%
+    dplyr::relocate(co_ano, path, no_sh4_por, co_sh4, value, .data$pct_var, .data$pct_prop) %>%
+    #dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number(scale_cut = scales::cut_short_scale()))) %>%
+    dplyr::mutate(dplyr::across(dplyr::starts_with("val"), ~ formatar_valor_tabela_produto(.x))) %>%
+  
+    dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
+    dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 50 ~
+                                           paste0(stringr::str_sub(no_sh4_por, 1, 50), ".."),
+                                         TRUE ~ no_sh4_por)) %>%
+    kableExtra::kbl(booktabs = T, col.names = c("Ano", "Dire\u00e7\u00e3o", "Produto (SH4)", "C\u00f3digo (SH4)", "Valor", "Varia\u00e7\u00e3o", "Propor\u00e7\u00e3o")) %>%
+    kableExtra::kable_styling(font_size = 7, full_width = T, latex_options = c("hold_position")) %>%
+    kableExtra::column_spec(3, width = "30em") %>%
+    kableExtra::collapse_rows(columns = 1:2, latex_hline = "full", valign = "top",
+                              row_group_label_position = "stack", target = 2) %>%
+    kableExtra::add_header_above(header = c(setNames(7, frase)))
+
+```
+
+\newpage
+
+## Classificações do Comércio
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "isic")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "fator")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "cgce")
+```
+
+```{r, fig.height=2.1}
+barao2::comerciobr_grafico_fatores(pais, periodo, "cuci")
+
+```
+
+\newpage
+
+```{r, fig.show='asis', out.width="50%"}
+barao2::comerciobr_tabela_fatores(pais, periodo, "isic")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "fator")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "cgce")
+
+barao2::comerciobr_tabela_fatores(pais, periodo, "cuci")
+
+```
+
+\newpage
+
+## Índices de concentração comercial e de comércio intraindústria
+
+```{r, fig.height=5}
+barao2::comerciobr_grafico_concentracao_intraindustria(periodo, pais)
+```
+
+```{r, results='asis'}
+purrr::walk(comerciobr_tabelas_comercio(pais, periodo), print)
+```
+
+\newpage
+
+### Concentração Comercial
+
+O índice Herfindahl-Hirschman, originalmente utilizado para a caracterização da competitividade de mercados, é utilizado nesse relatório como referência para concentração da pauta de exportações e importações.
+
+O índice é aqui calculado com base na desagregação das pautas até o nível de dois dígitos (SH2). Quanto maior o valor do índice, mais concentrada é a pauta. O índice varia entre os valores de 0 e 1. Nas situações extremas teríamos:
+
+-   1 = Somente um produto compõe a pauta
+
+-   0 = Infinitos produtos compõem a pauta
+
+### Comércio intraindústria
+
+O índice Grubel-Lloyd foi originalmente concebido para avaliar o comércio intraindústria de um produto determinado. O índice é usado neste relatório de forma agregada para diversos produtos, sendo cada classificação considerada uma “indústria” para fins de cálculo do índice.
+
+O índice é aqui calculado com base na desagregação até o nível de dois dígitos (SH2) e somente para produtos caracterizados como industrializados em um corte simplificado (SH2 entre 16 e 67 e acima de 72). Quanto maior o valor do índice, maior é o comércio intraindústria. O índice varia entre os valores de 0 e 1. Nas situações extremas teríamos:
+
+-   1 = O comércio intraindústria é total (haveria reexportação ou reimportação de todos os produtos)
+
+-   0 = Não há comércio intraindústria

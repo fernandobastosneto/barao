@@ -6,24 +6,24 @@
 
 comerciomundo_grafico_paises_proporcao <- function(pais) {
 
-  max_ano <- barao::comerciomundo_dados_paises(pais) %>%
+  max_ano <- barao2::comerciomundo_dados_paises(pais) %>%
     dplyr::distinct(year) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::pull(max(year))
 
-  comtrade_mdic <- comerciomundo::dic_comtrade_mdic %>%
+  comtrade_mdic <- comerciomundo2::dic_comtrade_mdic %>%
     dplyr::select(no_pais, text)
 
-  comerciomundo::comtrade %>%
+  comerciomundo2::comtrade %>%
     dplyr::filter(year == max(year)) %>%
-    dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
+    dplyr::filter(reporter_code == barao2::get_pais(pais, "comtrade")) %>%
     dplyr::filter(partner_code != 0) %>%
     dplyr::filter(trade_flow_code == 1 | trade_flow_code == 2) %>%
     dplyr::group_by(year, trade_flow_code, partner_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
     dplyr::rename(id = partner_code) %>%
     dplyr::mutate(id = as.character(id)) %>%
-    dplyr::left_join(comerciomundo::dic_partners) %>%
+    dplyr::left_join(comerciomundo2::dic_partners) %>%
     dplyr::left_join(comtrade_mdic) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(cor = dplyr::case_when(no_pais != "Brasil" & trade_flow_code == 1 ~ "#4E79A7",

@@ -8,8 +8,8 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    frase <- paste0("Dados Agregados at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
-    df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
+    frase <- paste0("Dados Agregados at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup()
 
   }
@@ -17,7 +17,7 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
   else {
 
     frase <- paste0("Dados Anuais")
-    df <- barao::comerciobr_dados_produtos(pais, periodo) %>%
+    df <- barao2::comerciobr_dados_produtos(pais, periodo) %>%
       dplyr::ungroup() %>%
       dplyr::filter(co_ano <= max(co_ano))
 
@@ -40,8 +40,16 @@ comerciobr_tabela_produtos <- function(pais, periodo) {
     dplyr::filter(co_ano >= max(co_ano)-4) %>%
     dplyr::arrange(dplyr::desc(co_ano)) %>%
     dplyr::relocate(co_ano, path, no_sh4_por, co_sh4, value, .data$pct_var, .data$pct_prop) %>%
-    dplyr::mutate(dplyr::across(dplyr::starts_with("val"), scales::label_number_si(accuracy = 0.01))) %>%
+    # dplyr::mutate(dplyr::across(dplyr::starts_with("val"),scales::label_number(scale_cut = scales::cut_short_scale()))) %>%
+    dplyr::mutate(dplyr::across(dplyr::starts_with("val"),
+                                scales::label_number(scale_cut = scales::cut_si("")))) %>%
+
+    ## reduz espaço e muda G para B de bilhao
+    dplyr::mutate(dplyr::across(where(is.character),
+                                ~ gsub(" G", "B", gsub(" M", "M", gsub(" k", "K", .x))))) %>%
+
     dplyr::mutate(dplyr::across(dplyr::starts_with("pct_") , scales::label_percent(decimal.mark = ",", accuracy = .1))) %>%
+
     dplyr::mutate(no_sh4_por = dplyr::case_when(stringr::str_length(no_sh4_por) > 50 ~
                                            paste0(stringr::str_sub(no_sh4_por, 1, 50), ".."),
                                          TRUE ~ no_sh4_por)) %>%

@@ -28,7 +28,7 @@ com foco particular em dados de economia internacional.
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fernandobastosneto/barao")
+devtools::install_github("NIEscaec/barao2")
 ```
 
 ## Funcionalidades

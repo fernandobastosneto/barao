@@ -6,8 +6,8 @@
 
 comerciomundo_dados_produtos <- function(pais) {
 
-  df <- comerciomundo::comtrade %>%
-    dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
+  df <- comerciomundo2::comtrade %>%
+    dplyr::filter(reporter_code == barao2::get_pais(pais, "comtrade")) %>%
     dplyr::filter(partner_code != 0)
 
   dez_principais_produtos_ultimo_ano <-  df %>%

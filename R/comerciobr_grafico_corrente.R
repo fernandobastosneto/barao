@@ -18,14 +18,14 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
 
   if (periodo == "mensal") {
 
-    ultimoano <- barao::comerciobr_get_ulimoano()
-    frase <- paste0("agregado at\u00e9 ", meses(barao::comerciobr_get_ultimomes()))
+    ultimoano <- barao2::comerciobr_get_ulimoano()
+    frase <- paste0("agregado at\u00e9 ", meses(barao2::comerciobr_get_ultimomes()))
 
   }
 
   else {
 
-    frase <- paste0("at\u00e9 ", barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0("at\u00e9 ", barao2::comerciobr_get_ulimoano()-1)
 
   }
 
@@ -38,10 +38,10 @@ comerciobr_grafico_corrente <- function(pais, periodo) {
                                 levels = c("Exportacoes", "Importacoes",
                                            "Corrente", "Saldo")),
                         scales = "free_x") +
-    ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
     ggplot2::scale_x_discrete(breaks = scales::breaks_pretty()) +
     ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, Fluxo de Com\u00e9rcio {frase}"),
-                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia") +
+                  x = NULL, y = NULL, caption = "Fonte: MDIC-ComexStat") +
     ggthemes::scale_fill_tableau() +
     ggplot2::theme_minimal()
 

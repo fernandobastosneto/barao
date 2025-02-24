@@ -22,13 +22,13 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
   if (periodo == "anual") {
     df <- df %>%
       dplyr::filter(co_ano == max(co_ano)-1)
-    frase <- paste0(barao::comerciobr_get_ulimoano()-1)
+    frase <- paste0(barao2::comerciobr_get_ulimoano()-1)
   }
 
   else {
     df <- df %>%
       dplyr::filter(co_ano == max(co_ano))
-    frase <- paste0(barao::comerciobr_get_ulimoano()," at\u00e9 ", barao::meses(barao::comerciobr_get_ultimomes()))
+    frase <- paste0(barao2::comerciobr_get_ulimoano()," at\u00e9 ", barao2::meses(barao2::comerciobr_get_ultimomes()))
   }
 
   ano <- df %>%
@@ -45,9 +45,9 @@ comerciobr_grafico_produtos <- function(pais, periodo) {
     ggplot2::coord_flip() +
     ggplot2::theme_minimal() +
     ggthemes::scale_fill_tableau() +
-    ggplot2::scale_y_continuous(labels = scales::label_number_si()) +
+    ggplot2::scale_y_continuous(labels = scales::label_number(scale_cut = scales::cut_short_scale())) +
     tidytext::scale_x_reordered() +
     ggplot2::labs(title = glue::glue("Brasil-{nome_pais}, pauta comercial, {frase}"),
-                  x = NULL, y = NULL, caption = "Fonte: Minist\u00e9rio da Economia")
+                  x = NULL, y = NULL, caption = "Fonte: MDIC-ComexStat")
 
 }

@@ -7,12 +7,12 @@
 comerciomundo_grafico_paises_ranking <- function(pais) {
   nome_pais <- pais
 
-  max_ano <- barao::comerciomundo_dados_paises(pais) %>%
+  max_ano <- barao2::comerciomundo_dados_paises(pais) %>%
     dplyr::distinct(year) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::pull(max(year))
 
-  barao::comerciomundo_dados_paises(pais) %>%
+  barao2::comerciomundo_dados_paises(pais) %>%
     dplyr::group_by(trade_flow_code, year) %>%
     dplyr::slice_max(value, n = 10) %>%
     dplyr::ungroup() %>%

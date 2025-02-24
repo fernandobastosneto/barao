@@ -8,7 +8,7 @@
 #' @export
 comerciobr_dados_corrente <- function(pais, periodo) {
 
-  df <- comerciobr::sh1_df %>%
+  df <- comerciobr2::sh1_df %>%
     dplyr::filter(no_pais %in% pais)
 
   if (periodo == "anual") {
@@ -23,7 +23,7 @@ comerciobr_dados_corrente <- function(pais, periodo) {
 
     df <- df %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
+      dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
       dplyr::group_by(co_ano, path) %>%
       dplyr::summarise(value = sum(value))
 

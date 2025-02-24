@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
-[![R-CMD-check](https://github.com/fernandobastosneto/barao/workflows/R-CMD-check/badge.svg)](https://github.com/fernandobastosneto/barao/actions)
+[![R-CMD-check](https://github.com/NIEscaec/barao/workflows/R-CMD-check/badge.svg)](https://github.com/NIEscaec/barao/actions)
 <!-- badges: end -->
 
 <img src="barao_logo.png" height="300"/>
@@ -36,7 +36,7 @@ O pacote barão busca agregar, em um único lugar, um conjunto de dados e funç�
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("fernandobastosneto/barao")
+devtools::install_github("NIEscaec/barao2")
 ```
 
 ## Funcionalidades

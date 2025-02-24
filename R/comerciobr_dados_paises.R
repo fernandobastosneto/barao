@@ -11,7 +11,7 @@ comerciobr_dados_paises <- function(pais, periodo) {
 
   if (periodo == "anual") {
 
-    df <- comerciobr::sh1_df %>%
+    df <- comerciobr2::sh1_df %>%
       dplyr::group_by(co_ano, no_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::group_by(co_ano, path) %>%
@@ -24,9 +24,9 @@ comerciobr_dados_paises <- function(pais, periodo) {
 
   else {
 
-    df <- comerciobr::sh1_df %>%
+    df <- comerciobr2::sh1_df %>%
       dplyr::mutate(co_mes = as.numeric(co_mes)) %>%
-      dplyr::filter(co_mes <= barao::comerciobr_get_ultimomes()) %>%
+      dplyr::filter(co_mes <= barao2::comerciobr_get_ultimomes()) %>%
       dplyr::group_by(co_ano, no_pais, path) %>%
       dplyr::summarise(value = sum(value)) %>%
       dplyr::group_by(co_ano, path) %>%

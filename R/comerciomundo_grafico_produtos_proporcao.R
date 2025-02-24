@@ -6,18 +6,18 @@
 
 comerciomundo_grafico_produtos_proporcao <- function(pais) {
 
-  max_ano <- barao::comerciomundo_dados_paises(pais) %>%
+  max_ano <- barao2::comerciomundo_dados_paises(pais) %>%
     dplyr::distinct(year) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::pull(max(year))
 
-  comerciomundo::comtrade %>%
-    dplyr::filter(reporter_code == barao::get_pais(pais, "comtrade")) %>%
+  comerciomundo2::comtrade %>%
+    dplyr::filter(reporter_code == barao2::get_pais(pais, "comtrade")) %>%
     dplyr::filter(year == max(year)) %>%
     dplyr::group_by(commodity_code, trade_flow_code) %>%
     dplyr::summarise(value = sum(trade_value_us)) %>%
     dplyr::rename(co_sh2 = commodity_code) %>%
-    dplyr::left_join(comerciobr::dic_sh6_sh2) %>%
+    dplyr::left_join(comerciobr2::dic_sh6_sh2) %>%
     dplyr::mutate(no_sh2_por = dplyr::case_when(
       stringr::str_length(no_sh2_por) > 20 ~ paste0(stringr::str_sub(no_sh2_por, 1, 20), ".."),
       TRUE ~ no_sh2_por)) %>%

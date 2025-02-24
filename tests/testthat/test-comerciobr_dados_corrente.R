@@ -1,6 +1,6 @@
 test_that("dados exportações estão corretos", {
 
-  ano_final <- barao::comerciobr_get_ulimoano()-1
+  ano_final <- barao2::comerciobr_get_ulimoano()-1
   ano_inicial <- 2010
 
   result <- paste0("http://api.comexstat.mdic.gov.br/general?filter=%7B%22yearStart%22:%22", ano_inicial,
@@ -21,7 +21,7 @@ test_that("dados exportações estão corretos", {
     dplyr::arrange(co_ano) %>%
     dplyr::pull(value)
 
-  base_normal <- barao::comerciobr_dados_corrente("China", "anual") %>%
+  base_normal <- barao2::comerciobr_dados_corrente("China", "anual") %>%
     dplyr::filter(trade_flow == "Exportacoes") %>%
     dplyr::select(-trade_flow) %>%
     dplyr::ungroup() %>%
@@ -32,7 +32,7 @@ test_that("dados exportações estão corretos", {
 
 test_that("dados importações estão corretos", {
 
-  ano_final <- barao::comerciobr_get_ulimoano()-1
+  ano_final <- barao2::comerciobr_get_ulimoano()-1
   ano_inicial <- 2010
 
   result <- paste0("http://api.comexstat.mdic.gov.br/general?filter=%7B%22yearStart%22:%22", ano_inicial,
@@ -53,7 +53,7 @@ test_that("dados importações estão corretos", {
     dplyr::arrange(co_ano) %>%
     dplyr::pull(value)
 
-  base_normal <- barao::comerciobr_dados_corrente("China", "anual") %>%
+  base_normal <- barao2::comerciobr_dados_corrente("China", "anual") %>%
     dplyr::filter(trade_flow == "Importacoes") %>%
     dplyr::select(-trade_flow) %>%
     dplyr::ungroup() %>%
